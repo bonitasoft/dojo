@@ -4,7 +4,6 @@
 package org.bonitasoft.dojo.tennis;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -30,5 +29,14 @@ public class TennisGameTest {
 		Score score = game.getScore();
 		
 		assertThat(score).isEqualTo(new DeuceScore());
+	}
+	
+	@Test
+	public void given_deuce_when_playerOne_score_get_advantage() throws Exception {
+		TennisGame game = new TennisGame(new DeuceScore());
+		
+		Score score = game.playerOneWinBall();
+		
+		assertThat(score).isEqualTo(new AdvantageScore());
 	}
 }

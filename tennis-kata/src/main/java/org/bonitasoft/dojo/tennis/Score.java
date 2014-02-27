@@ -10,6 +10,9 @@ public class Score {
 		this.playerTwoScore = playerTwoScore;
 	}
 
+	protected Score() {
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (! (obj instanceof Score)) {

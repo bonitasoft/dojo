@@ -13,10 +13,11 @@ public class TennisGame {
 	}
 
 	public Score getScore() {
-		if (score.equals(new Score(40, 40))) {
-			return new DeuceScore();
-		}
 		return score;
+	}
+
+	public Score playerOneWinBall() {
+		return new AdvantageScore();
 	}
 
 }
