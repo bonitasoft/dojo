@@ -41,4 +41,27 @@ class GameSpec extends Specification {
         then:
             game.result == "15 - 15"
     }
+
+    def "when both player  the same then result is 15 - 15"() {
+        given:
+            Game game = new Game();
+        when:
+        for(String player: score) {
+            if("player 1".equals(player)) game.firstPlayerScore();
+            if("player 2".equals(player)) game.secondPlayerScore();
+        }
+        then:
+            game.result == result
+        where:
+            score                                                                       | result
+            ["player 1"]                                                                | "15 - 0"
+            ["player 2"]                                                                | "0 - 15"
+            ["player 1", "player 2"]                                                    | "15 - 15"
+            []                                                                          | "0 - 0"
+            ["player 2", "player 2"]                                                    | "0 - 30"
+            ["player 1", "player 1"]                                                    | "30 - 0"
+            ["player 1", "player 1", "player 1"]                                        | "40 - 0"
+            ["player 2", "player 2", "player 2"]                                        | "0 - 40"
+            ["player 1", "player 1", "player 1", "player 2", "player 2", "player 2"]    | "deuce"
+    }
 }
