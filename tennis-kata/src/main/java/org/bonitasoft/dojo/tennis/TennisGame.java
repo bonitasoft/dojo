@@ -17,6 +17,9 @@ public class TennisGame {
 	}
 
 	public Score playerOneWinBall() {
+		if (new AdvantageScore().equals(score)) {
+			return new WinGameScore();
+		}
 		return new AdvantageScore();
 	}
 
