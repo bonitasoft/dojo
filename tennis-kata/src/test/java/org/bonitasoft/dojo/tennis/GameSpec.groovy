@@ -53,15 +53,18 @@ class GameSpec extends Specification {
         then:
             game.result == result
         where:
-            score                                                                       | result
-            ["player 1"]                                                                | "15 - 0"
-            ["player 2"]                                                                | "0 - 15"
-            ["player 1", "player 2"]                                                    | "15 - 15"
-            []                                                                          | "0 - 0"
-            ["player 2", "player 2"]                                                    | "0 - 30"
-            ["player 1", "player 1"]                                                    | "30 - 0"
-            ["player 1", "player 1", "player 1"]                                        | "40 - 0"
-            ["player 2", "player 2", "player 2"]                                        | "0 - 40"
-            ["player 1", "player 1", "player 1", "player 2", "player 2", "player 2"]    | "deuce"
+        score                                                                                            | result
+        []                                                                                               | "0 - 0"
+        ["player 1"]                                                                                     | "15 - 0"
+        ["player 2"]                                                                                     | "0 - 15"
+        ["player 1", "player 2"]                                                                         | "15 - 15"
+        ["player 2", "player 2"]                                                                         | "0 - 30"
+        ["player 1", "player 1"]                                                                         | "30 - 0"
+        ["player 1", "player 1", "player 1"]                                                             | "40 - 0"
+        ["player 1", "player 1", "player 1", "player 1"]                                                 | "win - 0"
+        ["player 2", "player 2", "player 2"]                                                             | "0 - 40"
+        ["player 2", "player 2", "player 2", "player 2"]                                                 | "0 - win"
+        ["player 1", "player 1", "player 1", "player 2", "player 2", "player 2"]                         | "deuce"
+        ["player 1", "player 2", "player 1", "player 2", "player 1", "player 2", "player 1"]             | "advantage - 40"
     }
 }

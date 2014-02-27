@@ -28,11 +28,21 @@ public class Game {
     }
 
     public void firstPlayerScore() {
-        firstPlayerScore = firstPlayerIterator.next();
+        firstPlayerScore = getScore(firstPlayerIterator, secondPlayerScore);
     }
 
     public void secondPlayerScore() {
-        secondPlayerScore = secondPlayerIterator.next();
+        secondPlayerScore = getScore(secondPlayerIterator, firstPlayerScore);
+    }
+
+    private String getScore(Iterator<String> score, String adversary) {
+        if(score.hasNext()) {
+            return score.next();
+        } else if("40".equals(adversary)) {
+            return "advantage";
+        } else {
+            return "win";
+        }
     }
 
     public String getResult() {
