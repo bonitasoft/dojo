@@ -49,4 +49,13 @@ public class TennisGameTest {
 		
 		assertThat(score).isEqualTo(new WinGameScore());
 	}
+	
+	@Test
+	public void If_the_player_without_advantage_wins_they_are_back_at_deuce() throws Exception {
+		TennisGame game = new TennisGame(new AdvantageScore());
+		
+		Score score = game.playerTwoWinBall();
+		
+		assertThat(score).isEqualTo(new DeuceScore());
+	}
 }

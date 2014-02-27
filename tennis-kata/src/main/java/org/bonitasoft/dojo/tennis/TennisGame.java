@@ -23,4 +23,8 @@ public class TennisGame {
 		return new AdvantageScore();
 	}
 
+	public Score playerTwoWinBall() {
+		return new DeuceScore();
+	}
+
 }
