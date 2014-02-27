@@ -22,4 +22,14 @@ public class Score {
 		return playerOneScore == other.playerOneScore && playerTwoScore == other.playerTwoScore;
 	}
 
+	public Score incrementPlayerOnePoints() {
+		if(equals(new Score(30,40))) {
+			return new DeuceScore();
+		}
+		if (equals(new AdvantageScore())) {
+			return new WinGameScore();
+		}
+		return new AdvantageScore();
+	}
+
 }

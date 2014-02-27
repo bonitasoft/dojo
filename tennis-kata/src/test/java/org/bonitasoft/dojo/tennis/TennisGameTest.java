@@ -67,4 +67,13 @@ public class TennisGameTest {
 		
 		assertThat(score).isEqualTo(new Score(0, 15));
 	}
+	
+	@Test
+	public void when_score_is_30_40_playerOne_score_get_deuce() throws Exception {
+		TennisGame game = new TennisGame(new Score(30,40));
+		
+		Score score = game.playerOneWinBall();
+		
+		assertThat(score).isEqualTo(new DeuceScore());
+	}
 }
