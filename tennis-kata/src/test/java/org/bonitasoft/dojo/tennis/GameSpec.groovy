@@ -66,5 +66,6 @@ class GameSpec extends Specification {
         ["player 2", "player 2", "player 2", "player 2"]                                                 | "0 - win"
         ["player 1", "player 1", "player 1", "player 2", "player 2", "player 2"]                         | "deuce"
         ["player 1", "player 2", "player 1", "player 2", "player 1", "player 2", "player 1"]             | "advantage - 40"
+        ["player 1", "player 2", "player 1", "player 2", "player 1", "player 2", "player 2"]             | "40 - advantage"
     }
 }

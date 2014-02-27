@@ -46,7 +46,7 @@ public class Game {
     }
 
     public String getResult() {
-        if(firstPlayerScore == "40" && secondPlayerScore == "40") {
+        if("40".equals(firstPlayerScore) && "40".equals(secondPlayerScore)) {
             return "deuce";
         }
         return firstPlayerScore + " - " + secondPlayerScore;
