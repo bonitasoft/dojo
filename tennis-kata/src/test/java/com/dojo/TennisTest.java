@@ -7,35 +7,43 @@ import org.junit.Test;
 
 public class TennisTest {
 
-	private Game game;
 
 	@Test
 	public void whenGameStartScoresAre00() {
 		// given
-		game = new Game();
+		Game game = initGame();
 
 		// when
 
 		// then
-		assertThat(game.getPlayer1().getScore())
-				.as(game.getPlayer1().getName()).isEqualTo(Point.ZERO);
+		verifyScore(game);
 
-		assertThat(game.getPlayer2().getScore())
-		.as(game.getPlayer1().getName()).isEqualTo(Point.ZERO);
+	}
 
+	private Game initGame() {
+		return new Game();
+	}
 
+	private void verifyScore(Game game ) {
+		
+		assertThat(game.getPlayer1().getScore()).as(
+				game.getPlayer1().getName()).isEqualTo(Point.ZERO);
+
+		assertThat(game.getPlayer2().getScore()).as(
+				game.getPlayer1().getName()).isEqualTo(Point.ZERO);
 	}
 
 	@Test
 	public void whenPlayer1ScoresScoreIs_15_0() throws Exception {
 
-		// given
-		game = new Game();
+		Game game = initGame();
 		// when
 		game.getPlayer1().winPoint();
 
 		// then
 		assertThat(game.getPlayer1().getScore())
 				.as(game.getPlayer1().getName()).isEqualTo(Point.FIFTEEN);
+		assertThat(game.getPlayer2().getScore())
+				.as(game.getPlayer1().getName()).isEqualTo(Point.ZERO);
 	}
 }
