@@ -5,7 +5,7 @@ package org.bonitasoft.dojo.tennis;
  */
 public class Game {
 
-    private String result;
+    private String result = "0 - 0";
 
     public Game() {
     }

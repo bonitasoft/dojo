@@ -7,6 +7,13 @@ import spock.lang.Specification
  */
 class GameSpec extends Specification {
 
+    def "when no player score then result is 0 - 0"() {
+        given:
+            Game game = new Game();
+        expect:
+            game.result == "0 - 0"
+    }
+
     def "when player 1 score first then result is 15 - 0"() {
         given:
             Game game = new Game();
