@@ -8,9 +8,9 @@ public class TennisTest {
 
 	@Test
 	public void whenGameStartScoresAre00() {
-	Score score=new Score();
-	assertThat(score.getPlayer1Score()).as("player1").isEqualTo("0");
-	assertThat(score.getPlayer2Score()).as("player2").isEqualTo("0");
+	Game game=new Game();
+	assertThat(game.getPlayer1Score()).as(game.getPlayer1().getName()).isEqualTo(Point.ZERO);
+	assertThat(game.getPlayer2Score()).as(game.getPlayer2().getName()).isEqualTo(Point.ZERO);
 	
 	
 	}
