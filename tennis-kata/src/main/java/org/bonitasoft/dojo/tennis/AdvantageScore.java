@@ -6,4 +6,8 @@ public class AdvantageScore extends Score {
 		super();
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof AdvantageScore;
+	}
 }

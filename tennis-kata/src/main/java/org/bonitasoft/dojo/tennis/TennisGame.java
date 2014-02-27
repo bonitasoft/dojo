@@ -24,6 +24,9 @@ public class TennisGame {
 	}
 
 	public Score playerTwoWinBall() {
+		if (score.equals(new Score(0, 0))) {
+			return new Score(0, 15);
+		}
 		return new DeuceScore();
 	}
 
