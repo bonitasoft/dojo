@@ -1,22 +1,25 @@
 package org.bonitasoft.dojo.tennis;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author Vincent Elcrin
  */
 public class Game {
 
-    public void firstPlayerScore() {
+    private String result;
 
+    public Game() {
     }
 
-    public Map<String, String> getResult() {
-        Map<String, String> result = new HashMap<String, String>();
-        result.put("player 1", "15");
-        result.put("player 2", "0");
+    public void firstPlayerScore() {
+        result = "15 - 0";
+    }
+
+    public void secondPlayerScore() {
+        result = "0 - 15";
+    }
+
+    public String getResult() {
         return result;
     }
+
 }

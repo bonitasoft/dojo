@@ -7,14 +7,21 @@ import spock.lang.Specification
  */
 class GameSpec extends Specification {
 
-    def "when player one score then player 1 with 15"() {
+    def "when player 1 score first then result is 15 - 0"() {
         given:
             Game game = new Game();
-
         when:
             game.firstPlayerScore();
-
         then:
-            game.result == ["player 1" : "15", "player 2": "0"]
+            game.result == "15 - 0"
+    }
+
+    def "when player 2 score first then result is 0 - 15"() {
+        given:
+            Game game = new Game();
+        when:
+            game.secondPlayerScore();
+        then:
+            game.result == "0 - 15"
     }
 }
