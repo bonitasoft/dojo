@@ -31,4 +31,14 @@ class GameSpec extends Specification {
         then:
             game.result == "0 - 15"
     }
+
+    def "when both player score the same then result is 15 - 15"() {
+        given:
+            Game game = new Game();
+        when:
+            game.firstPlayerScore();
+            game.secondPlayerScore();
+        then:
+            game.result == "15 - 15"
+    }
 }

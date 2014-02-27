@@ -7,19 +7,23 @@ public class Game {
 
     private String result = "0 - 0";
 
+    private String firstPlayerScore = "0";
+
+    private String secondPlayerScore = "0";
+
     public Game() {
     }
 
     public void firstPlayerScore() {
-        result = "15 - 0";
+        firstPlayerScore = "15";
     }
 
     public void secondPlayerScore() {
-        result = "0 - 15";
+        secondPlayerScore = "15";
     }
 
     public String getResult() {
-        return result;
+        return firstPlayerScore + " - " + secondPlayerScore;
     }
 
 }
