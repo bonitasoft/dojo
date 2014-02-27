@@ -22,29 +22,29 @@ package org.dojo.tennis;
  */
 public class TennisGame {
 
-    private Score player1 = Score._0;
+    private final Player player1 = new Player();
 
-    private Score player2 = Score._0;
+    private final Player player2 = new Player();
 
     public void pointForPlayer1() {
-        player1 = player1.increase();
+        player1.increase();
     }
 
     public void pointForPlayer2() {
-        player2 = player2.increase();
+        player2.increase();
     }
 
     /**
      * @return
      */
-    public Score getPlayer1Score() {
+    public Player getPlayer1() {
         return player1;
     }
 
     /**
      * @return
      */
-    public Score getPlayer2Score() {
+    public Player getPlayer2() {
         return player2;
     }
 

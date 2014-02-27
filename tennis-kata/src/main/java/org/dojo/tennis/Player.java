@@ -19,21 +19,52 @@ package org.dojo.tennis;
  * @author Baptiste Mesta
  * 
  */
-public enum Score {
+public class Player {
 
-    _0,
-    _15,
-    _30,
-    _40,
-    DEUCE,
-    ADV;
+    public enum Point {
+        _0,
+        _15,
+        _30,
+        _40,
+        ADV;
 
-    public Score increase() {
-        return values()[ordinal() + 1];
+        public Point increase() {
+            return values()[ordinal() + 1];
+        }
+
+        public Point decrease() {
+            return values()[ordinal() - 1];
+        }
+
     }
 
-    public Score decrease() {
-        return values()[ordinal() - 1];
+    public enum Status {
+        LOOSE,
+        NORMAL,
+        DEUCE,
+        WIN;
+
+    }
+
+    Point point = Point._0;
+
+    /**
+     * @return
+     */
+    public Point getPoint() {
+        return point;
+    }
+
+    public Status getStatus() {
+        return null;
+
+    }
+
+    /**
+     * 
+     */
+    public void increase() {
+        this.point = point.increase();
     }
 
 }
