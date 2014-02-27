@@ -1,12 +1,20 @@
 package com.dojo;
 
-import org.assertj.core.description.Description;
-
 public class Player {
 
+	private Point score = Point.ZERO;
+
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "Marcel";
+	}
+
+	public void winPoint() {
+		score = Point.FIFTEEN;
+
+	}
+
+	public Point getScore() {
+		return score;
 	}
 
 }
