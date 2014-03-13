@@ -53,4 +53,10 @@ public class PrimeFactorizerTest {
         List<Integer> factorize = new PrimeFactorizer().factorize(82);
         assertThat(factorize).containsOnly(2, 41);
     }
+
+    @Test
+    public void factorize_42_should_return_2_3_7() throws Exception {
+        List<Integer> factorize = new PrimeFactorizer().factorize(42);
+        assertThat(factorize).containsOnly(2, 3, 7);
+    }
 }
