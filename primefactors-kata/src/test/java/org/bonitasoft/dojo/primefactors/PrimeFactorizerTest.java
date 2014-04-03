@@ -4,64 +4,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 public class PrimeFactorizerTest {
 
-	private PrimeFactorizer primeFactorizer;
+    private PrimeFactorizer primeFactorizer;
 
-	@Before
-	public void initFactorizer() {
-		primeFactorizer = new PrimeFactorizer();
-	}
+    private List<Integer> primeFactors;
 
-	@Test
-	public void numbers_smaller_than_2_does_not_have_any_primefactors() throws Exception {
-		List<Integer> primeFactors = primeFactorizer.factorize(1);
+    @Given("a prime factorizer")
+    public void theGameIsRunning() {
+        primeFactorizer = new PrimeFactorizer();
+    }
 
-		assertThat(primeFactors).isEmpty();
-	}
+    @When("I factorize $number in prime numbers")
+    public void iFactorizeNumber(final int number) {
+        primeFactors = primeFactorizer.factorize(number);
 
-	@Test
-	public void prime_factor_of_2_is_2() throws Exception {
-		List<Integer> primeFactors = primeFactorizer.factorize(2);
+    }
 
-		assertThat(primeFactors).containsOnly(2);
-	}
+    @Then("I get $factors")
+    public void iShouldItsFactors(final List<Integer> factors) {
+        assertThat(primeFactors).containsAll(factors);
+        assertThat(primeFactors.size()).isEqualTo(factors.size());
+    }
 
-	@Test
-	public void prime_factor_of_3_is_3() throws Exception {
-		List<Integer> primeFactors = primeFactorizer.factorize(3);
+    @When("I have a non factorizable number")
+    public void iFactorize2() {
+        primeFactors = primeFactorizer.factorize(1);
 
-		assertThat(primeFactors).containsOnly(3);
-	}
+    }
 
-	@Test
-	public void prime_factors_of_4_are_2_and_2() throws Exception {
-		List<Integer> primeFactors = primeFactorizer.factorize(4);
+    @Then("I don't get any prime factors")
+    public void iShouldHaveNoFactrors() {
+        assertThat(primeFactors).isEmpty();
+    }
 
-		assertThat(primeFactors).containsExactly(2, 2);
-	}
-
-	@Test
-	public void prime_factors_of_6_are_3_and_2() throws Exception {
-		List<Integer> primeFactors = primeFactorizer.factorize(6);
-
-		assertThat(primeFactors).containsOnly(3, 2);
-	}
-
-	@Test
-	public void prime_factors_of_9_are_3_and_3() throws Exception {
-		List<Integer> primeFactors = primeFactorizer.factorize(9);
-
-		assertThat(primeFactors).containsExactly(3, 3);
-	}
-
-	@Test
-	public void prime_factors_of_330_are_11_2_3_and_5() throws Exception {
-		List<Integer> primeFactors = primeFactorizer.factorize(330);
-
-		assertThat(primeFactors).containsOnly(11, 2, 3, 5);
-	}
 }
