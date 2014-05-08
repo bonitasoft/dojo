@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="BonitaBPM6Portal">
+    <head>
+        <meta charset="utf-8">
+        <title>Bonita BPM Portal</title>
+        <!--   <link rel="stylesheet" type="text/css" href="{{bonita-current-theme}}"> -->
+        <link rel="stylesheet" href="less/app.css" />
+        <link rel="stylesheet" type="text/css" href="less/angular.treeview.css">
+    </head>
+
+    <body ng-controller="MainCtrl">
+
+        <div ng-if="loggedUser.username.length > 0">
+            <ul class="menu">
+                <li><a href="#/admin/users">Users</a></li>
+                <li><a href="#/admin/groups">Groups</a></li>
+            </ul>
+
+            <div ng-view  class="container-fluid"></div>
+
+            <div class="navbar-fixed-bottom">
+                Bonita BPM : <span app-version></span>
+            </div>
+        </div>
+
+        <div ng-if="loggedUser.username.length == 0"><div ng-include="'app/login/login-tpl.html'" /> </div>
+
+
+
+
+        <script src="assets/angular/angular.js"></script>
+        <script src="assets/angular/angular-route.js"></script>
+
+
+        <!-- In real life projects all following scripts should be concatenated and minified at build time -->
+        <script src="app/main.js"></script>
+
+        <script src="app/login/login.js"></script>
+
+        <script src="app/admin/admin.js"></script>
+        <script src="common/resources/bonitaresource.js"></script>
+
+        <!-- Users modules -->
+        <script src="app/admin/users/admin-users.js"></script>
+        <script src="app/admin/users/uniqueUsername.js"></script>
+        <script src="common/resources/user.js"></script>
+
+        <!-- Groups modules -->
+        <script src="app/admin/groups/admin-groups.js"></script>
+        <script src="common/resources/group.js"></script>
+
+        <script src="common/directives/gravatar.js"></script>
+
+        <script src="common/services/crud/crud.js"></script>
+        <script src="common/services/crud/crudRouteProvider.js"></script>
+        <script src="common/directives/crud/crud.js"></script>
+        <script src="common/directives/crud/crudButtons.js"></script>
+        <script src="common/directives/crud/edit.js"></script>
+
+        <script src="common/services/version/version.js"></script>
+        <script src="common/directives/app-version.js"></script>
+
+
+        <!-- Tree view -->
+        <!-- css in header -->
+        <script type="text/javascript" src="common/directives/tree/angular.treeview.js"></script>
+
+
+    </body>
+</html>

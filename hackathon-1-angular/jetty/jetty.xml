@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+
+	<New id="RewriteHandler" class="org.eclipse.jetty.rewrite.handler.RewriteHandler">
+		<Set name="rules">
+			<Array type="org.eclipse.jetty.rewrite.handler.Rule">
+				
+				<!-- redirect /bonita/mobile to root context path (used when login) -->
+				<Item>
+					<New id="rewrite" class="org.eclipse.jetty.rewrite.handler.RedirectPatternRule">
+						<Set name="pattern">/bonita/mobile/*</Set>
+						<Set name="location">/index.jsp</Set>
+					</New>
+				</Item>
+				
+				<!-- IN WEB.XML BECAUSE ProxyRule add a / and proxy loginService dont work -->
+				<!-- proxy /bonita/API to running API address -->
+				<!-- <Item>
+					<New id="proxyAPI" class="org.eclipse.jetty.rewrite.handler.ProxyRule">
+						<Set name="pattern">/bonita/API/*</Set>
+						<Set name="proxyTo">http://localhost:8080/bonita/API</Set>
+					</New>
+				</Item> -->
+				
+				<!-- proxy /loginService to running loginService -->
+				<!-- <Item>
+					<New id="proxyLoginService" class="org.eclipse.jetty.rewrite.handler.ProxyRule">
+						<Set name="pattern">/loginservice</Set>
+						<Set name="proxyTo">http://localhost:8080/bonita/loginservice</Set>
+					</New>
+				</Item> -->
+			</Array>
+		</Set>
+	</New>
+
+	<Set name="handler">
+		<New id="Handlers" class="org.eclipse.jetty.server.handler.HandlerCollection">
+			<Set name="handlers">
+				<Array type="org.eclipse.jetty.server.Handler">
+					<Item>
+						<Ref id="RewriteHandler" />
+					</Item>
+				</Array>
+			</Set>
+		</New>
+	</Set>
+</Configure>

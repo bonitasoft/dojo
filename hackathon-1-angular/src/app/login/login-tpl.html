@@ -1,0 +1,8 @@
+<div class="container" ng-controller="LoginCtrl">
+    <form class="form-signin" role="form" name="loginForm">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" class="form-control span5" placeholder="Username" required="*" autofocus="" ng-model="login.username">
+        <input type="password" class="form-control span5" placeholder="Password" required="*" ng-model="login.password">
+        <button class="btn btn-lg btn-primary btn-block span5" ng-click="login(login.username, login.password)">Sign in</button>
+    </form>
+</div>

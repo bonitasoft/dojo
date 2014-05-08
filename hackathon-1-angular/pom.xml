@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+		
+	<artifactId>hackathon-1-angular</artifactId>
+	<groupId>org.bonitasoft</groupId>
+	<name>Bonita AngularJS</name>
+	<version>1.0.0</version>
+	
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-bundle</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.bonitasoft</groupId>
+                                    <artifactId>bonita-angular-seed-bundle</artifactId>
+                                    <version>6.3.0</version>
+                                    <type>zip</type>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/bundle</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>7.6.3.v20120416</version>
+				<configuration>
+					<webXml>jetty/web.xml</webXml>
+					<jettyXml>jetty/jetty.xml</jettyXml>
+					<scanIntervalSeconds>0</scanIntervalSeconds>
+					<webAppSourceDirectory>src</webAppSourceDirectory>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.bio.SocketConnector">
+							<port>8081</port>
+							<maxIdleTime>3600000</maxIdleTime>
+						</connector>
+					</connectors>
+				    <stopPort>9966</stopPort>
+				    <stopKey>foo</stopKey>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.jetty</groupId>
+						<artifactId>jetty-servlets</artifactId>
+						<version>7.6.3.v20120416</version>
+						<scope>runtime</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.jetty</groupId>
+						<artifactId>jetty-rewrite</artifactId>
+						<version>7.6.3.v20120416</version>
+						<scope>runtime</scope>
+					</dependency>
+
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>

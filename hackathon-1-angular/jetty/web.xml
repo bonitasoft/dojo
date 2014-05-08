@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="all-in-one" version="2.5">
+	<display-name>Bonita</display-name>
+
+	<!-- REST PROXY -->
+	<servlet>
+		<servlet-name>restCallProxy</servlet-name>
+		<servlet-class>org.eclipse.jetty.servlets.ProxyServlet$Transparent</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<init-param>
+			<param-name>ProxyTo</param-name>
+			<param-value>http://localhost:8080/bonita</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Prefix</param-name>
+			<param-value>/bonita</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>restCallProxy</servlet-name>
+		<url-pattern>/bonita/*</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- LOGIN SERVICE PROXY -->
+	<servlet>
+		<servlet-name>loginProxy</servlet-name>
+		<servlet-class>org.eclipse.jetty.servlets.ProxyServlet$Transparent</servlet-class>
+		<load-on-startup>2</load-on-startup>
+		<init-param>
+			<param-name>ProxyTo</param-name>
+			<param-value>http://localhost:8080/bonita/loginservice</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Prefix</param-name>
+			<param-value>/loginservice</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loginProxy</servlet-name>
+		<url-pattern>/loginservice</url-pattern>
+	</servlet-mapping>
+	
+
+    
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
