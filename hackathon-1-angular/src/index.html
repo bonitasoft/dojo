@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en" ng-app="BonitaBPM6Portal">
+        <!-- Suffix Dev in application name is used when we need to simulate APIs. -->
+        <!-- In production we must never use the BonitaBPM6PortalDev application but the BonitaBPM6Portal one. -->
+<html lang="en" ng-app="BonitaBPM6PortalDev">
     <head>
         <meta charset="utf-8">
         <title>Bonita BPM Portal</title>
@@ -31,6 +33,10 @@
         <script src="assets/angular/angular.js"></script>
         <script src="assets/angular/angular-route.js"></script>
 
+        <!-- Dev only (to mock Not Yet Implemented APIs -->
+        <script src="dev.js"></script>
+        <script src="assets/angular-mocks.js"></script>
+        <!-- All scripts above should be stripped out at build time for production use. -->
 
         <!-- In real life projects all following scripts should be concatenated and minified at build time -->
         <script src="app/main.js"></script>

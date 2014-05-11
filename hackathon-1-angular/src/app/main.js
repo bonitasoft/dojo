@@ -19,6 +19,5 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version'
         }).success(function(data){
             $scope.loggedUser.username = data.user_name;
         });
-
     }]);
 
