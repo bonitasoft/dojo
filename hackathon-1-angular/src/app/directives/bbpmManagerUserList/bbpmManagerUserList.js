@@ -59,6 +59,9 @@ angular.module('bonitasoft.bbpmManagerUserList', [])
             console.log(data);
             $scope.users = data;
         });
+        $scope.edit = function(){
+
+        }
 
     }]).directive('bbpmManagerUserList', function(RecursionHelper){
       return {
