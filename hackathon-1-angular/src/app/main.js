@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('BonitaBPM6Portal', ['ngRoute', 'bonitasoft.bbpmManager', 'directives.gravatar'])
+angular.module('BonitaBPM6Portal', ['ngRoute', 'bonitasoft.manager', 'directives.gravatar'])
 
     .value('loggedUser', {
         username: ''
