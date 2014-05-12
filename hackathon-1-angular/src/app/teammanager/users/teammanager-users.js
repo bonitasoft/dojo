@@ -14,10 +14,10 @@ angular.module('teammanager-users', ['services.crud', 'directives.crud', 'direct
                 }]
             });
     }])
-    .controller('UsersListCtrl', ['$scope', 'crudListMethods','$filter', 'users', function ($scope, crudListMethods,  $filter, users) {
+    .controller('teammanager.UsersListCtrl', ['$scope', 'crudListMethods','$filter', 'users', function ($scope, crudListMethods,  $filter, users) {
         $scope.users = users;
 
-        angular.extend($scope, crudListMethods('/admin/users'));
+        angular.extend($scope, crudListMethods('/teammanager/users'));
 
         $scope.displayUsersPossibleValues = [
             {name:'My team', filterItems:function(user) {
