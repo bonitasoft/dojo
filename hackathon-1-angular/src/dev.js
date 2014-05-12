@@ -5,8 +5,7 @@
 angular.module('BonitaBPM6PortalDev', ['BonitaBPM6Portal', 'ngMockE2E']).value('debugEnable',false).run(function($httpBackend, debugEnable) {
 
 
-    /* Simulate not yet implemented APIs according to specifications or agreement with API developer. */
-
+    // Simulate not yet implemented APIs according to specifications or agreement with API developer.
 
     items = [{name: 'item1'}, {name: 'item2'}];
 
