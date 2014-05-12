@@ -7,11 +7,9 @@
     <thead>
     <tr>
         <th></th>
-        <th>User id</th>
         <th>Username</th>
         <th>Last name</th>
         <th>First name</th>
-        <th>Manager</th>
         <th>State</th>
         <th>Actions</th>
     </tr>
@@ -20,19 +18,20 @@
     <tr ng-click="edit(user.$id())" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
 
         <td><gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar></td>
-        <td>{{user.$id()}}</td>
+
         <td>{{user.userName}}</td>
         <td>{{user.lastname}}</td>
         <td>{{user.firstname}}</td>
-        <td>{{user.manager_id}}</td>
 
-        <td ng-switch on="user.enabled">
-            <div ng-switch-when="false">Inactive</div>
-            <div ng-switch-default>Active</div>
+
+        <td >
+            <div ng-show="user.enabled">Active</div>
+            <div ng-hide="user.enabled">Inactive</div>
         </td>
-        <td ng-switch on="user.enabled">
-            <button class="btn btn-danger remove" ng-click="disable(user, $index, $event)" ng-switch-when="true">Disable</button>
-            <button class="btn" ng-click="enable(user, $index, $event)" ng-switch-default>Enable</button>
+        <td>
+            <button class="btn btn-danger remove" ng-click="disable(user, $index, $event)" ng-show="user.enabled">Disable</button>
+            <button class="btn" ng-click="enable(user, $index, $event)" ng-hide="user.enabled">Enable</button>
+            <a class="btn" href="#/team/users?managerId={{user.id}}">View team</a>
         </td>
     </tr>
     </tbody>
