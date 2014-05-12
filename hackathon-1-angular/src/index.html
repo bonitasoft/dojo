@@ -12,28 +12,30 @@
 
     <body ng-controller="MainCtrl">
 
+        <!-- not logged -->
+        <div ng-if="loggedUser.username.length <= 0">
+            <div ng-include="'app/login/login-tpl.html'" ></div>
+        </div>
+
         <!-- logged -->
         <div ng-if="loggedUser.username.length > 0">
             <ul class="menu">
-                <li><a href="#/admin">Admin</a></li>
-                <li><a href="#/tm">Tm</a></li>
+                <li><a href="#/admin">Administrator</a></li>
+                <li><a href="#/tm">Team Manager</a></li>
+                <li><a href="" ng-click="logout()">Logout</a></li>
             </ul>
 
-            <div ng-view class="container-fluid"/>
+            <div ng-view class="container-fluid"></div>
 
             <div class="navbar-fixed-bottom">
                 Bonita BPM : <span app-version></span>
             </div>
         </div>
 
-        <div ng-if="loggedUser.username.length == 0">
-            <div ng-include="'app/login/login-tpl.html'" />
-        </div>
-
-
         <!-- includes scripts af the end of the body to let the browser load & display static HTML content before loading scripts and associated dynamic content-->
 
         <script src="assets/angular/angular.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js" ></script>-->
         <script src="assets/angular/angular-route.js"></script>
 
         <!-- Dev only (to mock Not Yet Implemented APIs -->

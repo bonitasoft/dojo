@@ -2,7 +2,7 @@
 /**
  * Created by nicolas on 09/05/14.
  */
-angular.module('BonitaBPM6PortalDev', ['BonitaBPM6Portal', 'ngMockE2E']).value('debugEnable',false).run(function($httpBackend, debugEnable) {
+angular.module('BonitaBPM6PortalDev', ['BonitaBPM6Portal', 'ngMockE2E']).run(function($httpBackend) {
 
 
     // Simulate not yet implemented APIs according to specifications or agreement with API developer.
@@ -23,9 +23,7 @@ angular.module('BonitaBPM6PortalDev', ['BonitaBPM6Portal', 'ngMockE2E']).value('
     /* All other requests must go through this mock to the real server. */
 
     var otherwise = function(url) {
-        if (debugEnable) {
-            console.log("passing through URL: " + url);
-        }
+        console.log("passing through URL: " + url);
         return true;
     }
 
