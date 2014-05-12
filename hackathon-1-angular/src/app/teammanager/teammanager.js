@@ -1,5 +1,5 @@
 angular.module('teammanager', ['directives.gravatar'])
-    .controller('totoCtrl', function($scope, Users, $location) {
+    .controller('listUsersCtrl', function($scope, Users, $location) {
          Users.query('manager_id='+ $scope.loggedUser.id, callback);
 
         function callback(data) {
@@ -10,15 +10,19 @@ angular.module('teammanager', ['directives.gravatar'])
             $location.path('/teammanager/users/' + user.id);
         }
     })
-    .controller('editUserCtrl', function($scope, Users, $route) {
+    .controller('editUserCtrl', function($scope, Users, $route, $window) {
         Users.getById($route.current.params.id, callback);
 
         function callback(data) {
             $scope.user = data;
-        }
+        };
 
         $scope.save = function() {
             $scope.user.$saveOrUpdate();
-        }
+        };
+
+        $scope.cancel = function() {
+            $window.history.back();
+        };
 
     });
