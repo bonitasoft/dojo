@@ -5,9 +5,6 @@
 <head>
     <meta charset="utf-8">
     <title>Bonita BPM Portal</title>
-    <!--   <link rel="stylesheet" type="text/css" href="{{bonita-current-theme}}"> -->
-    <!--<link rel="stylesheet" href="less/app.css" />
-    <link rel="stylesheet" type="text/css" href="less/angular.treeview.css">-->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -26,11 +23,6 @@
         Bonita BPM : <span app-version></span>
     </div>
 </div>
-
-<div ng-if="loggedUser.username.length == 0">
-    <div ng-include="'app/login/login-tpl.html'"/>
-</div>
-
 
 <script src="assets/angular/angular.js"></script>
 <script src="assets/angular/angular-route.js"></script>
