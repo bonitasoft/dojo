@@ -2,7 +2,7 @@
 
 /* Main Module declaration */
 
-angular.module('BonitaBPM6Portal', ['ngRoute', 'routes', 'admin','BonitaBPM6Portal.version', 'BonitaBPM6Portal.appVersion', 'login', 'teammanager', 'processes'])
+angular.module('BonitaBPM6Portal', ['ngRoute', 'routes', 'admin', 'directive.appVersion', 'login', 'teammanager', 'processes'])
 
     .value('loggedUser', {username:''})
 
