@@ -12,16 +12,10 @@
 
 <div ng-if="loggedUser.username.length > 0">
     <ul class="nav nav-pills">
-        <li><a href="#/admin/users">Users</a></li>
-        <li><a href="#/admin/groups">Groups</a></li>
-        <li><a href="#/admin/tm">TM View</a></li>
+        <li><a href="#/manager/users">Users</a></li>
     </ul>
 
     <div ng-view class="container-fluid"></div>
-
-    <div class="navbar-fixed-bottom">
-        Bonita BPM : <span app-version></span>
-    </div>
 </div>
 
 <script src="assets/angular/angular.js"></script>
@@ -34,43 +28,13 @@
 
 <!-- In real life projects all following scripts should be concatenated and minified at build time -->
 <script src="app/main.js"></script>
-
-<script src="app/login/login.js"></script>
-
-<script src="app/admin/admin.js"></script>
+<script src="app/manager/manager.js"></script>
 <script src="common/resources/bonitaresource.js"></script>
 
-<!-- Users modules -->
-<script src="app/admin/users/admin-users.js"></script>
-<script src="app/admin/users/uniqueUsername.js"></script>
-<script src="common/resources/user.js"></script>
-
-<!-- Groups modules -->
-<script src="app/admin/groups/admin-groups.js"></script>
-<script src="common/resources/group.js"></script>
-
-<!-- TM modules -->
-<script src="app/admin/tm/admin-tm.js"></script>
+<!-- directives -->
 <script src="app/directives/bbpmManagerUserList/bbpmManagerUserList.js"></script>
 <script src="app/directives/bbpmEditUser/bbpmEditUser.js"></script>
 
-
 <script src="common/directives/gravatar.js"></script>
-
-<script src="common/services/crud/crud.js"></script>
-<script src="common/services/crud/crudRouteProvider.js"></script>
-<script src="common/directives/crud/crud.js"></script>
-<script src="common/directives/crud/crudButtons.js"></script>
-<script src="common/directives/crud/edit.js"></script>
-
-<script src="common/services/version/version.js"></script>
-<script src="common/directives/app-version.js"></script>
-
-
-<!-- Tree view -->
-<!-- css in header -->
-<script type="text/javascript" src="common/directives/tree/angular.treeview.js"></script>
-
-
 </body>
 </html>

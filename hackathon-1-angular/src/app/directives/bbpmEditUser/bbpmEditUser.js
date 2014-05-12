@@ -1,4 +1,5 @@
-'use.strict'
+"use strict";
+
 angular.module('bonitasoft.bbpmEditUser', [])
     .controller('bbpmEditUserCtrl', ['$scope', '$http', function ($scope,$http) {
         $scope.updateUser= function (user){
