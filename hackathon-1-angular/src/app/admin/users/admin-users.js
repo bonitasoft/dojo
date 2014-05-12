@@ -28,7 +28,10 @@ angular.module('admin-users', ['services.crud', 'directives.crud', 'directives.g
 	}},
 	{name:'Inactive', filterItems:function(user) {
 		return !user.enabled;
-	}}
+	}},
+      {name:'Team', filterItems:function(user) {
+          return user.manager_id.id ==  $scope.loggedUser.id;
+      }}
   ];
 
   $scope.displayUsers = $scope.displayUsersPossibleValues[0];
