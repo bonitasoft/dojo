@@ -2,11 +2,13 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="process in processes">
             <td>{{ process.displayName }}</td>
+            <td>{{ process.displayDescription }}</td>
         </tr>
     </tbody>
 </table>
