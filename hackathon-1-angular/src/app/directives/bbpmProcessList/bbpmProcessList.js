@@ -9,6 +9,7 @@ angular.module('bonitasoft.bbpmProcessList', [])
                 o: 'displayName ASC'
             }
         }).success(function (processes) {
+            console.log(processes);
             $scope.processes = processes;
         });
 
