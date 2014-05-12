@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+    <tr ng-repeat="user in users">
+        <td ng-controller="bbpmManagerUserList.RowCtrl">
+            <div class="row">
+                <div class="col-md-2">
+                    <gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar>
+                </div>
+                <div class="col-md-2">{{user.id}}</div>
+                <div class="col-md-2">{{user.userName}}</div>
+                <div class="col-md-2">{{user.lastname}}</div>
+                <div class="col-md-2">{{user.firstname}}</div>
+                <div class="col-md-2">
+                    <button type="button" class="btn" ng-click="toggleCollapse()">{{collapse === true ? "+" : "-"}}</button>
+                </div>
+            </div>
+            <div ng-hide="collapse">
+                <bbpm-manager-user-list user-id="user.id"></bbpm-manager-user-list>
+            </div>
+        </td>
+    </tr>
+</table>

@@ -1,76 +1,83 @@
 <!doctype html>
-        <!-- Suffix Dev in application name is used when we need to simulate APIs. -->
-        <!-- In production we must never use the BonitaBPM6PortalDev application but the BonitaBPM6Portal one. -->
+<!-- Suffix Dev in application name is used when we need to simulate APIs. -->
+<!-- In production we must never use the BonitaBPM6PortalDev application but the BonitaBPM6Portal one. -->
 <html lang="en" ng-app="BonitaBPM6PortalDev">
-    <head>
-        <meta charset="utf-8">
-        <title>Bonita BPM Portal</title>
-        <!--   <link rel="stylesheet" type="text/css" href="{{bonita-current-theme}}"> -->
-        <link rel="stylesheet" href="less/app.css" />
-        <link rel="stylesheet" type="text/css" href="less/angular.treeview.css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>Bonita BPM Portal</title>
+    <!--   <link rel="stylesheet" type="text/css" href="{{bonita-current-theme}}"> -->
+    <!--<link rel="stylesheet" href="less/app.css" />
+    <link rel="stylesheet" type="text/css" href="less/angular.treeview.css">-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
 
-    <body ng-controller="MainCtrl">
+<body ng-controller="MainCtrl">
 
-        <div ng-if="loggedUser.username.length > 0">
-            <ul class="menu">
-                <li><a href="#/admin/users">Users</a></li>
-                <li><a href="#/admin/groups">Groups</a></li>
-            </ul>
+<div ng-if="loggedUser.username.length > 0">
+    <ul class="nav nav-pills">
+        <li><a href="#/admin/users">Users</a></li>
+        <li><a href="#/admin/groups">Groups</a></li>
+        <li><a href="#/admin/tm">TM View</a></li>
+    </ul>
 
-            <div ng-view  class="container-fluid"></div>
+    <div ng-view class="container-fluid"></div>
 
-            <div class="navbar-fixed-bottom">
-                Bonita BPM : <span app-version></span>
-            </div>
-        </div>
+    <div class="navbar-fixed-bottom">
+        Bonita BPM : <span app-version></span>
+    </div>
+</div>
 
-        <div ng-if="loggedUser.username.length == 0"><div ng-include="'app/login/login-tpl.html'" /> </div>
-
-
-
-
-        <script src="assets/angular/angular.js"></script>
-        <script src="assets/angular/angular-route.js"></script>
-
-        <!-- Dev only (to mock Not Yet Implemented APIs -->
-        <script src="dev.js"></script>
-        <script src="assets/angular-mocks.js"></script>
-        <!-- All scripts above should be stripped out at build time for production use. -->
-
-        <!-- In real life projects all following scripts should be concatenated and minified at build time -->
-        <script src="app/main.js"></script>
-
-        <script src="app/login/login.js"></script>
-
-        <script src="app/admin/admin.js"></script>
-        <script src="common/resources/bonitaresource.js"></script>
-
-        <!-- Users modules -->
-        <script src="app/admin/users/admin-users.js"></script>
-        <script src="app/admin/users/uniqueUsername.js"></script>
-        <script src="common/resources/user.js"></script>
-
-        <!-- Groups modules -->
-        <script src="app/admin/groups/admin-groups.js"></script>
-        <script src="common/resources/group.js"></script>
-
-        <script src="common/directives/gravatar.js"></script>
-
-        <script src="common/services/crud/crud.js"></script>
-        <script src="common/services/crud/crudRouteProvider.js"></script>
-        <script src="common/directives/crud/crud.js"></script>
-        <script src="common/directives/crud/crudButtons.js"></script>
-        <script src="common/directives/crud/edit.js"></script>
-
-        <script src="common/services/version/version.js"></script>
-        <script src="common/directives/app-version.js"></script>
+<div ng-if="loggedUser.username.length == 0">
+    <div ng-include="'app/login/login-tpl.html'"/>
+</div>
 
 
-        <!-- Tree view -->
-        <!-- css in header -->
-        <script type="text/javascript" src="common/directives/tree/angular.treeview.js"></script>
+<script src="assets/angular/angular.js"></script>
+<script src="assets/angular/angular-route.js"></script>
+
+<!-- Dev only (to mock Not Yet Implemented APIs -->
+<script src="dev.js"></script>
+<script src="assets/angular-mocks.js"></script>
+<!-- All scripts above should be stripped out at build time for production use. -->
+
+<!-- In real life projects all following scripts should be concatenated and minified at build time -->
+<script src="app/main.js"></script>
+
+<script src="app/login/login.js"></script>
+
+<script src="app/admin/admin.js"></script>
+<script src="common/resources/bonitaresource.js"></script>
+
+<!-- Users modules -->
+<script src="app/admin/users/admin-users.js"></script>
+<script src="app/admin/users/uniqueUsername.js"></script>
+<script src="common/resources/user.js"></script>
+
+<!-- Groups modules -->
+<script src="app/admin/groups/admin-groups.js"></script>
+<script src="common/resources/group.js"></script>
+
+<!-- TM modules -->
+<script src="app/admin/tm/admin-tm.js"></script>
+<script src="app/directives/bbpmManagerUserList/bbpmManagerUserList.js"></script>
+
+<script src="common/directives/gravatar.js"></script>
+
+<script src="common/services/crud/crud.js"></script>
+<script src="common/services/crud/crudRouteProvider.js"></script>
+<script src="common/directives/crud/crud.js"></script>
+<script src="common/directives/crud/crudButtons.js"></script>
+<script src="common/directives/crud/edit.js"></script>
+
+<script src="common/services/version/version.js"></script>
+<script src="common/directives/app-version.js"></script>
 
 
-    </body>
+<!-- Tree view -->
+<!-- css in header -->
+<script type="text/javascript" src="common/directives/tree/angular.treeview.js"></script>
+
+
+</body>
 </html>
