@@ -25,7 +25,11 @@
             </div>
         </div>
 
-        <div ng-if="loggedUser.username.length == 0"><div ng-include="'app/login/login-tpl.html'" /> </div>
+        <div ng-if="loggedUser.username.length == 0">
+            <div ng-include="'app/login/login-tpl.html'" />
+        </div>
+
+
 
 
         <!-- includes scripts af the end of the body to let the browser load & display static HTML content before loading scripts and associated dynamic content-->
