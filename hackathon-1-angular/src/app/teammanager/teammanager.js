@@ -18,7 +18,7 @@ angular.module('teammanager', ['directives.gravatar'])
         };
 
         $scope.save = function() {
-            $scope.user.$saveOrUpdate();
+            $scope.user.$save();
         };
 
         $scope.cancel = function() {
