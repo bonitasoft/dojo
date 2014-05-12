@@ -13,6 +13,10 @@ angular.module('bonitasoft.bbpmProcessList', [])
             $scope.processes = processes;
         });
 
+        $scope.startFor = function() {
+            alert("Ok c'est cool!");
+        }
+
     }]).directive('bbpmProcessList', function () {
         return {
             restrict: 'E',
