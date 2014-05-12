@@ -1,6 +1,10 @@
 <div class="well">
     <form name="form">
-        <legend>User</legend>
+        <legend>{{user.getFullName()}}</legend>
+
+        <gravatar email="user.userName" size="200" class="img-polaroid pull-right"
+                  default-image="'monsterid'"></gravatar>
+
         <label for="userName">Username</label>
         <input class="span6" type="text" id="userName" name="userName" ng-model="user.userName" required>
 
@@ -12,17 +16,16 @@
         <label for="firstName">First name</label>
         <input class="span6" type="text" id="firstName" name="firstName" ng-model="user.firstname" required>
 
-        <label for="manager">Manager</label>
-        <input id="manager" class="span6" type="text" disabled value="{{user.manager_id.firstname}} {{user.manager_id.lastname}}" />
-
         <label for="password">Password</label>
         <input class="span6" type="password" id="password" name="password" ng-model="user.password" required>
 
         <label for="passwordRepeat">Password (repeat)</label>
-        <input class="span6" type="password" id="passwordRepeat" name="passwordRepeat" ng-model="password" required validate-equals="user.password">
+        <input class="span6" type="password" id="passwordRepeat" name="passwordRepeat" ng-model="password" required
+               validate-equals="user.password">
 
-        <hr>
-
-        <button class="btn btn-primary" ng-click="save()">Save</button>
+        <div class="form-actions">
+            <button type="button" class="btn btn-primary" ng-click="save()">Update</button>
+            <button type="button" class="btn" ng-click="cancel()">Cancel</button>
+        </div>
     </form>
 </div>
