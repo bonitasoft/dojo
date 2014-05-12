@@ -13,20 +13,17 @@
     <body ng-controller="MainCtrl">
 
         <div ng-if="loggedUser.username.length > 0">
-            <ul class="menu">
-                <li><a href="#/admin/users">Users</a></li>
-                <li><a href="#/admin/groups">Groups</a></li>
-            </ul>
+            <ul class="menu" ng-if="loggedUser.isAdmin" ng-include="'app/admin/admin-tpl.html'"></ul>
+            <ul class="menu" ng-if="!loggedUser.isAdmin" ng-include="'app/tm/tm-tpl.html'"></ul>
 
-            <div ng-view  class="container-fluid"></div>
+            <div ng-view class="container-fluid"></div>
 
             <div class="navbar-fixed-bottom">
                 Bonita BPM : <span app-version></span>
             </div>
         </div>
 
-        <div ng-if="loggedUser.username.length == 0"><div ng-include="'app/login/login-tpl.html'" /> </div>
-
+        <div ng-if="loggedUser.username.length == 0"><div ng-include="'app/login/login-tpl.html'"></div> </div>
 
 
 
