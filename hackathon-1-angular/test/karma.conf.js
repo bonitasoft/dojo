@@ -5,9 +5,11 @@ module.exports = function (config) {
 
         files: [
             'src/assets/angular/angular.js',
+            'src/assets/angular/angular-route.js',
             'test/lib/angular-mocks.js',
-            'src/common/directives/crud/crudButtons.js',
-            'test/**/*Spec.js'
+            'src/common/**/*.js',
+            'src/app/**/*.js',
+            'test/**/*.spec.js'
         ],
 
         autoWatch: true,
