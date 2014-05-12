@@ -2,14 +2,14 @@
 
 /* Module declaration for User resource */
 
-angular.module('resources.users', ['bonitaResource']);
-angular.module('resources.users').factory('Users', ['bonitaResource', function (bonitaResource) {
+angular.module('resources.users', ['bonitaResource'])
+    .factory('Users', ['bonitaResource', function (bonitaResource) {
 
-  var userResource = bonitaResource('users','../bonita/API/identity/user/');
-  
-  userResource.prototype.getFullName = function () {
-    return this.lastname + " " + this.firstname + " (" + this.userName + ")";
-  };
+        var userResource = bonitaResource('users', '../bonita/API/identity/user/');
 
-  return userResource;
-}]);
+        userResource.prototype.getFullName = function () {
+            return this.lastname + " " + this.firstname + " (" + this.userName + ")";
+        };
+
+        return userResource;
+    }]);
