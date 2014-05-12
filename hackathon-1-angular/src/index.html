@@ -11,12 +11,20 @@
 <body ng-controller="MainCtrl">
 
 <div ng-if="loggedUser.username.length > 0">
-    <ul class="nav nav-pills">
-        <li><a href="#/manager/users">Users</a></li>
-    </ul>
-
-    <div ng-view class="container-fluid"></div>
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">BonitaSoft</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#/manager/users">Users</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 </div>
+<div ng-view class="container-fluid"></div>
 
 <script src="assets/angular/angular.js"></script>
 <script src="assets/angular/angular-route.js"></script>
