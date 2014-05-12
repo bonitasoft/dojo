@@ -20,6 +20,8 @@
                         <li><a ng-href="#/bpm/processes/{{loggedUser.id}}">BPM Processes</li>
                     </ul>
                     <ul class="nav pull-right">
+                        <li><a>{{loggedUser.username}}</a></li>
+                        <li class="divider-vertical"></li>
                         <li><a ng-click="logout()">Log out</a></li>
                     </ul>
                 </div>
