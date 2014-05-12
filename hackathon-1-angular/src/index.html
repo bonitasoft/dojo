@@ -13,10 +13,14 @@
     <body ng-controller="MainCtrl">
 
         <div ng-if="loggedUser.username.length > 0">
-            <ul class="menu">
-                <li><a ng-click="logout()">Log out</a></li>
-                <!--<li>User: {{loggedUser}}</li>-->
-            </ul>
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <a class="brand" href="#">BonitaBPM</a>
+                    <ul class="nav pull-right">
+                        <li><a ng-click="logout()">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
 
             <div ng-view  class="container-fluid"></div>
 
@@ -24,6 +28,8 @@
                 Bonita BPM : <span app-version></span>
             </div>
         </div>
+
+
 
         <div ng-if="loggedUser.username.length == 0"><div ng-include="'app/login/login-tpl.html'" /> </div>
 

@@ -7,7 +7,7 @@
     </tr>
     </thead>
     <tbody ng-repeat="user in users">
-    <tr  ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+    <tr ng-click="edit(user)" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
     	
         <td>{{user.userName}}</td>
         <td>{{user.lastname}}</td>
