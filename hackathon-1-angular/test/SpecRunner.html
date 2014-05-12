@@ -11,13 +11,43 @@
 
 	<!-- Angular -->
 	<script src="../src/assets/angular/angular.js"></script>
+    <script src="../src/assets/angular/angular-route.js"></script>
 	<script src="lib/angular-mocks.js"></script>
 
   <!-- include source files here... -->
-  <script type="text/javascript" src="../src/common/directives/crud/crudButtons.js"></script>
+    <script src="../src/app/main.js"></script>
+
+    <script src="../src/app/login/login.js"></script>
+
+    <script src="../src/app/admin/admin.js"></script>
+    <script src="../src/common/resources/bonitaresource.js"></script>
+
+    <!-- Users modules -->
+    <script src="../src/app/admin/users/admin-users.js"></script>
+    <script src="../src/app/admin/users/uniqueUsername.js"></script>
+    <script src="../src/common/resources/user.js"></script>
+
+    <!-- Groups modules -->
+    <script src="../src/app/admin/groups/admin-groups.js"></script>
+    <script src="../src/common/resources/group.js"></script>
+
+    <script src="../src/common/directives/gravatar.js"></script>
+
+    <script src="../src/common/services/crud/crud.js"></script>
+    <script src="../src/common/services/crud/crudRouteProvider.js"></script>
+    <script src="../src/common/directives/crud/crud.js"></script>
+    <script src="../src/common/directives/crud/crudButtons.js"></script>
+    <script src="../src/common/directives/crud/edit.js"></script>
+
+    <script src="../src/common/services/version/version.js"></script>
+    <script src="../src/common/directives/app-version.js"></script>
+    <script src="../src/app/teammanager/teammanager.js"></script>
+    <script src="../src/app/bpm/processes/processes.js"></script>
+    <script src="../src/common/resources/process.js"></script>
 
   <!-- include spec files here... -->
   <script type="text/javascript" src="common/directives/crud/crudButtonsSpec.js"></script>
+  <script type="text/javascript" src="app/admin/users/admin-users-test.js"></script>
 
   <script type="text/javascript">
     (function() {
