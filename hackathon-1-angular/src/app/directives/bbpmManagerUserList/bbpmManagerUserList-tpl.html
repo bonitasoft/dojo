@@ -2,8 +2,8 @@
     <tr ng-repeat="user in users" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
         <td ng-controller="bbpmManagerUserList.RowCtrl">
             <div class="row" ng-click="toggleCollapse()">
-                <div class="col-md-2">
-                    <button type="button" class="btn" ng-click="toggleCollapse()">{{collapse === true ? "+" : "-"}}</button>
+                <div class="col-md-2" ng-if="false">
+                    <button  type="button" class="btn" ng-click="toggleCollapse()">{{collapse === true ? "+" : "-"}}</button>
                 </div>
                 <div class="col-md-2">
                     <gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar>
