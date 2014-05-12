@@ -10,6 +10,7 @@
         <th>Username</th>
         <th>Last name</th>
         <th>First name</th>
+        <th>Manager</th>
         <th>State</th>
         <th>Actions</th>
     </tr>
@@ -21,6 +22,7 @@
         <td>{{user.userName}}</td>
         <td>{{user.lastname}}</td>
         <td>{{user.firstname}}</td>
+        <td>{{user.manager_id.firstname}} {{user.manager_id.lastname}}</td>
         <td ng-switch on="user.enabled">
         	<div ng-switch-when="false">Inactive</div>
         	<div ng-switch-default>Active</div>
