@@ -1,6 +1,6 @@
 'use.strict'
 angular.module('bonitasoft.bbpmManagerUserList', [])
-    .factory('RecursionHelper', ['$compile', function($compile){
+    .factory('RecursionHelper', ['$compile', function ($compile) {
         return {
             /**
              * Manually compiles the element, fixing the recursion loop.
@@ -8,9 +8,9 @@ angular.module('bonitasoft.bbpmManagerUserList', [])
              * @param [link] A post-link function, or an object with function(s) registered via pre and post properties.
              * @returns An object containing the linking functions.
              */
-            compile: function(element, link){
+            compile: function (element, link) {
                 // Normalize the link parameter
-                if(angular.isFunction(link)){
+                if (angular.isFunction(link)) {
                     link = { post: link };
                 }
 
@@ -22,18 +22,18 @@ angular.module('bonitasoft.bbpmManagerUserList', [])
                     /**
                      * Compiles and re-adds the contents
                      */
-                    post: function(scope, element){
+                    post: function (scope, element) {
                         // Compile the contents
-                        if(!compiledContents){
+                        if (!compiledContents) {
                             compiledContents = $compile(contents);
                         }
                         // Re-add the compiled contents to the element
-                        compiledContents(scope, function(clone){
+                        compiledContents(scope, function (clone) {
                             element.append(clone);
                         });
 
                         // Call the post-linking function, if any
-                        if(link && link.post){
+                        if (link && link.post) {
                             link.post.apply(null, arguments);
                         }
                     }
@@ -41,9 +41,9 @@ angular.module('bonitasoft.bbpmManagerUserList', [])
             }
         };
     }])
-    .controller('bbpmManagerUserList.RowCtrl', ['$scope', function($scope) {
+    .controller('bbpmManagerUserList.RowCtrl', ['$scope', function ($scope) {
         $scope.collapse = true;
-        $scope.toggleCollapse = function() {
+        $scope.toggleCollapse = function () {
             $scope.collapse = !$scope.collapse;
         }
     }])
@@ -53,24 +53,24 @@ angular.module('bonitasoft.bbpmManagerUserList', [])
                 p: '0',
                 c: '10',
                 o: 'lastname ASC',
-                f: 'manager_id='+ $scope.userId
+                f: 'manager_id=' + $scope.userId
             }
         }).success(function(data){
             $scope.users = data;
             $scope.isManager =  data.length > 0;
         });
 
-    }]).directive('bbpmManagerUserList', function(RecursionHelper){
-      return {
-          restrict: 'E',
-          controller: 'bbpmManagerUserListCtrl',
-          scope: {userId: '='},
-          templateUrl: 'app/directives/bbpmManagerUserList/bbpmManagerUserList-tpl.html',
-          compile: function(element) {
-              // Use the compile function from the RecursionHelper,
-              // And return the linking function(s) which it returns
-              return RecursionHelper.compile(element);
-          }
-      };
+    }]).directive('bbpmManagerUserList', function (RecursionHelper) {
+        return {
+            restrict: 'E',
+            controller: 'bbpmManagerUserListCtrl',
+            scope: {userId: '='},
+            templateUrl: 'app/directives/bbpmManagerUserList/bbpmManagerUserList-tpl.html',
+            compile: function (element) {
+                // Use the compile function from the RecursionHelper,
+                // And return the linking function(s) which it returns
+                return RecursionHelper.compile(element);
+            }
+        };
     });
 
