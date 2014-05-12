@@ -1,6 +1,6 @@
 angular.module('teammanager', ['directives.gravatar'])
     .controller('listUsersCtrl', function($scope, Users, $location) {
-         Users.query('manager_id='+ $scope.loggedUser.id, callback);
+        Users.query('manager_id='+ $scope.loggedUser.id, callback);
 
         function callback(data) {
             $scope.users = data;
