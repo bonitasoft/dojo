@@ -1,4 +1,4 @@
 'use strict';
 
 /* Administration features Module declaration */
-angular.module('teammanager', ['teammanager-users']);
+angular.module('team', ['team-users']);

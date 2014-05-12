@@ -1,7 +1,7 @@
-angular.module('teammanager-users', ['services.crud', 'directives.crud', 'directives.gravatar', 'resources.users', 'admin-users-edit-uniqueUsername'])
+angular.module('team-users', ['services.crud', 'directives.crud', 'directives.gravatar', 'resources.users', 'admin-users-edit-uniqueUsername'])
     .config(['crudRouteProvider', function (crudRouteProvider) {
 
-        crudRouteProvider.routesFor('Users', 'teammanager')
+        crudRouteProvider.routesFor('Users', 'team')
             .whenList({
                 users: ['Users', function (Users) {
                     return Users.all();
@@ -15,27 +15,28 @@ angular.module('teammanager-users', ['services.crud', 'directives.crud', 'direct
                     return Users.getById($route.current.params.itemId);
                 }]
             })
-            //.when('/teammanager/users/teammanagerfilter/:filterId', {
-               // templateUrl: '/teammanager/users/users-list-tpl.html',
-              //  controller: 'teammanager.UsersListCtrl',
-             //   action: 'list'
-            //})
+//            .when('/team/users/:managerId', {
+//                templateUrl: '/team/users/users-list-tpl.html',
+//                controller: 'team.UsersListCtrl',
+//                action: 'list'
+//            })
         ;
     }])
-    .controller('teammanager.UsersListCtrl', ['$scope', 'crudListMethods', '$filter', 'users', function ($scope, crudListMethods, $filter, users) {
+    .controller('team.UsersListCtrl', ['$scope', 'crudListMethods', '$filter', 'users', '$route', function ($scope, crudListMethods, $filter, users, $route) {
         $scope.users = users;
+        $scope.managerId = $route.current.params.managerId !=null ? $route.current.params.managerId : $scope.loggedUser.user_id;
 
-        angular.extend($scope, crudListMethods('/teammanager/users'));
+        angular.extend($scope, crudListMethods('/team/users'));
 
         $scope.displayUsersPossibleValues = [
             {name: 'My team', filterItems: function (user) {
-                return user.manager_id == $scope.loggedUser.user_id;
+                return user.manager_id == $scope.managerId ;
             }},
             {name: 'Active', filterItems: function (user) {
-                return user.manager_id == $scope.loggedUser.user_id && angular.fromJson(user.enabled);
+                return user.manager_id == $scope.managerId  && angular.fromJson(user.enabled);
             }},
             {name: 'Inactive', filterItems: function (user) {
-                return user.manager_id == $scope.loggedUser.user_id && !angular.fromJson(user.enabled);
+                return user.manager_id == $scope.managerId && !angular.fromJson(user.enabled);
             }}
         ];
 

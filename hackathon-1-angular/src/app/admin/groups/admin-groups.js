@@ -15,7 +15,7 @@ angular.module('admin-groups', ['services.crud', 'directives.crud', 'resources.g
       }]
     });
 }])
-.controller('GroupsListCtrl', ['$scope', 'crudListMethods', '$filter', 'groups', '$location', 'Groups', function ($scope, crudListMethods, $filter, groups, $location, Groups) {
+.controller('admin.GroupsListCtrl', ['$scope', 'crudListMethods', '$filter', 'groups', '$location', 'Groups', function ($scope, crudListMethods, $filter, groups, $location, Groups) {
   $scope.groups = groups;
   angular.extend($scope, crudListMethods('/admin/groups'));
 
