@@ -12,9 +12,6 @@
         <label for="firstName">First name</label>
         <input class="span6" type="text" id="firstName" name="firstName" ng-model="user.firstname" required>
 
-        <label for="manager">Manager</label>
-        <input id="manager" class="span6" type="text" disabled value="{{user.manager_id.firstname}} {{user.manager_id.lastname}}" />
-
         <label for="password">Password</label>
         <input class="span6" type="password" id="password" name="password" ng-model="user.password" required>
 
@@ -23,6 +20,6 @@
 
         <hr>
 
-        <button class="btn btn-primary" ng-click="save()">Save</button>
+        <button class="btn btn-primary" ng-click="save()">Update</button>
     </form>
 </div>
