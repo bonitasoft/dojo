@@ -12,10 +12,11 @@
 
     <body ng-controller="MainCtrl">
 
-        <div ng-if="loggedUser.username.length > 0">
+        <!-- logged but no active profile -->
+        <div ng-if="loggedUser.username.length > 0 && activeProfile.length == 0">
             <ul class="menu">
-                <li><a href="#/admin/users">Users</a></li>
-                <li><a href="#/admin/groups">Groups</a></li>
+                <li><a href="#/admin/users">Admin</a></li>
+                <li><a href="#/tm/users">Tm</a></li>
             </ul>
 
             <div ng-view  class="container-fluid"></div>
@@ -23,6 +24,16 @@
             <div class="navbar-fixed-bottom">
                 Bonita BPM : <span app-version></span>
             </div>
+        </div>
+
+        <!-- logged and activeProfile is admin -->
+        <div ng-if="loggedUser.username.length > 0 && activeProfile == 'admin'">
+            <ul class="menu">
+                <li><a href="#/admin/users">Users</a></li>
+                <li><a href="#/admin/groups">Groups</a></li>
+            </ul>
+
+            <div ng-view  class="container-fluid"></div>
         </div>
 
         <div ng-if="loggedUser.username.length == 0">
