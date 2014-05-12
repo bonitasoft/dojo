@@ -1,4 +1,4 @@
-angular.module('admin-users', ['services.crud', 'directives.crud', 'directives.gravatar','resources.users', 'admin-users-edit-uniqueUsername'])
+angular.module('teammanager-users', ['services.crud', 'directives.crud', 'directives.gravatar','resources.users', 'admin-users-edit-uniqueUsername'])
     .config(['crudRouteProvider', function (crudRouteProvider) {
 
         crudRouteProvider.routesFor('Users', 'teammanager')
