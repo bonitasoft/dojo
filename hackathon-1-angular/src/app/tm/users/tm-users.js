@@ -15,6 +15,9 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'directives.grav
             .whenEdit({
                 user: ['$route', 'Users', function ($route, Users) {
                     return Users.getById($route.current.params.itemId);
+                }],
+                team: ['$route', 'Users', function($route, Users) {
+                    return Users.query({p:0,c:10000,o:'lastname ASC',f:'manager_id='+$route.current.params.itemId});
                 }]
             });
     }])
@@ -79,17 +82,11 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'directives.grav
             });
         };
     }])
-    .controller('tmUsersEditCtrl', ['$scope', '$location', '$filter', 'user', '$http', function ($scope, $location, $filter, user, $http) {
+    .controller('tmUsersEditCtrl', ['$scope', '$location', '$filter', 'user', 'team', function ($scope, $location, $filter, user, team) {
 
         $scope.user = user;
         $scope.password = user.password;
-
-        $http({method: 'GET',
-            url: '../bonita/API/identity/user/?f=manager_id=' + user.id
-        })
-        .success(function (data, status, headers, config) {
-             $scope.managedUsers = data;
-        })
+        $scope.managedUsers = team;
 
         $scope.cancelEdit = function () {
             $location.path('/tm/users');
