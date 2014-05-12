@@ -18,6 +18,9 @@ Bonitasoft R&amp;D first Hackathon on AngularJS
 
 ## Getting Started
 
+### Launch Tests
+Open SpecRunner.html in your Web browser.
+
 ### Starting development servers
 While this Angular applications is purely client-side code, it is better to serve it from a HTTP server.
 It avoids security restrictions from modern browsers (such as AJAX calls considered as Cross-Site-Scripting attacks).
