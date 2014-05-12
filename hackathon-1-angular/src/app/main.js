@@ -4,7 +4,7 @@
 
 angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version', 'BonitaBPM6Portal.appVersion', 'login', 'team'])
 
-    .value('loggedUser', {username:''})
+    .value('loggedUser' )
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider.when("/login", {templateUrl: 'app/login/login-tpl.html'});

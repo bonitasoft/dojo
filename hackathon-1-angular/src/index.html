@@ -11,14 +11,15 @@
     </head>
 
     <body ng-controller="MainCtrl">
+        <div ng-show="loggedUser">
 
-        <div ng-if="loggedUser.username.length > 0">
             <ul class="menu">
                 <li><a href="#/admin/users">Users</a></li>
                 <li><a href="#/admin/groups">Groups</a></li>
                 <li><a href="#/team/users">Team</a></li>
-                <li ng-show="loggedUser">Welcome, {{loggedUser.display_name}}</li>
             </ul>
+
+            <span>Welcome, {{loggedUser.display_name}}!</span>
 
             <div ng-view  class="container-fluid"></div>
 
@@ -27,7 +28,10 @@
             </div>
         </div>
 
-        <div ng-if="loggedUser.username.length == 0"><div ng-include="'app/login/login-tpl.html'" /> </div>
+        <div ng-hide="loggedUser">
+            <div ng-include="'app/login/login-tpl.html'" >
+            </div>
+        </div>
 
 
 

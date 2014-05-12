@@ -22,31 +22,50 @@ angular.module('team-users', ['services.crud', 'directives.crud', 'directives.gr
 //            })
         ;
     }])
-    .controller('team.UsersListCtrl', ['$scope', 'crudListMethods', '$filter', 'users', '$route', function ($scope, crudListMethods, $filter, users, $route) {
-        $scope.users = users;
+    .controller('team.UsersListCtrl', ['$http','$scope', 'crudListMethods', '$filter', 'users', '$route', function ($http,$scope, crudListMethods, $filter, users, $route) {
+
+
         $scope.managerId = $route.current.params.managerId !=null ? $route.current.params.managerId : $scope.loggedUser.user_id;
-        $scope.managerDisplayName =$route.current.params.managerId !=null ? $route.current.params.managerFirstName+' '+$route.current.params.managerLastName : $scope.loggedUser.display_name;
+        $scope.users=users;
+        $scope.managerDisplayName="...";
+
+        console.log('load');
+        console.log('users'+users.length);
+        console.log('logged user:'+$scope.loggedUser.user_id);
+        console.log('managerId:'+  $scope.managerId);
+
+         $http({
+                method: 'GET',
+                url: 'bonita/API/identity/user/'+$scope.managerId
+            }).success(function(userData){
+                $scope.managerDisplayName=userData.firstname+' '+userData.lastname;
+
+
+                $scope.displayUsersPossibleValues = [
+                 {name: $scope.managerDisplayName+ "' s team", filterItems: function (user) {
+                     return user.manager_id == $scope.managerId ;
+                 }},
+                 {name: 'Active', filterItems: function (user) {
+                     return user.manager_id == $scope.managerId  && angular.fromJson(user.enabled);
+                 }},
+                 {name: 'Inactive', filterItems: function (user) {
+                     return user.manager_id == $scope.managerId && !angular.fromJson(user.enabled);
+                 }}
+                ];
+
+                 $scope.displayUsers = $scope.displayUsersPossibleValues[0];
+
+                $scope.isUserVisible = function (item) {
+                 return $scope.displayUsers.filterItems(item);
+             };
+
+
+         });
 
         angular.extend($scope, crudListMethods('/team/users'));
 
-        $scope.displayUsersPossibleValues = [
-            {name: $scope.managerDisplayName + "' s team", filterItems: function (user) {
-                return user.manager_id == $scope.managerId ;
-            }},
-            {name: 'Active', filterItems: function (user) {
-                return user.manager_id == $scope.managerId  && angular.fromJson(user.enabled);
-            }},
-            {name: 'Inactive', filterItems: function (user) {
-                return user.manager_id == $scope.managerId && !angular.fromJson(user.enabled);
-            }}
-        ];
-
-        $scope.displayUsers = $scope.displayUsersPossibleValues[0];
 
 
-        $scope.isUserVisible = function (item) {
-            return $scope.displayUsers.filterItems(item);
-        };
 
         $scope.disable = function (user, $index, $event) {
 
