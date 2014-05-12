@@ -19,18 +19,19 @@ angular.module('teammanager-users', ['services.crud', 'directives.crud', 'direct
 
         angular.extend($scope, crudListMethods('/admin/users'));
 
-        $scope;
-
         $scope.displayUsersPossibleValues = [
             {name:'My team', filterItems:function(user) {
+                console.log(user);
                 return user.manager_id == $scope.loggedUser.user_id;
             }},
             {name:'Active', filterItems:function(user) {
+                console.log(user);
                 return user.manager_id == $scope.loggedUser.user_id && user.enabled;
             }},
             {name:'Inactive', filterItems:function(user) {
+                console.log(user);
                 return user.manager_id == $scope.loggedUser.user_id && !user.enabled;
-            }},
+            }}
         ];
 
         $scope.displayUsers = $scope.displayUsersPossibleValues[0];

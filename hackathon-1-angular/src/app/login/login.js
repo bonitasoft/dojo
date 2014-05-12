@@ -17,7 +17,8 @@ angular.module('login', []).controller('LoginCtrl',['$scope', '$http', 'loggedUs
                 return str.join("&");
             },
             data: {username: username, password: password, redirect: 'false'}
-        } ).success(function(data, status, headers, config) {
+        }).success(function(data, status, headers, config) {
            loggedUser.username = username;
-        })}
+        });
+    };
 }]);
