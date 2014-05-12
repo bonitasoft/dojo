@@ -15,8 +15,10 @@
         <div ng-if="loggedUser.username.length > 0">
             <div class="navbar">
                 <div class="navbar-inner">
-                    <a class="brand" href="#">BonitaUsers</a>
-                    <a class="brand" ng-href="#/bpm/processes/{{loggedUser.id}}">BPM Processes</a>
+                    <a class="brand" href="#">BonitaBPM</a>
+                    <ul class="nav">
+                        <li><a ng-href="#/bpm/processes/{{loggedUser.id}}">BPM Processes</li>
+                    </ul>
                     <ul class="nav pull-right">
                         <li><a ng-click="logout()">Log out</a></li>
                     </ul>
