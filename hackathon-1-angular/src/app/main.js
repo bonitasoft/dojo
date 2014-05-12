@@ -20,8 +20,9 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin', 'BonitaBPM6Portal.version
             $scope.loggedUser.username = data.user_name;
             $scope.loggedUser.id = data.user_id;
             $scope.location=$location;
-            $scope.$watch('location.path()', function(path) {
-                $scope.loggedUser.isAdmin = path.startsWith('/admin');
+            $scope.$on('$routeChangeSuccess', function() {
+                //window.alert($location.path().indexOf("/admin") == 0);
+                $scope.loggedUser.isAdmin = $location.path().indexOf("/admin") == 0;
             });
         });
     }]);
