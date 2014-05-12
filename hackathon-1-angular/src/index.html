@@ -12,35 +12,23 @@
 
     <body ng-controller="MainCtrl">
 
-        <!-- logged but no active profile -->
-        <div ng-if="loggedUser.username.length > 0 && activeProfile.length == 0">
+        <!-- logged -->
+        <div ng-if="loggedUser.username.length > 0">
             <ul class="menu">
-                <li><a href="#/admin/users">Admin</a></li>
-                <li><a href="#/tm/users">Tm</a></li>
+                <li><a href="#/admin">Admin</a></li>
+                <li><a href="#/tm">Tm</a></li>
             </ul>
 
-            <div ng-view  class="container-fluid"></div>
+            <div ng-view class="container-fluid"/>
 
             <div class="navbar-fixed-bottom">
                 Bonita BPM : <span app-version></span>
             </div>
         </div>
 
-        <!-- logged and activeProfile is admin -->
-        <div ng-if="loggedUser.username.length > 0 && activeProfile == 'admin'">
-            <ul class="menu">
-                <li><a href="#/admin/users">Users</a></li>
-                <li><a href="#/admin/groups">Groups</a></li>
-            </ul>
-
-            <div ng-view  class="container-fluid"></div>
-        </div>
-
         <div ng-if="loggedUser.username.length == 0">
             <div ng-include="'app/login/login-tpl.html'" />
         </div>
-
-
 
 
         <!-- includes scripts af the end of the body to let the browser load & display static HTML content before loading scripts and associated dynamic content-->
@@ -56,19 +44,26 @@
         <!-- In real life projects all following scripts should be concatenated and minified at build time -->
         <script src="app/main.js"></script>
 
-        <script src="app/login/login.js"></script>
-
-        <script src="app/admin/admin.js"></script>
+        <!-- common -->
         <script src="common/resources/bonitaresource.js"></script>
+        <script src="common/resources/user.js"></script>
+        <script src="common/resources/group.js"></script>
 
         <!-- Users modules -->
-        <script src="app/admin/users/admin-users.js"></script>
         <script src="app/admin/users/uniqueUsername.js"></script>
-        <script src="common/resources/user.js"></script>
 
-        <!-- Groups modules -->
+        <!-- login -->
+        <script src="app/login/login.js"></script>
+
+        <!-- admin -->
+        <script src="app/admin/admin.js"></script>
+        <script src="app/admin/users/admin-users.js"></script>
         <script src="app/admin/groups/admin-groups.js"></script>
-        <script src="common/resources/group.js"></script>
+
+        <!-- Team Manager -->
+        <script src="app/tm/tm.js"></script>
+        <script src="app/tm/users/tm-users.js"></script>
+
 
         <script src="common/directives/gravatar.js"></script>
 

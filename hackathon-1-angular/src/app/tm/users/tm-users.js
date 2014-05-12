@@ -1,7 +1,7 @@
 /**
  * Created by nicolas on 08/05/14.
  */
-angular.module('tm', [])
+angular.module('tm-users', ['services.crud', 'directives.crud', 'resources.users'])
     .config(['crudRouteProvider', function (crudRouteProvider) {
 
         crudRouteProvider.routesFor('Users', 'tm')
