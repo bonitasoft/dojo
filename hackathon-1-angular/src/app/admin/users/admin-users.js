@@ -10,7 +10,11 @@ angular.module('admin-users', ['services.crud', 'directives.crud', 'directives.g
     })
     .whenEdit({
       user:['$route', 'Users', function ($route, Users) {
-        return Users.getById($route.current.params.itemId);
+        var currentUser =  Users.getById($route.current.params.itemId);
+        if(currentUser && currentUser.manager_id>0){
+            currentUser.manager = Users.getById(currentUser.manager_id);
+        }
+        return currentUser;
       }]
     });
 }])
@@ -28,10 +32,7 @@ angular.module('admin-users', ['services.crud', 'directives.crud', 'directives.g
 	}},
 	{name:'Inactive', filterItems:function(user) {
 		return !user.enabled;
-	}},
-      {name:'Team', filterItems:function(user) {
-          return user.manager_id.id ==  $scope.loggedUser.id;
-      }}
+	}}
   ];
 
   $scope.displayUsers = $scope.displayUsersPossibleValues[0];

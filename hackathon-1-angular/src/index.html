@@ -15,7 +15,8 @@
         <div ng-if="loggedUser.username.length > 0">
             <div class="navbar">
                 <div class="navbar-inner">
-                    <a class="brand" href="#">BonitaBPM</a>
+                    <a class="brand" href="#">BonitaUsers</a>
+                    <a class="brand" ng-href="#/bpm/processes/{{loggedUser.id}}">BPM Processes</a>
                     <ul class="nav pull-right">
                         <li><a ng-click="logout()">Log out</a></li>
                     </ul>
@@ -72,6 +73,8 @@
         <script src="common/services/version/version.js"></script>
         <script src="common/directives/app-version.js"></script>
         <script src="app/teammanager/teammanager.js"></script>
+        <script src="app/bpm/processes/processes.js"></script>
+        <script src="common/resources/process.js"></script>
 
         <!-- Tree view -->
         <!-- css in header -->

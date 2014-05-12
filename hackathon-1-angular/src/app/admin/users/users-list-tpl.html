@@ -11,6 +11,7 @@
         <th>Last name</th>
         <th>First name</th>
         <th>Manager</th>
+        <th>Processes</th>
         <th>State</th>
         <th>Actions</th>
     </tr>
@@ -23,6 +24,7 @@
         <td>{{user.lastname}}</td>
         <td>{{user.firstname}}</td>
         <td>{{user.manager_id.firstname}} {{user.manager_id.lastname}}</td>
+        <td><a ng-href='/#/bpm/processes/{{user.id}}'>Show Processes</a></td>
         <td ng-switch on="user.enabled">
         	<div ng-switch-when="false">Inactive</div>
         	<div ng-switch-default>Active</div>

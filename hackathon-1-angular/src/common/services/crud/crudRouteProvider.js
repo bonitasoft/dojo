@@ -36,7 +36,7 @@
         return resourceName + operation +'Ctrl';
       };
 
-      // This is the object that our `routesFor()` function returns.  It decorates `$routeProvider`,
+      // This is the object that our `routesFor( )` function returns.  It decorates `$routeProvider`,
       // delegating the `when()` and `otherwise()` functions but also exposing some new functions for
       // creating CRUD routes.  Specifically we have `whenList(), `whenNew()` and `whenEdit()`.
       var routeBuilder = {

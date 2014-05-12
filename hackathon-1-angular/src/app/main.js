@@ -2,7 +2,7 @@
 
 /* Main Module declaration */
 
-angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version', 'BonitaBPM6Portal.appVersion', 'login', 'teammanager'])
+angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version', 'BonitaBPM6Portal.appVersion', 'login', 'teammanager', 'processes'])
 
     .value('loggedUser', {username:''})
 
@@ -10,6 +10,7 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version'
 
         $routeProvider.when("/teammanager/users", {templateUrl: 'app/teammanager/users.tpl.html', controller: 'totoCtrl'});
         $routeProvider.when("/teammanager/users/:id", {templateUrl: 'app/teammanager/users-edit-tpl.html', controller: 'editUserCtrl'});
+        $routeProvider.when("/bpm/processes", {templateUrl: 'app/bpm/processes/processes-tpl.html', controller: 'ProcessesCtrl'});
 
         $routeProvider.when("/login", {templateUrl: 'app/login/login-tpl.html'});
         $routeProvider.otherwise({redirectTo:'/teammanager/users'});
