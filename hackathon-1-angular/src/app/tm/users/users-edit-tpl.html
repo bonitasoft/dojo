@@ -20,7 +20,10 @@
         <input class="span6" type="password" id="passwordRepeat" name="passwordRepeat" ng-model="password" required validate-equals="user.password">
         <span ng-show="showError('passwordRepeat', 'required')" class="help-inline">This field is required.</span>
         <span ng-show="showError('passwordRepeat', 'equal')" class="help-inline">Passwords do not match.</span>
-       
+        <label>Manager of:</label>
+        <ul>
+            <li ng-repeat='user in managedUsers'>{{ user.firstname }} - {{ user.lastname }}</li>
+        </ul>
         <hr>
         <crud-buttons></crud-buttons>
     </form>
