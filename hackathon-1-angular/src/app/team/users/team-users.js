@@ -25,11 +25,12 @@ angular.module('team-users', ['services.crud', 'directives.crud', 'directives.gr
     .controller('team.UsersListCtrl', ['$scope', 'crudListMethods', '$filter', 'users', '$route', function ($scope, crudListMethods, $filter, users, $route) {
         $scope.users = users;
         $scope.managerId = $route.current.params.managerId !=null ? $route.current.params.managerId : $scope.loggedUser.user_id;
+        $scope.managerDisplayName =$route.current.params.managerId !=null ? $route.current.params.managerFirstName+' '+$route.current.params.managerLastName : $scope.loggedUser.display_name;
 
         angular.extend($scope, crudListMethods('/team/users'));
 
         $scope.displayUsersPossibleValues = [
-            {name: 'My team', filterItems: function (user) {
+            {name: $scope.managerDisplayName + "' s team", filterItems: function (user) {
                 return user.manager_id == $scope.managerId ;
             }},
             {name: 'Active', filterItems: function (user) {

@@ -2,7 +2,6 @@
     <label for="userFilter">Show users: </label>
     <select id="UserFilter" ng-model="displayUsers" ng-options="f.name for f in displayUsersPossibleValues"></select>
 </div>
-
 <table class="table table-bordered table-condensed table-striped table-hover">
     <thead>
     <tr>
@@ -15,23 +14,23 @@
     </tr>
     </thead>
     <tbody ng-repeat="user in users | filter:isUserVisible">
-    <tr ng-click="edit(user.$id())" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+    <tr ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
 
         <td><gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar></td>
 
         <td>{{user.userName}}</td>
         <td>{{user.lastname}}</td>
         <td>{{user.firstname}}</td>
-
-
         <td >
             <div ng-show="user.enabled">Active</div>
             <div ng-hide="user.enabled">Inactive</div>
         </td>
         <td>
+            <a class="btn" ng-click="edit(user.$id())">Edit User</a>
             <button class="btn btn-danger remove" ng-click="disable(user, $index, $event)" ng-show="user.enabled">Disable</button>
             <button class="btn" ng-click="enable(user, $index, $event)" ng-hide="user.enabled">Enable</button>
-            <a class="btn" href="#/team/users?managerId={{user.id}}">View team</a>
+            <a class="btn" ng-href="#/team/users?managerId={{user.id}}&managerLastName={{user.lastname}}&managerFirstName={{user.firstname}}">View team</a>
+
         </td>
     </tr>
     </tbody>
