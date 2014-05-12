@@ -1,5 +1,12 @@
-<table class="table table-bordered">
-    <tr ng-repeat="process in processes">
-        <td>{{ process.displayName }}</td>
-    </tr>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="process in processes">
+            <td>{{ process.displayName }}</td>
+        </tr>
+    </tbody>
 </table>
