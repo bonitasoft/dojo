@@ -1,4 +1,4 @@
-angular.module('teammanager', [])
+angular.module('teammanager', ['directives.gravatar'])
     .controller('totoCtrl', function($scope, Users, $location) {
          Users.query('manager_id='+ $scope.loggedUser.id, callback);
 

@@ -1,6 +1,9 @@
 <div class="well">
     <form name="form">
-        <legend>User</legend>
+        <legend>{{user.getFullName()}}</legend>
+
+        <gravatar email="user.userName" size="200" class="img-polaroid pull-right" default-image="'monsterid'"></gravatar>
+
         <label for="userName">Username</label>
         <input class="span6" type="text" id="userName" name="userName" ng-model="user.userName" required>
 
