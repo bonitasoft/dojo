@@ -1,8 +1,12 @@
 /**
  * Created by nicolas on 08/05/14.
  */
-angular.module('login', []).controller('LoginCtrl',['$scope', '$http', 'loggedUser', function($scope, $http, loggedUser){
+angular.module('login', [])
+    .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider.when("/login", {templateUrl: 'app/login/login-tpl.html'});
+    }])
 
+    .controller('LoginCtrl',['$scope', '$http', 'loggedUser', function($scope, $http, loggedUser){
 
     $scope.login = function(username, password) {
 
