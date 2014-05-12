@@ -1956,6 +1956,7 @@ table {
 .table-bordered th,
 .table-bordered td {
   border-left: 1px solid #dddddd;
+  cursor: pointer;
 }
 
 .table-bordered caption + thead tr:first-child th,
