@@ -1,0 +1,9 @@
+<ng-include src="'app/teammanager/users-edit-tpl.html'" ></ng-include>
+<div class="well">
+    <form><legend>Managed Users</legend></form>
+    <div ng-show="managedUsers.length == 0">N/A</div>
+    <ul ng-repeat="user in managedUsers">
+        <li>{{user.firstname}} {{user.lastname}}</li>
+    </ul>
+</div>
+

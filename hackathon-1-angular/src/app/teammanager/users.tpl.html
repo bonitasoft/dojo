@@ -1,4 +1,4 @@
-<table class="table table-bordered table-condensed table-striped table-hover">
+<table class="table table-bordered table-condensed table-hover">
     <thead>
     <tr>
         <th></th>
@@ -8,7 +8,7 @@
     </tr>
     </thead>
     <tbody ng-repeat="user in users">
-    <tr ng-click="edit(user)" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+    <tr ng-click="edit(user)" >
         <td><gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar></td>
         <td>{{user.userName}}</td>
         <td>{{user.lastname}}</td>

@@ -9,7 +9,7 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version'
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
         $routeProvider.when("/teammanager/users", {templateUrl: 'app/teammanager/users.tpl.html', controller: 'listUsersCtrl'});
-        $routeProvider.when("/teammanager/users/:id", {templateUrl: 'app/teammanager/users-edit-tpl.html', controller: 'editUserCtrl'});
+        $routeProvider.when("/teammanager/users/:id", {templateUrl: 'app/teammanager/user.tpl.html', controller: 'editUserCtrl'});
 
         $routeProvider.when("/login", {templateUrl: 'app/login/login-tpl.html'});
         $routeProvider.otherwise({redirectTo:'/teammanager/users'});

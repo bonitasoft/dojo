@@ -15,6 +15,11 @@ angular.module('teammanager', ['directives.gravatar'])
 
         function callback(data) {
             $scope.user = data;
+            Users.query('manager_id='+ $scope.user.id, callback2);
+        };
+
+        function callback2(data) {
+            $scope.managedUsers = data;
         };
 
         $scope.save = function() {
