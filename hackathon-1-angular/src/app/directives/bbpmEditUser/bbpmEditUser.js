@@ -8,7 +8,9 @@ angular.module('bonitasoft.bbpmEditUser', [])
                 method:'PUT',
                 url: 'bonita/API/identity/user/'+ user.id,
                 data: user
-            }).success(alert('ok'));
+            }).success(function() {
+                $scope.message = "Updated!";
+            });
         }
     }]).directive('bbpmEditUser', function(){
         return {

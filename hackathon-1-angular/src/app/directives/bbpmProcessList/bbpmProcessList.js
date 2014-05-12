@@ -1,4 +1,4 @@
-'use.strict';
+"use strict";
 
 angular.module('bonitasoft.bbpmProcessList', [])
     .controller('bbpmProcessListCtrl', ['$scope', '$http', function ($scope, $http) {
@@ -8,16 +8,16 @@ angular.module('bonitasoft.bbpmProcessList', [])
                 c: '10',
                 o: 'displayName ASC'
             }
-        }).success(function(processes){
+        }).success(function (processes) {
             $scope.processes = processes;
         });
 
-    }]).directive('bbpmProcessList', function(){
-      return {
-          restrict: 'E',
-          controller: 'bbpmProcessListCtrl',
-          scope: { profile: '=?' },
-          templateUrl: 'app/directives/bbpmProcessList/bbpmProcessList-tpl.html'
-      };
+    }]).directive('bbpmProcessList', function () {
+        return {
+            restrict: 'E',
+            controller: 'bbpmProcessListCtrl',
+            scope: { profile: '=?' },
+            templateUrl: 'app/directives/bbpmProcessList/bbpmProcessList-tpl.html'
+        };
     });
 

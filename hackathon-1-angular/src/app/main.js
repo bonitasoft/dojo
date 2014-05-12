@@ -1,7 +1,5 @@
 'use strict';
 
-/* Main Module declaration */
-
 angular.module('BonitaBPM6Portal', ['ngRoute', 'bonitasoft.bbpmManager', 'directives.gravatar'])
 
     .value('loggedUser', {
