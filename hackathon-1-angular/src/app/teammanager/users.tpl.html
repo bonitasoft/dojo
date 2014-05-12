@@ -1,0 +1,17 @@
+<table class="table table-bordered table-condensed table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Last name</th>
+        <th>First name</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="user in users">
+    <tr  ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+    	
+        <td>{{user.userName}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.firstname}}</td>
+    </tr>
+    </tbody>
+</table>

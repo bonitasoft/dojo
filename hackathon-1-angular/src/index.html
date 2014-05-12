@@ -14,10 +14,8 @@
 
         <div ng-if="loggedUser.username.length > 0">
             <ul class="menu">
-                <li><a href="#/admin/users">Users</a></li>
-                <li><a href="#/admin/groups">Groups</a></li>
                 <li><a ng-click="logout()">Log out</a></li>
-                <li>User: {{loggedUser}}</li>
+                <!--<li>User: {{loggedUser}}</li>-->
             </ul>
 
             <div ng-view  class="container-fluid"></div>
@@ -67,7 +65,7 @@
 
         <script src="common/services/version/version.js"></script>
         <script src="common/directives/app-version.js"></script>
-
+        <script src="app/teammanager/teammanager.js"></script>
 
         <!-- Tree view -->
         <!-- css in header -->

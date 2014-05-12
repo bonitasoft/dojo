@@ -2,13 +2,14 @@
 
 /* Main Module declaration */
 
-angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version', 'BonitaBPM6Portal.appVersion', 'login'])
+angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version', 'BonitaBPM6Portal.appVersion', 'login', 'teammanager'])
 
     .value('loggedUser', {username:''})
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+        $routeProvider.when("/teammanager/users", {templateUrl: 'app/teammanager/users.tpl.html', controller: 'totoCtrl'});
         $routeProvider.when("/login", {templateUrl: 'app/login/login-tpl.html'});
-        $routeProvider.otherwise({redirectTo:'/admin/users'});
+        $routeProvider.otherwise({redirectTo:'/teammanager/users'});
     }])
 
     .controller('MainCtrl', ['$scope', '$http', 'loggedUser', '$location', function($scope, $http, loggedUser, $location){
