@@ -17,8 +17,17 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version'
             method: 'GET',
             url: 'bonita/API/system/session/unusedid'
         }).success(function(data){
+            $scope.loggedUser=data;
             $scope.loggedUser.username = data.user_name;
-            $scope.loggedUser.user_id = data.user_id;
+            $http({
+                method: 'GET',
+                url: 'bonita/API/identity/user/'+data.user_id
+            }).success(function(userData){
+                $scope.loggedUser.userData=userData;
+                $scope.loggedUser.display_name=userData.firstname+' '+userData.lastname;
+            })
+
+
 
         });
     }]);

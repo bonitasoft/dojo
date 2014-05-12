@@ -15,7 +15,7 @@
         <th>Actions</th>
     </tr>
     </thead>
-    <tbody ng-repeat="user in users | filter:isUserVisible">
+    <tbody ng-repeat="user in users | filter:isUserVisible()">
     <tr ng-click="edit(user.$id())" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
 
         <td><gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar></td>
