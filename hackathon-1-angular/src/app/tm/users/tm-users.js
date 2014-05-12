@@ -14,7 +14,7 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'directives.grav
       }]
     });
 }])
-.controller('UsersListCtrl', ['$scope', 'crudListMethods', '$filter', 'users', 'loggedUser', function ($scope, crudListMethods, $filter, users, loggedUser) {
+.controller('tmUsersListCtrl', ['$scope', 'crudListMethods', '$filter', 'users', 'loggedUser', function ($scope, crudListMethods, $filter, users, loggedUser) {
   $scope.users = users;
 
   angular.extend($scope, crudListMethods('/tm/users'));
@@ -75,7 +75,7 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'directives.grav
     });
   };
 }])
-.controller('UsersEditCtrl', ['$scope', '$location', '$filter', 'user', function ($scope, $location, $filter, user) {
+.controller('tmUsersEditCtrl', ['$scope', '$location', '$filter', 'user', function ($scope, $location, $filter, user) {
 
   $scope.user = user;
   $scope.password = user.password;
