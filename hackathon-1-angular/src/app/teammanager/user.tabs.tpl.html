@@ -1,0 +1,7 @@
+<h4>User {{user.getFullName()}}</h4>
+<ul class="nav nav-tabs">
+    <li ng-click='changeTab($index)' ng-repeat="tab in tabs" ng-class="{ active: $index == selectedIndex }"><a  ui-sref='{{tab.state}}'>{{tab.name}}</a></li>
+</ul>
+
+<div ui-view='user-tab-content'></div>
+
