@@ -18,7 +18,9 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'src/assets/angular/angular.js',
+            'src/assets/angular/angular-route.js',
             'src/assets/angular-mocks.js',
+            'src/assets/directives/gravatar.js',
             'src/app/**/*.js',
             'src/app/**/*.html',
             'test/**/*.js'
