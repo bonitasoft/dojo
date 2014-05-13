@@ -13,12 +13,14 @@ angular.module('tasks', ['resources.task'])
         }
 
         $scope.isAssignedToCurrentUser = function(task) {
-            return task.assigned_id = $scope.user.id;
+            return task.assigned_id == $scope.user.id;
         };
 
         $scope.assign = function(task) {
-          /*task.assign($scope.user);*/
-            task.assigned_id = $scope.user.is;
-            task.$update();
+            task.assign($scope.user);
+        };
+
+        $scope.unAssign = function(task) {
+            task.unAssign();
         };
     });
