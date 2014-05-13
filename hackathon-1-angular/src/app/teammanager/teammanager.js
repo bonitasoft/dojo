@@ -63,7 +63,7 @@ angular.module('teammanager', ['directives.gravatar', 'ui.router', 'processes'])
                 { state:'showTasks', name: 'User Tasks'},
                 { state: 'showProcesses', name: 'User Processes'}];
         };
-
+        $state.go('showUsers');
     }).controller('listUsersCtrl', function($scope, Users, $location) {
         Users.query('manager_id='+ $scope.loggedUser.id, callback);
 
