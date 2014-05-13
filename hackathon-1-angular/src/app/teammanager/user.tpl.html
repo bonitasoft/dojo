@@ -1,3 +1,12 @@
+<h4>User {{user.getFullName()}}</h4>
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a href="#">User infos</a>
+    </li>
+    <li><a ng-href='#/users/{{user.id}}/task'>User Tasks</a></li>
+    <li><a ng-href='#/bpm/processes/{{user.id}}'>User Processes</a></li>
+</ul>
+
 <ng-include src="'app/teammanager/users-edit-tpl.html'" ></ng-include>
 <div class="well">
     <form><legend>Managed Users</legend></form>

@@ -1,6 +1,6 @@
 angular.module('processes', ['resources.processes', 'resources.users'])
-    .controller('ProcessesCtrl', ['$scope', 'Processes', '$location', '$http', '$route',
-        function ($scope, Processes, $location, $http, $route) {
+    .controller('ProcessesCtrl', ['$scope', 'Processes', '$location', '$http', '$route', 'Users',
+        function ($scope, Processes, $location, $http, $route, Users) {
             $scope.currentUserId = $route.current.params.id;
         Processes
             .query({p:0, user_id : $route.current.params.id, d: 'deployedBy'}, callback);
@@ -12,6 +12,13 @@ angular.module('processes', ['resources.processes', 'resources.users'])
         $scope.start = function (process) {
             $location.path('/bpm/processes/' + process.id);
         };
+
+            function userCallback(data) {
+                $scope.user =  data;
+            }
+
+            Users.getById($scope.currentUserId, userCallback);
+
     }]).controller('StartProcessCtrl', ['$scope', 'Processes', 'Users', '$location', '$http', '$route',
         function ($scope, Processes, Users, $location, $http, $route) {
             Processes.getById($route.current.params.processId, processCallback);
