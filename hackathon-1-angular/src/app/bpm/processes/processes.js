@@ -1,40 +1,16 @@
 angular.module('processes', ['resources.processes', 'resources.users', 'ui.router'])
-    .config(function($stateProvider){
-
-        $stateProvider.state('showDetails', {
-                views: {
-                    "quickdetails": {
-                        templateUrl: "app/bpm/processes/process-qkdetails.tpl.html",
-                        controller: function($scope){
-                            $scope.process = $scope.$parent.processes[$scope.$parent.selectedIndex];
-                            $scope.currentUserId = $scope.$parent.currentUserId;
-                        }
-                    }
-
-                }
-            });
-        $stateProvider.state('startFor', {
-            views: {
-                "quickdetails": {
-                    templateUrl: "app/bpm/processes/start-process-tpl.html",
-                    controller:'StartProcessCtrl'
-                }
-
-            }
-        });
-    })
-    .controller('ProcessesCtrl', ['$scope', 'Processes', '$location', '$http', '$route', 'Users',  '$state',
-        function ($scope, Processes, $location, $http, $route, Users, $state) {
-            $scope.currentUserId = $route.current.params.id;
+    .controller('ProcessesCtrl', ['$scope', 'Processes', '$location', '$http', 'Users',  '$state',
+        function ($scope, Processes, $location, $http, Users, $state) {
+            $scope.currentUserId = $scope.$parent.user.id;
             Processes
-                .query({p:0, user_id : $route.current.params.id, d: 'deployedBy'}, callback);
+                .query({p:0, user_id : $scope.currentUserId, d: 'deployedBy'}, callback);
 
             $scope.selectedIndex = -1;
             function callback(data) {
                 $scope.processes = data;
                 if ($scope.processes.length > 0) {
                     $scope.selectedIndex = 0;
-                    $state.go('showDetails', {processId: $scope.processes[0].id});
+                    $state.go('showDetails');
                 }
             };
 
@@ -49,7 +25,7 @@ angular.module('processes', ['resources.processes', 'resources.users', 'ui.route
                 $scope.selectedIndex = index;
                 $state.go('showDetails', {processId : processId});
             }
-   	    $scope.start = function (process) {
+   	        $scope.start = function (process) {
                 $location.path('/bpm/processes/' + process.id);
             };
 	}]).controller('StartProcessCtrl', ['$scope', 'Processes', 'Users', '$location', '$http', '$route',

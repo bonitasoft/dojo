@@ -32,7 +32,7 @@ angular.module('tasks', ['resources.task', 'ui.router'])
 
         $scope.currentUserId = $route.current.params.userId;
 
-        Users.getById($scope.currentUserId, userCallback);
+        Users.getById($scope.$parent.user.id, userCallback);
 
 
 
