@@ -17,7 +17,7 @@ angular.module('BonitaBPM6Portal', ['ngRoute', 'admin', 'BonitaBPM6Portal.versio
             templateUrl: 'app/tm/tasks/performtask-tpl.html',
             controller: 'tmPerformtaskCtrl'});
 
-        $routeProvider.otherwise({redirectTo: '/admin/users'});
+        $routeProvider.otherwise({redirectTo: '/tm/users'});
     }])
 
     .controller('MainCtrl', ['$scope', '$http', '$location', 'loggedUser', function ($scope, $http, $location, loggedUser) {
