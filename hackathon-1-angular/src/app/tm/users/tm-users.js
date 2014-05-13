@@ -9,6 +9,7 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'resources.users
                 users: ['Users', 'loggedUser', function(Users, loggedUser) { return Users.getTeamMembers(loggedUser.userid); }]
             })
             .whenEdit({
+                users: ['Users', '$route', function(Users, $route) { return Users.getTeamMembers($route.current.params.itemId); }],
                 user:['$route', 'Users', function ($route, Users) {
                     return Users.getById($route.current.params.itemId);
                 }]
@@ -22,10 +23,12 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'resources.users
 
     }])
 
-    .controller('tmUsersEditCtrl', ['$scope', '$location', '$filter', 'user', function ($scope, $location, $filter, user) {
-
+    .controller('tmUsersEditCtrl', ['$scope', 'crudListMethods', '$location', '$filter', 'user', 'users', function ($scope, crudListMethods, $location, $filter, user, users) {
+        $scope.users = users;
         $scope.user = user;
         $scope.password = user.password;
+
+        angular.extend($scope, crudListMethods('/tm/users'));
 
         $scope.cancelEdit = function() {
             $location.path('/tm/users');
