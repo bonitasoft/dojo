@@ -3,8 +3,8 @@ angular.module('tm-tasks', ['services.crud', 'directives.crud', 'resources.tasks
 
         crudRouteProvider.routesFor('Tasks', 'tm')
             .whenList({
-                tasks: ['Tasks', function (Tasks) {
-                    return Tasks.query({p:0,c:10000,o:'displayName ASC',f:'team_manager_id=' + loggedUser.id, d:'rootContainerId'});
+                tasks: ['Tasks', 'loggedUser', function (Tasks, loggedUser) {
+                    return Tasks.query({p:0,c:10000,o:'displayName ASC',f:'team_manager_id=' + loggedUser.id, d:'assigned_id'});
                 }]
             })
             .whenEdit({
@@ -13,7 +13,7 @@ angular.module('tm-tasks', ['services.crud', 'directives.crud', 'resources.tasks
                 }]
             });
     }])
-    .controller('tmTasksListCtrl', ['$scope', 'crudListMethods', '$filter', 'tasks', 'loggedUser', function ($scope, crudListMethods, $filter, tasks, loggedUser) {
+    .controller('tmTasksListCtrl', ['$scope', 'tasks', function ($scope, tasks) {
         $scope.tasks = tasks;
 
         $scope.assign = function (task, $index, $event) {
