@@ -45,6 +45,13 @@ body {
     width: 100%;
     border: 0px;
 }
+
+.left-column {
+    height: 100%;
+    width: 30% !important;
+    border: 0px;
+}
+
 /* Sign in form (End) */
 
 

@@ -1,21 +1,55 @@
-angular.module('processes', ['resources.processes', 'resources.users'])
-    .controller('ProcessesCtrl', ['$scope', 'Processes', '$location', '$http', '$route',
-        function ($scope, Processes, $location, $http, $route) {
+angular.module('processes', ['resources.processes', 'resources.users', 'ui.router'])
+    .config(function($stateProvider){
+
+        $stateProvider.state('showDetails', {
+                views: {
+                    "quickdetails": {
+                        templateUrl: "app/bpm/processes/process-qkdetails.tpl.html",
+                        controller: function($scope){
+                            $scope.process = $scope.$parent.processes[$scope.$parent.selectedIndex];
+                            $scope.currentUserId = $scope.$parent.currentUserId;
+                        }
+                    }
+
+                }
+            });
+        $stateProvider.state('startFor', {
+            views: {
+                "quickdetails": {
+                    templateUrl: "app/bpm/processes/start-process-tpl.html",
+                    controller:'StartProcessCtrl'
+                }
+
+            }
+        });
+    })
+    .controller('ProcessesCtrl', ['$scope', 'Processes', '$location', '$http', '$route', '$state',
+        function ($scope, Processes, $location, $http, $route, $state) {
             $scope.currentUserId = $route.current.params.id;
-        Processes
-            .query({p:0, user_id : $route.current.params.id, d: 'deployedBy'}, callback);
+            Processes
+                .query({p:0, user_id : $route.current.params.id, d: 'deployedBy'}, callback);
 
-        function callback(data) {
-            $scope.processes = data;
-        };
+            function callback(data) {
+                $scope.processes = data;
+            };
 
-        $scope.start = function (process) {
-            $location.path('/bpm/processes/' + process.id);
+            $scope.selectedIndex = -1;
+            $scope.details = function(processId, index){
+                console.log("selected :"+index);
+                $scope.selectedIndex = index;
+                $state.go('showDetails', {processId : processId});
+            }
+
+            $scope.start = function (process) {
+                $location.path('/bpm/processes/' + process.id);
         };
-    }]).controller('StartProcessCtrl', ['$scope', 'Processes', 'Users', '$location', '$http', '$route',
-        function ($scope, Processes, Users, $location, $http, $route) {
-            Processes.getById($route.current.params.processId, processCallback);
-            Users.getById($route.current.params.userId, userCallback)
+    }]).controller('StartProcessCtrl', ['$scope', 'Processes', 'Users', '$location', '$http', '$route', '$state',
+        function ($scope, Processes, Users, $location, $http, $route, $state) {
+            $scope.processId = $scope.$parent.processes[$scope.$parent.selectedIndex].id;
+            $scope.userId = $scope.$parent.currentUserId;
+
+            Processes.getById($scope.processId, processCallback);
+            Users.getById($scope.userId, userCallback)
 
             function userCallback(data) {
                 $scope.user = data;
