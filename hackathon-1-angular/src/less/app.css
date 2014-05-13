@@ -52,6 +52,9 @@ body {
     border: 0px;
 }
 
+table.table-hover tbody tr {
+    cursor: pointer;
+}
 /* Sign in form (End) */
 
 

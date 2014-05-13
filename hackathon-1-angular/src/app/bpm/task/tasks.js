@@ -63,6 +63,7 @@ angular.module('tasks', ['resources.task', 'ui.router'])
 
         $scope.doItOnBehalf = function(task) {
             $scope.src = '/bonita/portal/homepage?ui=form&locale=fr#form=Buy+a+mini+extended--6.2--Model+choice$entry&task='+ task.id +'&mode=form&assignTask=true';
+            $state.go('showTaskDetails');
         };
 
 

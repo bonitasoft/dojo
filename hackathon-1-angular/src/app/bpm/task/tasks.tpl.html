@@ -1,14 +1,14 @@
 <div class="row-fluid">
     <div class="span5">
-        <table class="table table-bordered table-condensed table-striped">
+        <table class="table table-bordered table-condensed table-hover">
             <thead>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
             </tr>
             </thead>
-            <tbody ng-repeat="task in tasks">
-            <tr ng-click="details(task, $index)" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'"
+            <tbody>
+            <tr ng-repeat="task in tasks" ng-click="details(task, $index)" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'"
                 ng-class="{ success: $index == selectedIndex }">
                 <td>{{task.name}}</td>
                 <td>{{task.displayDescription}}</td>
@@ -18,6 +18,4 @@
     </div>
 
     <div class="span7" ui-view='taskquickdetails'></div>
-    <!--<iframe id="bonitaframe" ng-src="{{src}}" class="whole-page"></iframe>-->
-    <start-process class="whole-page"></start-process>
 </div>
