@@ -7,7 +7,10 @@ angular.module('BonitaBPM6Portal', ['ngRoute', 'bonitasoft.manager', 'directives
     })
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.otherwise({redirectTo: '/manager/users'});
+        $routeProvider.when("/home", {
+            templateUrl: 'app/home-tpl.html'
+        });
+        $routeProvider.otherwise({redirectTo: '/home'});
     }])
 
     .controller('MainCtrl', ['$scope', '$http', 'loggedUser', function ($scope, $http, loggedUser) {
