@@ -1,4 +1,5 @@
-'use.strict'
+"use strict";
+
 angular.module('bonitasoft.bbpmManagerUserList', [])
     .factory('RecursionHelper', ['$compile', function ($compile) {
         return {
