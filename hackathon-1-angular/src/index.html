@@ -18,6 +18,7 @@
                 <li><a href="#/admin/groups">Groups</a></li>
                 <li><a href="#/team/users">Team</a></li>
                 <li><a href="#/team/processes?managerId={{loggedUser.user_id}}">Process</a></li>
+                <li><a ng-click="logoutUser()">Logout</a></li>
             </ul>
 
             <div class="container-fluid" >Welcome, {{loggedUser.display_name}}!</div>

@@ -1,7 +1,7 @@
 /**
  * Created by nicolas on 08/05/14.
  */
-angular.module('login', []).controller('LoginCtrl',['$scope', '$http', 'loggedUser', function($scope, $http, loggedUser){
+angular.module('login', []).controller('LoginCtrl',['$scope', '$http','$location', 'loggedUser', function($scope, $http,$location, loggedUser){
 
 
     $scope.login = function(username, password) {
@@ -19,6 +19,7 @@ angular.module('login', []).controller('LoginCtrl',['$scope', '$http', 'loggedUs
             data: {username: username, password: password, redirect: 'false'}
         }).success(function(data, status, headers, config) {
            loggedUser.username = username;
+            $location.path('/team/users');
         });
     };
 }]);

@@ -30,5 +30,17 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin','BonitaBPM6Portal.version'
 
 
         });
+
+
+        $scope.logoutUser=function(){
+            $http({
+                method: 'GET',
+                url: '/bonita/logoutservice',
+                data: {redirect: 'false'}
+            }).success(function (data, status, headers, config) {
+                $scope.loggedUser=null;
+            });
+
+        }
     }]);
 
