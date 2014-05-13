@@ -8,6 +8,7 @@ angular.module('admin', ['admin-users','admin-groups'])
         $routeProvider.when("/admin", {templateUrl: 'app/admin/admin-tpl.html'});
     }])
 
-    .controller('AdminCtrl',['$scope', '$http', 'loggedUser', 'activeProfile', function($scope, $http, loggedUser, activeProfile) {
-        $scope.activeProfile = "admin";
-    }]);
+    .controller('AdminCtrl',['$scope', '$http', 'loggedUser', function($scope, $http, loggedUser) {
+
+    }])
+;

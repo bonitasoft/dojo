@@ -4,16 +4,13 @@
 
 angular.module('BonitaBPM6Portal', ['ngRoute','admin', 'tm','BonitaBPM6Portal.version', 'BonitaBPM6Portal.appVersion', 'login'])
 
-    .value('activeProfile', '')
-
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider.otherwise({template:"<div>404 :-)</div>"});
     }])
 
-    .controller('MainCtrl', ['$scope', '$http', 'loggedUser', 'activeProfile', 'authenticationService', function($scope, $http, loggedUser, activeProfile, authenticationService) {
+    .controller('MainCtrl', ['$scope', '$http', 'loggedUser', 'authenticationService', function($scope, $http, loggedUser, authenticationService) {
         $scope.loggedUser = loggedUser;
-        $scope.activeProfile = activeProfile;
 
         $http({
             method: 'GET',
@@ -21,13 +18,11 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin', 'tm','BonitaBPM6Portal.ve
         }).success(function(data){
             $scope.loggedUser.username = data.user_name;
             $scope.loggedUser.userid = data.user_id;
-            $scope.activeProfile = '';
             console.log("main.js.success. LoggedUser:");
             console.log(loggedUser);
         }).error(function() {
             $scope.loggedUser.username = '';
             $scope.loggedUser.userid = '';
-            $scope.activeProfile = '';
             console.log("main.js.error. LoggedUser:");
             console.log(loggedUser);
         });

@@ -15,7 +15,7 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'resources.users
             });
     }])
 
-    .controller('tmUsersListCtrl',['$scope', '$http', 'loggedUser', 'activeProfile', 'users', function($scope, $http, loggedUser, activeProfile, users){
+    .controller('tmUsersListCtrl',['$scope', '$http', 'loggedUser', 'users', function($scope, $http, loggedUser, users){
         $scope.users = users;
     }])
 ;

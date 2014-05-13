@@ -35,13 +35,11 @@ angular.module('login', [])
                         }).success(function(data){
                             loggedUser.username = data.user_name;
                             loggedUser.userid = data.user_id;
-                            activeProfile = '';
                             console.log("login.js.success. LoggedUser:");
                             console.log(loggedUser);
                         }).error(function() {
                             loggedUser.username = '';
                             loggedUser.userid = '';
-                            activeProfile = '';
                             console.log("login.js.success.error. LoggedUser:");
                             console.log(loggedUser);
                         });
