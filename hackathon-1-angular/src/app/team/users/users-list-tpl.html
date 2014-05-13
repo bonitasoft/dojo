@@ -31,6 +31,7 @@
                 <button class="btn btn-danger remove" ng-click="disable(user, $index, $event)" ng-show="user.enabled">Disable</button>
                 <button class="btn" ng-click="enable(user, $index, $event)" ng-hide="user.enabled">Enable</button>
                 <a class="btn" ng-href="#/team/users?managerId={{user.id}}">View team</a>
+                <a class="btn" ng-href="#/team/processes?user_id={{user.id}}&managerId={{loggedUser.user_id}}">View processes</a>
 
             </td>
         </tr>

@@ -11,6 +11,5 @@ angular.module('resources.processes').factory('Processes', ['bonitaResource', fu
         return this.query({p:0,c:10000,o:'displayName ASC'}, cb, errorcb);
     };
 
-
     return processResource;
 }]);

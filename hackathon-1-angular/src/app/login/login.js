@@ -1,7 +1,7 @@
 /**
  * Created by nicolas on 08/05/14.
  */
-angular.module('login', []).controller('login.LoginCtrl',['$scope', '$http', 'loggedUser', function($scope, $http, loggedUser){
+angular.module('login', []).controller('LoginCtrl',['$scope', '$http', 'loggedUser', function($scope, $http, loggedUser){
 
 
     $scope.login = function(username, password) {

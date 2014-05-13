@@ -3,9 +3,27 @@ angular.module('team-processes', ['services.crud', 'directives.crud', 'directive
 
         crudRouteProvider.routesFor('Processes', 'team')
             .whenList({
-                processes: ['Processes', function (Processes) {
-                    return Processes.all();
+                processes: ['$route', 'Processes','$http', function ($route, Processes,$http) {
+                    var managerId;
+                    var filters =  new Array();
+                    if ($route.current.params.user_id != null) {
+                        filters[filters.length-1] = "user_id="+$route.current.params.user_id;
+                    }
+
+                    if ($route.current.params.managerId != null) {
+                        filters[filters.length-1] = 'team_manager_id=' + managerId;
+                        return Processes.query({p: 0, c: 10000, f: filters.join("&"), o: 'displayName ASC'});
+                    } else {
+                        $http({
+                            method: 'GET',
+                            url: 'bonita/API/system/session/unusedid'
+                        }).success(function (data) {
+                            managerId = data.user_id;
+                            return Processes.query({p: 0, c: 10000, f: 'team_manager_id=' + managerId, o: 'displayName ASC'});
+                        });
+                    }
                 }]
+
             })
             /*.whenNew({
              user: ['Users', function(Users) { return new Users(); }]
@@ -15,29 +33,26 @@ angular.module('team-processes', ['services.crud', 'directives.crud', 'directive
                     return Processes.getById($route.current.params.itemId);
                 }]
             })
-//            .when('/team/users/:managerId', {
-//                templateUrl: '/team/users/users-list-tpl.html',
-//                controller: 'team.UsersListCtrl',
-//                action: 'list'
-//            })
         ;
     }])
-    .controller('team.ProcessesListCtrl', ['$http','$scope', 'crudListMethods', '$filter', 'processes', '$route', function ($http,$scope, crudListMethods, $filter, processes, $route) {
-         $scope.processes=processes;
+    .controller('team.ProcessesListCtrl', ['$http', '$scope', 'crudListMethods', '$filter', 'processes', '$route', function ($http, $scope, crudListMethods, $filter, processes, $route) {
+        $scope.processes = processes;
+
+
         angular.extend($scope, crudListMethods('/team/processes'));
 
         $scope.displayProcessPossibleStatus = [
             {name: 'Enabled', filterItems: function (process) {
-                return process.activationState=='ENABLED' && process.configurationState=='RESOLVED' ;
+                return process.activationState == 'ENABLED' && process.configurationState == 'RESOLVED';
             }},
             {name: 'Disabled', filterItems: function (user) {
-                return process.activationState=='DISABLED' ;
+                return process.activationState == 'DISABLED';
             }},
             {name: 'Resolved', filterItems: function (user) {
-                return process.configurationState=='RESOLVED'
+                return process.configurationState == 'RESOLVED'
             }},
             {name: 'UnResolved', filterItems: function (user) {
-                return process.configurationState=='UNRESOLVED'
+                return process.configurationState == 'UNRESOLVED'
             }}
         ];
 

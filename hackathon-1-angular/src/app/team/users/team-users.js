@@ -29,11 +29,6 @@ angular.module('team-users', ['services.crud', 'directives.crud', 'directives.gr
         $scope.users=users;
         $scope.managerDisplayName="...";
 
-        console.log('load');
-        console.log('users'+users.length);
-        console.log('logged user:'+$scope.loggedUser.user_id);
-        console.log('managerId:'+  $scope.managerId);
-
          $http({
                 method: 'GET',
                 url: 'bonita/API/identity/user/'+$scope.managerId
