@@ -1,4 +1,4 @@
-<h3>process</h3>
+<h3>List of processes  <span ng-if="processesActor" >which can be started by{{processesActor.firstname}} {{processesActor.lastname}}</span></h3>
     <div class="well-small">
         <label for="ProcessFilter">Process filter : </label>
         <select id="ProcessFilter" ng-model="displayProcesses" ng-options="f.name for f in displayProcessPossibleStatus"></select>
@@ -10,6 +10,7 @@
             <th>Display name</th>
             <th>Version</th>
             <th>Deployement date</th>
+            <th>Actor Mapping</th>
             <th>State</th>
             <th>Description</th>
         </tr>
@@ -21,6 +22,7 @@
             <td>{{process.version}}</td>
             <td>{{process.deploymentDate}}</td>
             <td>{{process.configurationState}}</td>
+            <td>{{process.activationState}}</td>
             <td>{{process.description}}</td>
         </tr>
         </tbody>

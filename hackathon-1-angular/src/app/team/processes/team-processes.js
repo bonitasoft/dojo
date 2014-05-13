@@ -37,8 +37,14 @@ angular.module('team-processes', ['services.crud', 'directives.crud', 'directive
     }])
     .controller('team.ProcessesListCtrl', ['$http', '$scope', 'crudListMethods', '$filter', 'processes', '$route', function ($http, $scope, crudListMethods, $filter, processes, $route) {
         $scope.processes = processes;
-
-
+        if ($route.current.params.user_id != null) {
+            $http({
+                method: 'GET',
+                url: 'bonita/API/identity/user/' + $route.current.params.user_id
+            }).success(function (userData) {
+                $scope.processesActor = userData;
+            });
+        }
         angular.extend($scope, crudListMethods('/team/processes'));
 
         $scope.displayProcessPossibleStatus = [
