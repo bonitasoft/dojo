@@ -7,7 +7,8 @@ angular.module('bonitasoft.bbpmProcessList', [])
                 p: '0',
                 c: '10',
                 o: 'displayName ASC',
-                f: 'team_manager_id=' + loggedUser.id
+                f: 'user_id=' + $scope.forUser || loggedUser.id
+
             }
         }).success(function (processes) {
             $scope.processes = processes;
@@ -20,7 +21,8 @@ angular.module('bonitasoft.bbpmProcessList', [])
             scope: {
                 profile: '=?',
                 onSelectProcess: '=?',
-                onStartFor: '=?'
+                onStartFor: '=?',
+                forUser: '=?'
             },
             templateUrl: 'app/directives/bbpmProcessList/bbpmProcessList-tpl.html'
         };

@@ -12,7 +12,7 @@
         <div class="col-md-4" ng-if="selectedUser">
             <h3>Edit {{ selectedUser.firstname }} {{ selectedUser.lastname }}</h3>
             <a ng-if='isManager' ng-href="#{{location.path()}}/{{selectedUser.id}}">I am manager!</a><br/>
-            <a ng-href="#manager/processes/">See my processes?</a>
+            <a ng-href="#manager/processes/{{selectedUser.id}}">See my processes?</a>
             <bbpm-edit-user style="display: flex" user="selectedUser"></bbpm-edit-user>
         </div>
     </div>

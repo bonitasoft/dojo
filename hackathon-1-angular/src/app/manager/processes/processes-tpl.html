@@ -1,5 +1,5 @@
 <div class="container">
-    <bbpm-process-list on-start-for="startProcess"></bbpm-process-list>
+    <bbpm-process-list on-start-for="startProcess" for-user="userId"></bbpm-process-list>
 </div>
 
 <script type="text/ng-template" id="startProcess-tpl.html">
@@ -7,7 +7,7 @@
         <h3 class="modal-title">Start process</h3>
     </div>
     <div class="modal-body">
-        <bbpm-start-for process="process"></bbpm-start-for>
+        <bbpm-start-for process="process" user-id="userId"></bbpm-start-for>
     </div>
     <div class="modal-footer">
         <button class="btn btn-warning" ng-click="cancel()">Cancel</button>

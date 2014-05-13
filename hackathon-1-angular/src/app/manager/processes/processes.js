@@ -8,23 +8,26 @@ angular.module('bonitasoft.manager.processes', [
     'ui.bootstrap'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when("/manager/processes", {
+        $routeProvider.when("/manager/processes/:userId", {
             templateUrl: 'app/manager/processes/processes-tpl.html',
             controller: 'processesCtrl'
         });
     }])
 
-    .controller('processesCtrl', ['$scope', '$modal', function ($scope, $modal) {
+    .controller('processesCtrl', ['$scope', '$modal','$routeParams', function ($scope, $modal, $routeParams) {
         $scope.startProcess = function (process) {
             $scope.open(process, 'lg');
         };
 
+        $scope.userId = $routeParams.userId;
+
         $scope.open = function (process, size) {
             $modal.open({
                 templateUrl: 'startProcess-tpl.html',
-                controller: function ($scope, $modalInstance, process) {
+                controller: function ($scope, $modalInstance, process, userId) {
                     $scope.process = process;
-                    console.log(process);
+                    $scope.userId = userId;
+
                     $scope.cancel = function () {
                         $modalInstance.dismiss('cancel');
                     };
@@ -33,6 +36,9 @@ angular.module('bonitasoft.manager.processes', [
                 resolve: {
                     process: function () {
                         return process;
+                    },
+                    userId: function () {
+                        return $scope.userId;
                     }
                 }
             });
