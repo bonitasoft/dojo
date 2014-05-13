@@ -13,12 +13,12 @@
     <body ng-controller="MainCtrl">
 
         <!-- not logged -->
-        <div ng-if="loggedUser.username.length <= 0">
+        <div ng-if="!isLogged()">
             <div ng-include="'app/login/login-tpl.html'" ></div>
         </div>
 
         <!-- logged -->
-        <div ng-if="loggedUser.username.length > 0">
+        <div ng-if="isLogged()">
             <ul class="menu">
                 <li><a href="#/admin">Administrator</a></li>
                 <li><a href="#/tm">Team Manager</a></li>
