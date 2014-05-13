@@ -10,12 +10,14 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin', 'tm','BonitaBPM6Portal.ve
     }])
 
     .controller('MainCtrl', ['$scope', '$http', 'authenticationService', function($scope, $http, authenticationService) {
-        authenticationService.populateLoggedUser(function(data) {
-            $scope.loggedUser = data;
-        });
+        authenticationService.populateLoggedUser();
 
         $scope.getLoggedUser = function() {
             return $scope.loggedUser;
+        }
+
+        $scope.isLogged = function() {
+            return authenticationService.isLogged();
         }
 
         $scope.logout = function() {

@@ -13,11 +13,17 @@ angular.module('login', [])
 
     .factory('authenticationService', ['$http', 'loggedUser', function($http, loggedUser) {
         return {
+
+            isLogged : function() {
+                var result = loggedUser.username.length > 0;
+                return result;
+            },
+
             getLoggedUser : function() {
                 return loggedUser;
             },
 
-            populateLoggedUser : function(cb, errcb) {
+            populateLoggedUser : function() {
                 $http({
                     method: 'GET',
                     url: 'bonita/API/system/session/unusedid'
@@ -26,13 +32,11 @@ angular.module('login', [])
                     loggedUser.userid = data.user_id;
                     console.log("login.js.success. LoggedUser:");
                     console.log(loggedUser);
-                    cb(loggedUser);
                 }).error(function(data) {
                     loggedUser.username = '';
                     loggedUser.userid = '';
                     console.log("login.js.success.error. LoggedUser:");
                     console.log(loggedUser);
-                    errcb(data);
                 });
             },
 
@@ -51,7 +55,7 @@ angular.module('login', [])
                     },
                     data: {username: username, password: password, redirect: 'false'}
                 } )
-                    .success(populateLoggedUser);
+                    .success(this.populateLoggedUser);
 
             },
 
