@@ -22,9 +22,10 @@ angular.module('tm-tasks', ['services.crud', 'directives.crud', 'resources.tasks
 
     }])
 
-    .controller('tmTasksEditCtrl', ['$scope', '$location', '$filter', 'tasks', '$http', function ($scope, $location, $filter, tasks, $http) {
+    .controller('tmTasksEditCtrl', ['$scope', '$location', '$filter', 'tasks', '$http', '$route', function ($scope, $location, $filter, tasks, $http, $route) {
 
         $scope.tasks = tasks;
+        $scope.currentUserId = $route.current.params.itemId;
 
         $scope.unassign = function (task, $index, $event) {
 

@@ -23,7 +23,8 @@
         </td>
         <td ng-switch on="task.assigned_id">
             <button ng-switch-when="" class="btn disabled" ng-click="unassign(task, $index, $event)">Unassign</button>
-            <button ng-switch-default class="btn btn-primary" ng-click="unassign(task, $index, $event)">Unassign</button>
+            <button ng-switch-default class="btn btn-warning" ng-click="unassign(task, $index, $event)">Unassign</button>
+            <a class="btn btn-primary" href="#/tm/performtask?processName={{task.rootContainerId.name}}&processVersion={{task.rootContainerId.version}}&taskName={{task.name}}&taskId={{task.id}}&userId={{currentUserId}}">Do for him</a>
         </td>
         <td ng-if="task.assigned_id">
 
