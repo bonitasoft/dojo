@@ -29,8 +29,13 @@ angular.module('processes', ['resources.processes', 'resources.users', 'ui.route
             Processes
                 .query({p:0, user_id : $route.current.params.id, d: 'deployedBy'}, callback);
 
+            $scope.selectedIndex = -1;
             function callback(data) {
                 $scope.processes = data;
+                if ($scope.processes.length > 0) {
+                    $scope.selectedIndex = 0;
+                    $state.go('showDetails', {processId: $scope.processes[0].id});
+                }
             };
 
             function userCallback(data) {
@@ -39,9 +44,8 @@ angular.module('processes', ['resources.processes', 'resources.users', 'ui.route
 
             Users.getById($scope.currentUserId, userCallback);
 
-            $scope.selectedIndex = -1;
+
             $scope.details = function(processId, index){
-                console.log("selected :"+index);
                 $scope.selectedIndex = index;
                 $state.go('showDetails', {processId : processId});
             }
