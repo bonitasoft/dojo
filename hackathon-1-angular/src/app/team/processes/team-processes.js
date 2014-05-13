@@ -7,19 +7,19 @@ angular.module('team-processes', ['services.crud', 'directives.crud', 'directive
                     var managerId;
                     var filters =  new Array();
                     if ($route.current.params.user_id != null) {
-                        filters[filters.length-1] = "user_id="+$route.current.params.user_id;
+                        filters.push("user_id="+$route.current.params.user_id);
                     }
 
                     if ($route.current.params.managerId != null) {
-                        filters[filters.length-1] = 'team_manager_id=' + managerId;
+                        filters.push('team_manager_id=' + $route.current.params.managerId);
                         return Processes.query({p: 0, c: 10000, f: filters.join("&"), o: 'displayName ASC'});
                     } else {
                         $http({
                             method: 'GET',
                             url: 'bonita/API/system/session/unusedid'
                         }).success(function (data) {
-                            managerId = data.user_id;
-                            return Processes.query({p: 0, c: 10000, f: 'team_manager_id=' + managerId, o: 'displayName ASC'});
+                            filters.push('team_manager_id='+data.user_id);
+                            return Processes.query({p: 0, c: 10000, f: filters.join("&"), o: 'displayName ASC'});
                         });
                     }
                 }]
