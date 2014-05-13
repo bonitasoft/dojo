@@ -8,8 +8,13 @@ angular.module('tasks', ['resources.task'])
 
         Users.getById($route.current.params.userId, userCallback);
 
+
+
+
+
         function callback(data) {
             $scope.tasks = data;
+
         }
 
         $scope.isAssignedToCurrentUser = function(task) {
@@ -23,4 +28,9 @@ angular.module('tasks', ['resources.task'])
         $scope.unAssign = function(task) {
             task.unAssign();
         };
+
+        $scope.doItOnBehalf = function(task) {
+            $scope.src = '/bonita/portal/homepage?ui=form&locale=fr#form=Buy+a+mini+extended--6.2--Model+choice$entry&task='+ task.id +'&mode=form&assignTask=true';
+        };
+
     });
