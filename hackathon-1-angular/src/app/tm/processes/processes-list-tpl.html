@@ -16,7 +16,7 @@
         <td>{{process.version}}</td>
         <td>{{process.description}}</td>
         <td>
-            <button ng-click="" class="btn">Start for</button>
+            <button ng-click="go('#/tm/startProcess/', process.name, process.version, process.id)" class="btn btn-primary">Start</button>
         </td>
     </tr>
     </tbody>

@@ -5,10 +5,7 @@
 angular.module('resources.groups', ['bonitaResource'])
     .factory('Groups', ['bonitaResource', function (bonitaResource) {
 
-        var groupResource = bonitaResource('groups', '../bonita/API/identity/group/');
-        groupResource.all = function (cb, errorcb) {
-            return this.query({p: 0, c: 10000, o: 'name ASC'}, cb, errorcb);
-        };
+        var caseResource = bonitaResource('groups', '../bonita/API/identity/group/');
 
-        return groupResource;
+        return caseResource;
     }]);

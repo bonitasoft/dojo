@@ -8,9 +8,13 @@ angular.module('tm-processes', ['services.crud', 'directives.crud', 'resources.p
                 }]
             });
     }])
-    .controller('tmProcessesListCtrl', ['$scope', 'crudListMethods', '$filter', 'processes', 'loggedUser', function ($scope, crudListMethods, $filter, processes, loggedUser) {
+    .controller('tmProcessesListCtrl', ['$scope', 'crudListMethods', '$filter', 'processes', 'loggedUser', '$location', function ($scope, crudListMethods, $filter, processes, loggedUser, $location) {
         $scope.processes = processes;
 
         angular.extend($scope, crudListMethods('/tm/processes'));
 
+        $scope.go = function (path, processName, processVersion, processId) {
+            window.alert('go to ' + path + '?processName=' + processName + '&processVersion=' + processVersion + '&processId' + processId);
+            $location.path(path + '?processName=' + processName + '&processVersion=' + processVersion + '&processId' + processId);
+        }
     }]);
