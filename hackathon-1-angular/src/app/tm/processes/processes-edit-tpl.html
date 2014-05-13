@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs" ng-controller="tabsCtrl" ng-include="'app/tm/tm-user-tpl.html'"></ul>
+<table class="table table-bordered table-condensed table-striped table-hover">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Version</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="process in processes">
+    <tr ng-click="edit(process.$id())" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+
+        <td><img src="assets/images/logoBonita.png"></td>
+        <td>{{process.name}}</td>
+        <td>{{process.version}}</td>
+        <td>{{process.description}}</td>
+        <td>
+            <button ng-click="" class="btn">Start for</button>
+        </td>
+    </tr>
+    </tbody>
+</table>

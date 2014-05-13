@@ -88,11 +88,6 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'directives.grav
         $scope.password = user.password;
         $scope.managedUsers = team;
 
-        $scope.tabs = [
-            { title:'Dynamic Title 1', content:'Dynamic content 1' },
-            { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
-        ];
-
         $scope.cancelEdit = function () {
             $location.path('/tm/users');
         };
