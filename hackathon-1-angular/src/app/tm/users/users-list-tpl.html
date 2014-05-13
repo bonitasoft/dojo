@@ -1,37 +1,24 @@
-<div class="well-small">
-	<label for="userFilter">Show users: </label>
-	<select id="userFilter" ng-model="displayUsers" ng-options="f.name for f in displayUsersPossibleValues"></select>
-</div>
-
 <table class="table table-bordered table-condensed table-striped table-hover">
     <thead>
-    <tr>
-        <th></th>
-        <th>Username</th>
-        <th>Last name</th>
-        <th>First name</th>
-        <th>State</th>
-        <th>Actions</th>
-    </tr>
+        <tr>
+            <th></th>
+            <th>Username</th>
+            <th>Last name</th>
+            <th>First name</th>
+            <th>State</th>
+        </tr>
     </thead>
-    <tbody ng-repeat="user in users | filter:isUserVisible">
-    <tr ng-click="edit(user.$id())" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
-    	
-        <td><gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar></td>
-        <td>{{user.userName}}</td>
-        <td>{{user.lastname}}</td>
-        <td>{{user.firstname}}</td>
-        <td ng-switch on="user.enabled">
-        	<div ng-switch-when="false">Inactive</div>
-        	<div ng-switch-default>Active</div>
-        </td>
-        <td ng-switch on="user.enabled">
-        	<button class="btn btn-danger remove" ng-click="disable(user, $index, $event)" ng-switch-when="true">Disable</button>
-        	<button class="btn" ng-click="enable(user, $index, $event)" ng-switch-default>Enable</button>
-        </td>
-    </tr>
+    <tbody ng-repeat="user in users">
+        <tr ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+
+            <td><gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar></td>
+            <td>{{user.userName}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.firstname}}</td>
+            <td ng-switch on="user.enabled">
+                <div ng-switch-when="false">Inactive</div>
+                <div ng-switch-default>Active</div>
+            </td>
+        </tr>
     </tbody>
 </table>
-<div class="well">
-    <button class="btn" ng-click="new()">New User</button>
-</div>
