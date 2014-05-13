@@ -3,7 +3,7 @@
  */
 angular.module('login', [])
 
-    .value('loggedUser', {username:''})
+    .value('loggedUser', {username:'', userid:''})
 
     .controller('LoginCtrl',['$scope', 'authenticationService', function($scope, authenticationService) {
         $scope.login = function(username, password) {
@@ -29,9 +29,22 @@ angular.module('login', [])
                     data: {username: username, password: password, redirect: 'false'}
                 } )
                     .success(function(data, status, headers, config) {
-                        loggedUser.username = username;
-                        console.log("LoggedUser after login");
-                        console.log(loggedUser);
+                        $http({
+                            method: 'GET',
+                            url: 'bonita/API/system/session/unusedid'
+                        }).success(function(data){
+                            loggedUser.username = data.user_name;
+                            loggedUser.userid = data.user_id;
+                            activeProfile = '';
+                            console.log("login.js.success. LoggedUser:");
+                            console.log(loggedUser);
+                        }).error(function() {
+                            loggedUser.username = '';
+                            loggedUser.userid = '';
+                            activeProfile = '';
+                            console.log("login.js.success.error. LoggedUser:");
+                            console.log(loggedUser);
+                        });
                     }
                 );
 

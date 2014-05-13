@@ -1,12 +1,12 @@
 /**
  * Created by nicolas on 08/05/14.
  */
-angular.module('tm-users', ['services.crud', 'directives.crud', 'resources.users'])
+angular.module('tm-users', ['services.crud', 'directives.crud', 'resources.users', 'login'])
     .config(['crudRouteProvider', function (crudRouteProvider) {
 
         crudRouteProvider.routesFor('Users', 'tm')
             .whenList({
-                users: ['Users', function(Users) { return Users.all(); }]
+                users: ['Users', 'loggedUser', function(Users, loggedUser) { return Users.getTeamMembers(loggedUser.userid); }]
             })
             .whenEdit({
                 user:['$route', 'Users', function ($route, Users) {

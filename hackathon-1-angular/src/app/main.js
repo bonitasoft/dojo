@@ -20,13 +20,15 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin', 'tm','BonitaBPM6Portal.ve
             url: 'bonita/API/system/session/unusedid'
         }).success(function(data){
             $scope.loggedUser.username = data.user_name;
+            $scope.loggedUser.userid = data.user_id;
             $scope.activeProfile = '';
-            console.log("main.success");
+            console.log("main.js.success. LoggedUser:");
             console.log(loggedUser);
         }).error(function() {
             $scope.loggedUser.username = '';
+            $scope.loggedUser.userid = '';
             $scope.activeProfile = '';
-            console.log("main.error");
+            console.log("main.js.error. LoggedUser:");
             console.log(loggedUser);
         });
 
