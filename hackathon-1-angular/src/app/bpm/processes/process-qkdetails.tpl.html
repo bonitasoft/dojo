@@ -1,0 +1,8 @@
+<div class="btn-actions"><span alt="Actions to perform on current Process">Actions</span>
+    <a ui-sref="startFor({ processId: process.id, userId : currentUserId})" class="btn">Start For</a></div>
+<div class="details">
+    <div><label>Name</label><span>{{process.name}}</span><br/></div>
+    <div><label>Version</label><span>{{process.version}}</span><br/></div>
+    <div><label>Deployed On</label><span>{{process.deploymentDate}}</span><br/></div>
+    <div><label>Deployed By</label><span>{{process.deployedBy.firstname}} {{process.deployedBy.lastname}}</span><br/></div>
+</div>
