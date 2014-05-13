@@ -1,0 +1,20 @@
+{
+  "name": "hackathon-1-angular",
+  "version": "0.0.0",
+  "description": "Bonitasoft R&amp;D first Hackathon on AngularJS",
+  "main": "",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "karma": "^0.12.16",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-ng-html2js-preprocessor": "^0.1.0"
+  }
+}
