@@ -10,5 +10,7 @@ angular.module('routes', [])
         $routeProvider.when("/teammanager/users/:id", {templateUrl: 'app/teammanager/user.tpl.html', controller: 'editUserCtrl'});
 
         $routeProvider.when("/login", {templateUrl: 'app/login/login-tpl.html'});
+        $routeProvider.when("/users/:userId/task", {templateUrl: 'app/bpm/task/tasks.tpl.html'});
+
         $routeProvider.otherwise({redirectTo: '/teammanager/users'});
     }]);
