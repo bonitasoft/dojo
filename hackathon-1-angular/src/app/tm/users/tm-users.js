@@ -15,7 +15,30 @@ angular.module('tm-users', ['services.crud', 'directives.crud', 'resources.users
             });
     }])
 
-    .controller('tmUsersListCtrl',['$scope', '$http', 'loggedUser', 'users', function($scope, $http, loggedUser, users){
+    .controller('tmUsersListCtrl',['$scope', 'crudListMethods', '$http', 'loggedUser', 'users', function($scope, crudListMethods, $http, loggedUser, users){
         $scope.users = users;
+
+        angular.extend($scope, crudListMethods('/tm/users'));
+
     }])
+
+    .controller('tmUsersEditCtrl', ['$scope', '$location', '$filter', 'user', function ($scope, $location, $filter, user) {
+
+        $scope.user = user;
+        $scope.password = user.password;
+
+        $scope.cancelEdit = function() {
+            $location.path('/tm/users');
+        };
+
+        $scope.onSave = function (user) {
+            $location.path('/tm/users');
+        };
+
+        $scope.onError = function() {
+            console.log("Unable to save user!");
+        };
+
+    }])
+
 ;

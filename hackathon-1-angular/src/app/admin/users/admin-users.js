@@ -75,26 +75,27 @@ angular.module('admin-users', ['services.crud', 'directives.crud', 'directives.g
     });
   };
 }])
-.controller('adminUsersEditCtrl', ['$scope', '$location', '$filter', 'user', function ($scope, $location, $filter, user) {
 
-  $scope.user = user;
-  $scope.password = user.password;
+    .controller('adminUsersEditCtrl', ['$scope', '$location', '$filter', 'user', function ($scope, $location, $filter, user) {
 
-	$scope.cancelEdit = function() {
-		$location.path('/admin/users');
-	};
-  
-  $scope.onSave = function (user) {
-    $location.path('/admin/users');
-  };
+      $scope.user = user;
+      $scope.password = user.password;
 
-  $scope.onError = function() {
-	  console.log("Unable to save user!");
-  };
+        $scope.cancelEdit = function() {
+            $location.path('/admin/users');
+        };
 
-  $scope.onRemove = function(user) {
-    $location.path('/admin/users');
-  };
+      $scope.onSave = function (user) {
+        $location.path('/admin/users');
+      };
 
-}])
+      $scope.onError = function() {
+          console.log("Unable to save user!");
+      };
+
+      $scope.onRemove = function(user) {
+        $location.path('/admin/users');
+      };
+
+    }])
 ;
