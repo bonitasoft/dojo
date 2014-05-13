@@ -97,7 +97,7 @@ angular.module('admin-groups', ['services.crud', 'directives.crud', 'resources.g
     });
   };
 }])
-.controller('GroupsEditCtrl', ['$scope', '$location', '$filter', 'group', function ($scope, $location, $filter, group) {
+.controller('admin.GroupsEditCtrl', ['$scope', '$location', '$filter', 'group', function ($scope, $location, $filter, group) {
 	
   $scope.group = group;
 
