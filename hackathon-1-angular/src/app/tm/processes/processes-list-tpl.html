@@ -5,6 +5,7 @@
         <th>Name</th>
         <th>Version</th>
         <th>Description</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody ng-repeat="process in processes">
@@ -14,7 +15,9 @@
         <td>{{process.name}}</td>
         <td>{{process.version}}</td>
         <td>{{process.description}}</td>
-
+        <td>
+            <button ng-click="" class="btn">Start for</button>
+        </td>
     </tr>
     </tbody>
 </table>
