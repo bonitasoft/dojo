@@ -14,7 +14,7 @@ angular.module('admin-users', ['services.crud', 'directives.crud', 'directives.g
       }]
     });
 }])
-.controller('UsersListCtrl', ['$scope', 'crudListMethods', '$filter', 'users', function ($scope, crudListMethods, $filter, users) {
+.controller('adminUsersListCtrl', ['$scope', 'crudListMethods', '$filter', 'users', function ($scope, crudListMethods, $filter, users) {
   $scope.users = users;
 
   angular.extend($scope, crudListMethods('/admin/users'));
@@ -75,7 +75,7 @@ angular.module('admin-users', ['services.crud', 'directives.crud', 'directives.g
     });
   };
 }])
-.controller('UsersEditCtrl', ['$scope', '$location', '$filter', 'user', function ($scope, $location, $filter, user) {
+.controller('adminUsersEditCtrl', ['$scope', '$location', '$filter', 'user', function ($scope, $location, $filter, user) {
 
   $scope.user = user;
   $scope.password = user.password;

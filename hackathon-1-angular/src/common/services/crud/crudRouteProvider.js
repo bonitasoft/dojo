@@ -33,7 +33,7 @@
       };
       // Create the controller name for a route to our resource that does the specified operation.
       var controllerName = function(operation) {
-        return resourceName + operation +'Ctrl';
+        return routePrefix + resourceName + operation +'Ctrl';
       };
 
       // This is the object that our `routesFor()` function returns.  It decorates `$routeProvider`,
