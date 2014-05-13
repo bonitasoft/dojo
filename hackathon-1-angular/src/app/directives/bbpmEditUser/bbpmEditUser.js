@@ -1,33 +1,32 @@
 "use strict";
 
-angular.module('bonitasoft.bbpmEditUser', [])
-    .controller('bbpmEditUserCtrl', ['$scope', '$http', function ($scope,$http) {
-        $scope.updateUser= function (user){
-            user.icon="";
-            $http({
-                method:'PUT',
-                url: 'bonita/API/identity/user/'+ user.id,
-                data: user
-            }).success(function() {
-                $scope.message = "Updated!";
-            });
-        }
-    }]).directive('bbpmEditUser', function(){
+angular.module('bonitasoft.bbpmEditUser', ['bonitasoft.bbpmModel'])
+    .controller('bbpmEditUserCtrl', [
+        '$scope', 'userService',
+        function ($scope, userService) {
+            $scope.updateUser = function (user) {
+                user.icon = "";
+                userService.update(user)
+                    .success(function () {
+                        $scope.message = "Updated!";
+                    });
+            }
+        }]).directive('bbpmEditUser', function () {
         return {
             restrict: 'E',
             controller: 'bbpmEditUserCtrl',
             scope: {user: '='},
             templateUrl: 'app/directives/bbpmEditUser/bbpmEditUser-tpl.html'
         };
-    }).directive('equals', function() {
+    }).directive('equals', function () {
         return {
             restrict: 'A', // only activate on element attribute
             require: '?ngModel', // get a hold of NgModelController
-            link: function(scope, elem, attrs, ngModel) {
-                if(!ngModel) return; // do nothing if no ng-model
+            link: function (scope, elem, attrs, ngModel) {
+                if (!ngModel) return; // do nothing if no ng-model
 
                 // watch own value and re-validate on change
-                scope.$watch(attrs.ngModel, function() {
+                scope.$watch(attrs.ngModel, function () {
                     validate();
                 });
 
@@ -36,7 +35,7 @@ angular.module('bonitasoft.bbpmEditUser', [])
                     validate();
                 });
 
-                var validate = function() {
+                var validate = function () {
                     // values
                     var val1 = ngModel.$viewValue;
                     var val2 = attrs.equals;

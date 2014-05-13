@@ -12,20 +12,38 @@ describe('BPM Manager User list', function () {
     }));
 
     describe('directive', function () {
-        it('should call the first le sub user list related to the given Id ', function () {
+        it('should display user managed by user with id 1', function () {
             $httpBackend.whenGET('bonita/API/identity/user?c=10&f=manager_id%3D1&o=lastname+ASC&p=0').respond(
                 [{  "id":"2",
-                    "manager_id":"1",
                     "userName":"daniela.angelo",
                     "lastname":"Angelo",
                     "firstname":"Daniela"
                 }]);
-            $httpBackend.whenGET('bonita/API/identity/user?c=10&f=manager_id%3D2&o=lastname+ASC&p=0').respond({});
             var compiled = $compile('<bbpm-manager-user-list user-id="1"></bbpm-manager-user-list>')($scope);
             $scope.$digest();
             $httpBackend.flush();
 
-            expect(compiled.find('button').length).toBe(1);
+            expect(compiled.find('td').text().trim()).toBe("2daniela.angeloAngeloDaniela");
+        });
+
+        it('should call onSelectUser method when a user is selected', function () {
+            var selected = false;
+            $scope.onSelectUser = function () {
+                selected = true;
+            };
+            $httpBackend.whenGET('bonita/API/identity/user?c=10&f=manager_id%3D1&o=lastname+ASC&p=0').respond(
+                [{  "id":"2",
+                    "userName":"daniela.angelo",
+                    "lastname":"Angelo",
+                    "firstname":"Daniela"
+                }]);
+            var compiled = $compile('<bbpm-manager-user-list user-id="1" on-select-user="onSelectUser"></bbpm-manager-user-list>')($scope);
+            $scope.$digest();
+            $httpBackend.flush();
+
+            compiled.find('tbody').find('tr').triggerHandler('click');
+
+            expect(selected).toBe(true);
         });
     });
 

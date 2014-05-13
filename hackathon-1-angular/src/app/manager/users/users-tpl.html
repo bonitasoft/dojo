@@ -1,15 +1,18 @@
 <div class="container">
-    <table class="table table-striped table-condensed" style="margin:  10px 20px 0 20px">
-        <thead>
-        <tr>
-            <th width="160px"></th>
-            <th></th>
-            <th>ID</th>
-            <th>User Name</th>
-            <th>Last Name</th>
-            <th>First Name</th>
-
-        </tr>
-        </thead>
-    </table>
-<bbpm-manager-user-list user-id='loggedUser.id'></bbpm-manager-user-list>
+    <ol class="breadcrumb">
+        <li ng-repeat="breadCrumb in breadCrumbs">
+            <a ng-href="#/manager/users/{{ breadCrumb.url }}">{{ breadCrumb.name }}</a>
+        </li>
+    </ol>
+    <div class="row">
+        <div class="{{ selectedUser ? 'col-md-8' : 'col-md-12'}}">
+            <bbpm-manager-user-list style="display: flex" user-id='userId'
+                                    on-select-user="updateEditView"></bbpm-manager-user-list>
+        </div>
+        <div class="col-md-4" ng-if="selectedUser">
+            <h3>Edit {{ selectedUser.firstname }} {{ selectedUser.lastname }}</h3>
+            <a ng-if='isManager' ng-href="#{{location.path()}}/{{selectedUser.id}}">I am manager!</a>
+            <bbpm-edit-user style="display: flex" user="selectedUser"></bbpm-edit-user>
+        </div>
+    </div>
+</div>
