@@ -45,13 +45,13 @@ angular.module('team-processes', ['services.crud', 'directives.crud', 'directive
             {name: 'Enabled', filterItems: function (process) {
                 return process.activationState == 'ENABLED' && process.configurationState == 'RESOLVED';
             }},
-            {name: 'Disabled', filterItems: function (user) {
+            {name: 'Disabled', filterItems: function (process) {
                 return process.activationState == 'DISABLED';
             }},
-            {name: 'Resolved', filterItems: function (user) {
+            {name: 'Resolved', filterItems: function (process) {
                 return process.configurationState == 'RESOLVED'
             }},
-            {name: 'UnResolved', filterItems: function (user) {
+            {name: 'UnResolved', filterItems: function (process) {
                 return process.configurationState == 'UNRESOLVED'
             }}
         ];
