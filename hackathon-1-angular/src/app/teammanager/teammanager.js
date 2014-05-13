@@ -7,7 +7,7 @@ angular.module('teammanager', ['directives.gravatar'])
         }
 
         $scope.edit = function(user) {
-            $location.path('/teammanager/users/' + user.id);
+            $location.path('/teammanager/users/' + user.id + '/infos');
         }
     })
     .controller('editUserCtrl', function($scope, Users, $route, $window) {
