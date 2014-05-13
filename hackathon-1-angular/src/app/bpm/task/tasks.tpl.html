@@ -1,13 +1,15 @@
+<h4>Tasks for user {{user.getFullName()}}</h4>
 <table class="table table-bordered table-condensed table-striped table-hover">
     <thead>
     <tr>
         <th>Name</th>
+        <th>Description</th>
     </tr>
     </thead>
     <tbody ng-repeat="task in tasks">
     <tr  ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
-
         <td>{{task.name}}</td>
+        <td>{{task.displayDescription}}</td>
     </tr>
     </tbody>
 </table>
