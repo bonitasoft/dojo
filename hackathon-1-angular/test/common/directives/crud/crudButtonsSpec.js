@@ -12,7 +12,7 @@ describe('CRUD button directive', function () {
 	
 	it('creates an element with all children having btn class', function() {
 		var element = $compile('<crud-buttons></crud-buttons>')($rootScope);
-		
+		console.log(element);
 		 angular.forEach(element.children(), function(child, index){
 			 expect(child.className).toContain('btn');
 	     });
