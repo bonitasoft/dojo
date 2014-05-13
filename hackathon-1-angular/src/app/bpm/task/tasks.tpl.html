@@ -18,7 +18,7 @@
         <td>{{task.displayDescription}}</td>
         <td>
             <a class="btn btn-primary" href="">Do it on behalf</a>
-            <a class="btn" href="">Unassign</a>
+            <a class="btn" ng-click="assign(task)" >{{isAssignedToCurrentUser(task) ? 'Assign' : 'Unassign'}}</a>
         </td>
     </tr>
     </tbody>

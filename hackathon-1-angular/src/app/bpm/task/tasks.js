@@ -11,4 +11,14 @@ angular.module('tasks', ['resources.task'])
         function callback(data) {
             $scope.tasks = data;
         }
+
+        $scope.isAssignedToCurrentUser = function(task) {
+            return task.assigned_id = $scope.user.id;
+        };
+
+        $scope.assign = function(task) {
+          /*task.assign($scope.user);*/
+            task.assigned_id = $scope.user.is;
+            task.$update();
+        };
     });

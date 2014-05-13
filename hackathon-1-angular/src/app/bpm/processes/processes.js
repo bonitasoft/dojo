@@ -33,6 +33,12 @@ angular.module('processes', ['resources.processes', 'resources.users', 'ui.route
                 $scope.processes = data;
             };
 
+            function userCallback(data) {
+                $scope.user =  data;
+            }
+
+            Users.getById($scope.currentUserId, userCallback);
+
             $scope.selectedIndex = -1;
             $scope.details = function(processId, index){
                 console.log("selected :"+index);
