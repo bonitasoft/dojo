@@ -19,8 +19,10 @@ module.exports = function (config) {
         files: [
             'src/assets/angular/angular.js',
             'src/assets/angular/angular-route.js',
+            'src/assets/angular/angular-sanitize.js',
             'src/assets/angular-mocks.js',
             'src/assets/directives/gravatar.js',
+            'src/assets/directives/ui-bootstrap-tpls-0.11.0.min.js',
             'src/app/**/*.js',
             'src/app/**/*.html',
             'test/**/*.js'
