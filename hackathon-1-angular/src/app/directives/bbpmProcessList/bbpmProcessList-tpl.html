@@ -1,12 +1,16 @@
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Name</th>
+            <th>Description</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="process in processes">
             <td>{{ process.displayName }}</td>
+            <td>{{ process.displayDescription }}</td>
+            <td><button class="btn btn-default btn-sm" ng-click="startFor()">Start For</button></td>
         </tr>
     </tbody>
 </table>

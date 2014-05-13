@@ -1,16 +1,21 @@
 "use strict";
 
 angular.module('bonitasoft.bbpmProcessList', [])
-    .controller('bbpmProcessListCtrl', ['$scope', '$http', function ($scope, $http) {
+    .controller('bbpmProcessListCtrl', ['$scope', '$http', 'loggedUser', function ($scope, $http, loggedUser) {
         $http({
             method: 'GET', url: 'bonita/API/bpm/process', params: {
                 p: '0',
                 c: '10',
-                o: 'displayName ASC'
+                o: 'displayName ASC',
+                f: 'team_manager_id=' + loggedUser.id
             }
         }).success(function (processes) {
             $scope.processes = processes;
         });
+
+        $scope.startFor = function() {
+            alert("Ok c'est cool!");
+        }
 
     }]).directive('bbpmProcessList', function () {
         return {

@@ -10,7 +10,6 @@
 
 <body ng-controller="MainCtrl">
 
-<div ng-if="loggedUser.username.length > 0">
 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -24,7 +23,6 @@
         </div>
     </div>
 </nav>
-</div>
 <div ng-view class="container-fluid"></div>
 
 <script src="assets/angular/angular.js"></script>
@@ -40,7 +38,7 @@
 <script src="app/directives/bbpmEditUser/bbpmEditUser.js"></script>
 <script src="app/directives/bbpmProcessList/bbpmProcessList.js"></script>
 
-<script src="common/directives/gravatar.js"></script>
+<script src="assets/directives/gravatar.js"></script>
 
 <!-- Dev only (to mock Not Yet Implemented APIs -->
 <script src="dev.js"></script>
