@@ -23,8 +23,8 @@ angular.module('processes', ['resources.processes', 'resources.users', 'ui.route
             }
         });
     })
-    .controller('ProcessesCtrl', ['$scope', 'Processes', '$location', '$http', '$route', '$state',
-        function ($scope, Processes, $location, $http, $route, $state) {
+    .controller('ProcessesCtrl', ['$scope', 'Processes', '$location', '$http', '$route', 'Users',  '$state',
+        function ($scope, Processes, $location, $http, $route, Users, $state) {
             $scope.currentUserId = $route.current.params.id;
             Processes
                 .query({p:0, user_id : $route.current.params.id, d: 'deployedBy'}, callback);
@@ -39,12 +39,11 @@ angular.module('processes', ['resources.processes', 'resources.users', 'ui.route
                 $scope.selectedIndex = index;
                 $state.go('showDetails', {processId : processId});
             }
-
-            $scope.start = function (process) {
+   	    $scope.start = function (process) {
                 $location.path('/bpm/processes/' + process.id);
-        };
-    }]).controller('StartProcessCtrl', ['$scope', 'Processes', 'Users', '$location', '$http', '$route', '$state',
-        function ($scope, Processes, Users, $location, $http, $route, $state) {
+            };
+	}]).controller('StartProcessCtrl', ['$scope', 'Processes', 'Users', '$location', '$http', '$route',
+        function ($scope, Processes, Users, $location, $http, $route) {
             $scope.processId = $scope.$parent.processes[$scope.$parent.selectedIndex].id;
             $scope.userId = $scope.$parent.currentUserId;
 

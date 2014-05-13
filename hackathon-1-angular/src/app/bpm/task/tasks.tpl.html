@@ -1,5 +1,25 @@
-<div ng-controller="TaskCtrl as controller">
-    <ul ng-repeat="task in controller.tasks">
-        <li>{{task.name}}</li>
-    </ul>
-</div>
+<h4>User {{user.getFullName()}}</h4>
+<ul class="nav nav-tabs">
+    <li><a ng-href="#/teammanager/users/{{user.id}}/infos">User infos</a></li>
+    <li class="active"><a ng-href='#/teammanager/users/{{user.id}}/tasks'>User Tasks</a></li>
+    <li><a ng-href='#/teammanager/users/{{user.id}}/processes'>User Processes</a></li>
+</ul>
+<table class="table table-bordered table-condensed table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="task in tasks">
+    <tr  ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+        <td>{{task.name}}</td>
+        <td>{{task.displayDescription}}</td>
+        <td>
+            <a class="btn btn-primary" href="">Do it on behalf</a>
+            <a class="btn" href="">Unassign</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

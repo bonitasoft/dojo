@@ -5,7 +5,6 @@
         <th>Username</th>
         <th>Last name</th>
         <th>First name</th>
-        <th>Actions</th>
     </tr>
     </thead>
     <tbody ng-repeat="user in users">
@@ -14,10 +13,6 @@
         <td>{{user.userName}}</td>
         <td>{{user.lastname}}</td>
         <td>{{user.firstname}}</td>
-        <td>
-            <a ng-href='#/bpm/processes/{{user.id}}'>Show Startable Processes</a>
-            <a ng-href='#/users/{{user.id}}/task'>Show Tasks</a>
-        </td>
     </tr>
     </tbody>
 </table>
