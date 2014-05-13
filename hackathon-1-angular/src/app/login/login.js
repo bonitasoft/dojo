@@ -13,6 +13,29 @@ angular.module('login', [])
 
     .factory('authenticationService', ['$http', 'loggedUser', function($http, loggedUser) {
         return {
+            getLoggedUser : function() {
+                return loggedUser;
+            },
+
+            populateLoggedUser : function(cb, errcb) {
+                $http({
+                    method: 'GET',
+                    url: 'bonita/API/system/session/unusedid'
+                }).success(function(data){
+                    loggedUser.username = data.user_name;
+                    loggedUser.userid = data.user_id;
+                    console.log("login.js.success. LoggedUser:");
+                    console.log(loggedUser);
+                    cb(loggedUser);
+                }).error(function(data) {
+                    loggedUser.username = '';
+                    loggedUser.userid = '';
+                    console.log("login.js.success.error. LoggedUser:");
+                    console.log(loggedUser);
+                    errcb(data);
+                });
+            },
+
             login : function(username, password) {
                 console.log("LoggedUser dans la méthode login");
                 console.log(loggedUser);
@@ -28,23 +51,7 @@ angular.module('login', [])
                     },
                     data: {username: username, password: password, redirect: 'false'}
                 } )
-                    .success(function(data, status, headers, config) {
-                        $http({
-                            method: 'GET',
-                            url: 'bonita/API/system/session/unusedid'
-                        }).success(function(data){
-                            loggedUser.username = data.user_name;
-                            loggedUser.userid = data.user_id;
-                            console.log("login.js.success. LoggedUser:");
-                            console.log(loggedUser);
-                        }).error(function() {
-                            loggedUser.username = '';
-                            loggedUser.userid = '';
-                            console.log("login.js.success.error. LoggedUser:");
-                            console.log(loggedUser);
-                        });
-                    }
-                );
+                    .success(populateLoggedUser);
 
             },
 
