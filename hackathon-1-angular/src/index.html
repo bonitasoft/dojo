@@ -17,7 +17,7 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#/manager/users">Users</a></li>
+                <li class="active"><a ng-href="#/manager/users/{{loggedUser.id}}">Users</a></li>
                 <li><a href="#/manager/processes">Processes</a> </li>
             </ul>
         </div>
@@ -37,6 +37,8 @@
 <script src="app/directives/bbpmManagerUserList/bbpmManagerUserList.js"></script>
 <script src="app/directives/bbpmEditUser/bbpmEditUser.js"></script>
 <script src="app/directives/bbpmProcessList/bbpmProcessList.js"></script>
+
+<script src="app/services/bbpmModel.js"></script>
 
 <script src="assets/directives/gravatar.js"></script>
 
