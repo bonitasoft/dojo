@@ -4,8 +4,7 @@ angular.module('bonitasoft.manager.processes', [
     'bonitasoft.bbpmManagerUserList',
     'bonitasoft.bbpmEditUser',
     'bonitasoft.bbpmProcessList',
-    'bonitasoft.bbpmStartFor',
-    'bonitasoft.manager.processes.startfor'])
+    'bonitasoft.bbpmStartFor'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when("/manager/processes", {
@@ -15,7 +14,7 @@ angular.module('bonitasoft.manager.processes', [
     }])
 
     .controller('processesCtrl', ['$scope', function ($scope) {
-        $scope.selectProcess = function (process) {
+        $scope.startProcess = function (process) {
             $scope.selectedProcess = process;
         }
     }]);

@@ -1,11 +1,3 @@
 <div class="container">
-    <div class="row">
-        <div class="{{ selectedProcess ? 'col-md-8' : 'col-md-12'}}">
-            <bbpm-process-list style="display: flex" on-select-process="selectProcess"></bbpm-process-list>
-        </div>
-        <div ng-if="selectedProcess" class="col-md-4">
-            <p>{{ selectedProcess || json }}</p>
-        </div>
-    </div>
-
+    <bbpm-process-list on-start-for="startProcess"></bbpm-process-list>
 </div>
