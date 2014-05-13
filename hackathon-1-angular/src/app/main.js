@@ -8,6 +8,9 @@ angular.module('BonitaBPM6Portal', ['ngRoute','admin', 'BonitaBPM6Portal.version
 
     .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
         $routeProvider.when("/login", {templateUrl: 'app/login/login-tpl.html'});
+        $routeProvider.when('/tm/startprocess', {
+            templateUrl: 'app/tm/startprocess/startprocess-tpl.html',
+            controller: 'tmStartprocessCtrl'});
         $routeProvider.otherwise({redirectTo:'/admin/users'});
     }])
 

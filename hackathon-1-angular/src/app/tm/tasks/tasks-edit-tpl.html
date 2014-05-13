@@ -1,0 +1,33 @@
+<ul class="nav nav-tabs" ng-controller="tabsCtrl" ng-include="'app/tm/tm-user-tpl.html'"></ul>
+
+<table class="table table-bordered table-condensed table-striped table-hover">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Process Name</th>
+        <th>Assigned</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="task in tasks">
+    <tr ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+
+        <td><img src="assets/images/logoBonita.png"></td>
+        <td>{{task.displayName}}</td>
+        <td>{{task.rootContainerId.displayName}}</td>
+        <!--<td>{{task.assignedId}}</td>-->
+        <td ng-switch on="task.assigned_id">
+        	<div ng-switch-when="">False</div>
+        	<div ng-switch-default>True</div>
+        </td>
+        <td ng-switch on="task.assigned_id">
+            <button ng-switch-when="" class="btn disabled" ng-click="unassign(task, $index, $event)">Unassign</button>
+            <button ng-switch-default class="btn btn-primary" ng-click="unassign(task, $index, $event)">Unassign</button>
+        </td>
+        <td ng-if="task.assigned_id">
+
+        </td>
+    </tr>
+    </tbody>
+</table>

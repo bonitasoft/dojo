@@ -6,15 +6,18 @@ angular.module('tm-processes', ['services.crud', 'directives.crud', 'resources.p
                 processes: ['Processes', 'loggedUser', function (Processes, loggedUser) {
                     return Processes.query({p:0,c:10000,o:'displayName ASC',f:'team_manager_id=' + loggedUser.id});
                 }]
+            })
+            .whenEdit({
+                processes: ['$route', 'Processes', function ($route, Processes) {
+                    return Processes.query({p: 0, c: 10000, o: 'displayName ASC', f: 'user_id=' + $route.current.params.itemId});
+                }]
             });
     }])
-    .controller('tmProcessesListCtrl', ['$scope', 'crudListMethods', '$filter', 'processes', 'loggedUser', '$location', function ($scope, crudListMethods, $filter, processes, loggedUser, $location) {
+    .controller('tmProcessesListCtrl', ['$scope', 'processes', '$location', function ($scope, processes, $location) {
         $scope.processes = processes;
-
-        angular.extend($scope, crudListMethods('/tm/processes'));
-
-        $scope.go = function (path, processName, processVersion, processId) {
-            window.alert('go to ' + path + '?processName=' + processName + '&processVersion=' + processVersion + '&processId' + processId);
-            $location.path(path + '?processName=' + processName + '&processVersion=' + processVersion + '&processId' + processId);
-        }
-    }]);
+    }])
+    .controller('tmProcessesEditCtrl', ['$scope', '$route', 'processes', '$location', function ($scope, $route, processes, $location) {
+        $scope.processes = processes;
+        $scope.currentUserId = $route.current.params.itemId;
+    }])
+;
