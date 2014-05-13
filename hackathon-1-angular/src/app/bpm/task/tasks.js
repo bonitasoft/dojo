@@ -19,7 +19,7 @@ angular.module('tasks', ['resources.task', 'ui.router'])
             views: {
                 "taskquickdetails": {
                     templateUrl: "app/bpm/task/task-do.tpl.html",
-                    controller:'StartProcessCtrl'
+                    controller:'StartTaskCtrl'
                 }
 
             }
@@ -62,7 +62,7 @@ angular.module('tasks', ['resources.task', 'ui.router'])
         };
 
         $scope.doItOnBehalf = function(task) {
-            $scope.src = '/bonita/portal/homepage?ui=form&locale=fr#form=Buy+a+mini+extended--6.2--Model+choice$entry&task='+ task.id +'&mode=form&assignTask=true';
+
             $state.go('showTaskDetails');
         };
 
@@ -71,4 +71,7 @@ angular.module('tasks', ['resources.task', 'ui.router'])
             $scope.selectedIndex = index;
             $state.go('showTaskDetails');
         };
+    })
+    .controller('StartTaskCtrl', function($scope, Tasks, $route, Users, $state) {
+        $scope.src = '/bonita/portal/homepage?ui=form&locale=fr#form=Buy+a+mini+extended--6.2--Model+choice$entry&task='+ $scope.$parent.tasks[$scope.$parent.selectedIndex].id +'&mode=form&userId='+$scope.$parent.currentUserId;
     });

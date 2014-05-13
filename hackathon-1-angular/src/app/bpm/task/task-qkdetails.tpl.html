@@ -1,9 +1,7 @@
 <div class="row-fluid">
     <div class="hero-unit">
-        <!--<a ui-sref="startFor({ processId: process.id, userId : currentUserId})" class="btn btn-primary pull-right">Start
-            For</a>-->
         <div class="btn-group pull-right">
-            <a class="btn btn-primary" ng-click="doItOnBehalf(task)">Do it on behalf</a>
+            <a class="btn btn-primary" ui-sref="startTaskFor({ taskId: task.id, userId : currentUserId})">Do it on behalf</a>
             <a class="btn" ng-click="assign(task)" ng-show="!isAssignedToCurrentUser(task)">Assign</a>
             <a class="btn" ng-click="unAssign(task)" ng-show="isAssignedToCurrentUser(task)">Unassign</a>
         </div>
