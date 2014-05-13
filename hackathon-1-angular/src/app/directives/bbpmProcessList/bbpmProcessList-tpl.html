@@ -1,20 +1,22 @@
 <div class="container">
-<table class="table table-striped table-condensed" style="margin: 20px">
-    <thead>
+    <table class="table table-striped table-condensed" style="margin: 20px">
+        <thead>
         <tr>
             <th>#</th>
             <th>Name</th>
             <th>Description</th>
             <th></th>
         </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="process in processes">
+        </thead>
+        <tbody>
+        <tr ng-repeat="process in processes" ng-click="onSelectProcess(process)">
             <td>{{ process.id }}</td>
             <td>{{ process.displayName }}</td>
             <td>{{ process.displayDescription }}</td>
-            <td><button class="btn btn-default btn-sm" ng-click="startFor()">Start For</button></td>
+            <td>
+                <button class="btn btn-default btn-sm" ng-click="startFor()">Start For</button>
+            </td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 </div>

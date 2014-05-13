@@ -13,7 +13,7 @@ angular.module('bonitasoft.bbpmProcessList', [])
             $scope.processes = processes;
         });
 
-        $scope.startFor = function() {
+        $scope.startFor = function () {
             ;
         }
 
@@ -21,7 +21,10 @@ angular.module('bonitasoft.bbpmProcessList', [])
         return {
             restrict: 'E',
             controller: 'bbpmProcessListCtrl',
-            scope: { profile: '=?' },
+            scope: {
+                profile: '=?',
+                onSelectProcess: '=?'
+            },
             templateUrl: 'app/directives/bbpmProcessList/bbpmProcessList-tpl.html'
         };
     });
