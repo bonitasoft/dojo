@@ -1,0 +1,16 @@
+<div class="row-fluid">
+    <div class="hero-unit">
+        <!--<a ui-sref="startFor({ processId: process.id, userId : currentUserId})" class="btn btn-primary pull-right">Start
+            For</a>-->
+        <div class="btn-group pull-right">
+            <a class="btn btn-primary" ng-click="doItOnBehalf(task)">Do it on behalf</a>
+            <a class="btn" ng-click="assign(task)" ng-show="!isAssignedToCurrentUser(task)">Assign</a>
+            <a class="btn" ng-click="unAssign(task)" ng-show="isAssignedToCurrentUser(task)">Unassign</a>
+        </div>
+
+        <div class="row"><strong class="span2">Name</strong><span class="span6">{{task.name}}</span><br/></div>
+        <div class="row"><strong class="span2">Description</strong><span class="span6">{{task.displayDescription}}</span><br/></div>
+        <div class="row"><strong class="span2">Priority</strong><span class="span6">{{task.priority}}</span><br/></div>
+        <div class="row"><strong class="span2">Due Date</strong><span class="span6">{{task.dueDate}}</span><br/></div>
+    </div>
+</div>

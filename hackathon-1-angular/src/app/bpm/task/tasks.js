@@ -2,6 +2,7 @@ angular.module('tasks', ['resources.task', 'ui.router'])
     .config(function($stateProvider){
 
         $stateProvider.state('showTaskDetails', {
+            parent : 'showTasks',
             views: {
                 "taskquickdetails": {
                     templateUrl: "app/bpm/task/task-qkdetails.tpl.html",
@@ -14,6 +15,7 @@ angular.module('tasks', ['resources.task', 'ui.router'])
             }
         });
         $stateProvider.state('startTaskFor', {
+            parent : 'showTasks',
             views: {
                 "taskquickdetails": {
                     templateUrl: "app/bpm/task/task-do.tpl.html",
@@ -24,23 +26,27 @@ angular.module('tasks', ['resources.task', 'ui.router'])
         });
     })
     .controller('TaskCtrl', function($scope, Tasks, $route, Users, $state) {
-        Tasks.query({f: ['state=ready', "user_id="+$route.current.params.userId]}, callback);
+        $scope.currentUserId = $scope.$parent.user.id;
+        Tasks.query({f: ['state=ready', "user_id="+$scope.currentUserId]}, callback);
 
         function userCallback(data) {
             $scope.user =  data;
         }
 
-        $scope.currentUserId = $route.current.params.userId;
-
-        Users.getById($scope.$parent.user.id, userCallback);
 
 
+        Users.getById($scope.currentUserId, userCallback);
 
 
 
+
+        $scope.selectedIndex = -1;
         function callback(data) {
             $scope.tasks = data;
-
+            if ($scope.tasks.length > 0) {
+                $scope.selectedIndex = 0;
+                $state.go('showTaskDetails');
+            }
         }
 
         $scope.isAssignedToCurrentUser = function(task) {
@@ -59,7 +65,7 @@ angular.module('tasks', ['resources.task', 'ui.router'])
             $scope.src = '/bonita/portal/homepage?ui=form&locale=fr#form=Buy+a+mini+extended--6.2--Model+choice$entry&task='+ task.id +'&mode=form&assignTask=true';
         };
 
-        $scope.selectedIndex = -1;
+
         $scope.details = function(task, index) {
             $scope.selectedIndex = index;
             $state.go('showTaskDetails');

@@ -5,18 +5,13 @@
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th></th>
             </tr>
             </thead>
             <tbody ng-repeat="task in tasks">
-            <tr ng-click="details(task, $index)" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+            <tr ng-click="details(task, $index)" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'"
+                ng-class="{ success: $index == selectedIndex }">
                 <td>{{task.name}}</td>
                 <td>{{task.displayDescription}}</td>
-                <td>
-                    <a class="btn btn-primary" ng-click="doItOnBehalf(task)">Do it on behalf</a>
-                    <a class="btn" ng-click="assign(task)" ng-show="!isAssignedToCurrentUser(task)">Assign</a>
-                    <a class="btn" ng-click="unAssign(task)" ng-show="isAssignedToCurrentUser(task)">Unassign</a>
-                </td>
             </tr>
             </tbody>
         </table>
