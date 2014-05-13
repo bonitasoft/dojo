@@ -26,7 +26,30 @@ angular.module('teammanager', ['directives.gravatar', 'ui.router', 'processes'])
                 }
 
             }
-        })
+        });
+        $stateProvider.state('showDetails', {
+            parent : 'showProcesses',
+            views: {
+                "quickdetails": {
+                    templateUrl: "app/bpm/processes/process-qkdetails.tpl.html",
+                    controller: function($scope){
+                        $scope.process = $scope.$parent.processes[$scope.$parent.selectedIndex];
+                        $scope.currentUserId = $scope.$parent.currentUserId;
+                    }
+                }
+
+            }
+        });
+        $stateProvider.state('startFor', {
+            parent : 'showProcesses',
+            views: {
+                "quickdetails": {
+                    templateUrl: "app/bpm/processes/start-process-tpl.html",
+                    controller:'StartProcessCtrl'
+                }
+
+            }
+        });
     }).controller('userCtrl', function($scope, Users, $route, $state) {
         $scope.selectedIndex = 0;
         $scope.changeTab = function(index){

@@ -1,8 +1,13 @@
-<div class="btn-actions"><span alt="Actions to perform on current Process">Actions</span>
-    <a ui-sref="startFor({ processId: process.id, userId : currentUserId})" class="btn">Start For</a></div>
-<div class="details">
-    <div><label>Name</label><span>{{process.name}}</span><br/></div>
-    <div><label>Version</label><span>{{process.version}}</span><br/></div>
-    <div><label>Deployed On</label><span>{{process.deploymentDate}}</span><br/></div>
-    <div><label>Deployed By</label><span>{{process.deployedBy.firstname}} {{process.deployedBy.lastname}}</span><br/></div>
-</div>
+<div class="row-fluid">
+    <div class="hero-unit">
+        <a ui-sref="startFor({ processId: process.id, userId : currentUserId})" class="btn btn-primary pull-right">Start
+            For</a>
+
+        <div class="row"><strong class="span2">Name</strong><span class="span8">{{process.name}}</span><br/></div>
+        <div class="row"><strong class="span2">Version</strong><span class="span8">{{process.version}}</span><br/></div>
+        <div class="row"><strong class="span2">Deployed On</strong><span class="span8">{{process.deploymentDate}}</span><br/>
+        </div>
+        <div class="row"><strong class="span2">Deployed By</strong><span class="span8">{{process.deployedBy.firstname}} {{process.deployedBy.lastname}}</span>
+        </div>
+    </div>
+    </di</div>

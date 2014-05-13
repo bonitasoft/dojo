@@ -11,9 +11,12 @@
         <td>{{task.name}}</td>
         <td>{{task.displayDescription}}</td>
         <td>
-            <a class="btn btn-primary" href="">Do it on behalf</a>
-            <a class="btn" href="">Unassign</a>
+            <a class="btn btn-primary" ng-click="doItOnBehalf(task)">Do it on behalf</a>
+            <a class="btn" ng-click="assign(task)" ng-show="!isAssignedToCurrentUser(task)" >Assign</a>
+            <a class="btn" ng-click="unAssign(task)" ng-show="isAssignedToCurrentUser(task)" >Unassign</a>
         </td>
     </tr>
     </tbody>
 </table>
+<!--<iframe id="bonitaframe" ng-src="{{src}}" class="whole-page"></iframe>-->
+<start-process class="whole-page"></start-process>
