@@ -1,9 +1,10 @@
-<table class="table table-bordered table-condensed  table-hover">
-    <tr ng-repeat="user in users" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
-        <td ng-controller="bbpmManagerUserList.RowCtrl">
-            <div class="row" ng-click="toggleCollapse()">
+<div class="container">
+<table class="table table-hover table-condensed" style="margin: 20px">
+   <tr ng-repeat="user in users" ng-class-even="'light-gray'" ng-class-odd="'dark-gray'">
+        <td  ng-controller="bbpmManagerUserList.RowCtrl">
+            <div class="row" ng-click="isManager && toggleCollapse()">
                 <div class="col-md-2">
-                    <button type="button" class="btn" ng-click="toggleCollapse()">{{collapse === true ? "+" : "-"}}</button>
+                    <button  ng-show="isManager" type="button" class="btn btn-sm" ng-click="toggleCollapse()">{{collapse === true ? "+" : "-"}}</button>
                 </div>
                 <div class="col-md-2">
                     <gravatar email="user.userName" size="30" default-image="'monsterid'"></gravatar>
@@ -14,8 +15,9 @@
                 <div class="col-md-2">{{user.firstname}}</div>
             </div>
             <div ng-hide="collapse">
-                <bbpm-manager-user-list user-id="user.id"></bbpm-manager-user-list>
+                <bbpm-manager-user-list user-id="user.id" on-load="hasSubordinate"></bbpm-manager-user-list>
             </div>
         </td>
     </tr>
 </table>
+</div>

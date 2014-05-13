@@ -43,8 +43,12 @@ angular.module('bonitasoft.bbpmManagerUserList', [])
     }])
     .controller('bbpmManagerUserList.RowCtrl', ['$scope', function ($scope) {
         $scope.collapse = true;
+        $scope.isManager = true;
         $scope.toggleCollapse = function () {
             $scope.collapse = !$scope.collapse;
+        };
+        $scope.hasSubordinate = function (users) {
+            $scope.isManager = users.length > 0;
         }
     }])
     .controller('bbpmManagerUserListCtrl', ['$scope', '$http', 'loggedUser', function ($scope, $http, loggedUser) {
@@ -55,18 +59,21 @@ angular.module('bonitasoft.bbpmManagerUserList', [])
                 o: 'lastname ASC',
                 f: 'manager_id=' + $scope.userId
             }
-        }).success(function (data) {
-            $scope.users = data;
+        }).success(function(users){
+            $scope.users = users;
+            if($scope.onLoad !== undefined) {
+                 $scope.onLoad(users);
+            }
         });
-        $scope.edit = function () {
-
-        }
 
     }]).directive('bbpmManagerUserList', function (RecursionHelper) {
         return {
             restrict: 'E',
             controller: 'bbpmManagerUserListCtrl',
-            scope: {userId: '='},
+            scope: {
+                userId: '=',
+                onLoad: '=?'
+            },
             templateUrl: 'app/directives/bbpmManagerUserList/bbpmManagerUserList-tpl.html',
             compile: function (element) {
                 // Use the compile function from the RecursionHelper,
