@@ -18,8 +18,20 @@ angular.module('login', []).controller('LoginCtrl',['$scope', '$http','$location
             },
             data: {username: username, password: password, redirect: 'false'}
         }).success(function(data, status, headers, config) {
-           loggedUser.username = username;
-            $location.path('/team/users');
+            loggedUser=data;
+            loggedUser.username = data.username;
+            $http({
+                method: 'GET',
+                url: 'bonita/API/identity/user/'+data.user_id
+            }).success(function(userData){
+                loggedUser.userData=userData;
+                loggedUser.display_name=userData.firstname+' '+userData.lastname;
+                $location.path('/team/users');
+            })
+
+
+
+
         });
     };
 }]);

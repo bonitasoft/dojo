@@ -13,6 +13,7 @@
             <th>Actor Mapping</th>
             <th>State</th>
             <th>Description</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody ng-repeat="process in processes | filter:isProcessVisible" >
@@ -24,6 +25,9 @@
             <td>{{process.configurationState}}</td>
             <td>{{process.activationState}}</td>
             <td>{{process.description}}</td>
+            <td><a class="btn" ng-show="isProcessEnabled(process)" ng-href="#/team/processes/{{process.id}}">Start</a>
+                <!--<button class="btn" ng-show="isProcessEnabled(process)" ng-click="startProcess(process)">Start</button>-->
+            </td>
         </tr>
         </tbody>
     </table>

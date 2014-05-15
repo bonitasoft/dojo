@@ -25,12 +25,12 @@ angular.module('team-processes', ['services.crud', 'directives.crud', 'directive
                 }]
 
             })
-            /*.whenNew({
-             user: ['Users', function(Users) { return new Users(); }]
-             })*/
+
             .whenEdit({
                 process: ['$route', 'Processes', function ($route, Processes) {
-                    return Processes.getById($route.current.params.itemId);
+                    var process= Processes.getById($route.current.params.itemId);
+                   console.log(process);
+                    return process;
                 }]
             })
         ;
@@ -62,6 +62,14 @@ angular.module('team-processes', ['services.crud', 'directives.crud', 'directive
             }}
         ];
 
+        $scope.isProcessEnabled= function(process)
+        {
+            return process.activationState == 'ENABLED' && process.configurationState == 'RESOLVED';
+        }
+
+
+
+
         $scope.displayProcesses = $scope.displayProcessPossibleStatus[0];
 
         $scope.isProcessVisible = function (item) {
@@ -70,5 +78,34 @@ angular.module('team-processes', ['services.crud', 'directives.crud', 'directive
 
     }])
 
+    .controller('team.ProcessesEditCtrl', ['$scope', '$location', '$filter', 'process', function ($scope, $location, $filter, process) {
+
+        console.log (process);
+
+        $scope.process = process;
+
+        $scope.cancelEdit = function() {
+            $location.path('/team/processes/');
+        };
+
+        $scope.getUrl=function(){
+            var url= 'bonita/portal/homepage?ui=form&locale=en#form='+$scope.process.displayName+'--'+$scope.process.version+'}}$entry&process='+$scope.process.id+'&autoInstantiate=false&mode=form&userId='+$scope.loggedUser.user_id;
+            console.log(url);
+            return url;
+        }
+
+        $scope.onSave = function (user) {
+            $location.path('/admin/users');
+        };
+
+        $scope.onError = function() {
+            console.log("Unable to save user!");
+        };
+
+        $scope.onRemove = function(user) {
+            $location.path('/admin/users');
+        };
+
+    }])
 
 ;
