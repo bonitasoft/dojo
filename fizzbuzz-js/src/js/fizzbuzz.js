@@ -1,36 +1,31 @@
 var fizzbuzzer = function () {
+	var FIZZ = 3;
+	var BUZZ = 7;
 
-    var FIZZ = 3;
-    var BUZZ = 7
+	function divisible(number, divisor) {
+		return number % divisor == 0;
+	}
 
-    function should(fizzOrBuzz, number) {
-        return (contains(number, fizzOrBuzz.toString()) || isMultipleOf(number, fizzOrBuzz))
-    };
+	function contains(number, str) {
+		return ("" + number).indexOf(str) > -1;
+	}
 
-    function contains(number, contained) {
-        return number.toString().indexOf(contained) >= 0;
-    }
+	return {
+         fizzbuzz: function (number) {
+         	var result = "";
+         	if (contains(number, "3") || divisible(number, FIZZ)) {
+         		result += "FIZZ"; 
+         	} 
 
-    function isMultipleOf(number, diviser) {
-        return number % diviser == 0;
-    }
+         	if (contains(number, "7") || divisible(number, BUZZ)) {
+         		result += "BUZZ";
+         	}
 
-    return {
-
-        fizzbuzz: function (number) {
-
-            if (should(FIZZ, number) && should(BUZZ, number)) {
-                return "FizzBuzz"
-            }
-
-            if (should(FIZZ, number)) {
-                return 'Fizz';
-            }
-
-            if (should(BUZZ, number)) {
-                return 'Buzz';
-            }
-            return number.toString();
-        }
+         	if (result == "") {
+         		return number;
+         	} else {
+         		return result;
+         	}
+         }	
     }
 }();
