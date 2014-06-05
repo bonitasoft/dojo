@@ -1,13 +1,19 @@
-var bonitasoft = {};
+var bonitasoft = (function(module) {
 
+    var isFizz = function(number) {
+        return ("" + number).indexOf("3") > 0 || number % 3 === 0;
+    };
 
-bonitasoft.fizzbuzz = function(number) {
-    var result = "" + number;
-    if(result.indexOf("3") > 0) {
-        result = "fizz";
-    }
-    if (number % 3 === 0) {
-        result = "fizz";
-    }
-    return result;
-};
+    module.fizzbuzz = function(number) {
+        if(isFizz(number)) {
+            return "fizz";
+        }
+        if(("" + number).indexOf("7") > 0) {
+            return "buzz";
+        }
+        return "" + number;
+    };
+
+    return module;
+
+})(bonitasoft || {});

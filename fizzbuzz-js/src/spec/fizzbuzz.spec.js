@@ -15,5 +15,9 @@
         it('should return fizz when number is multiple of 3', function () {
             expect(bonitasoft.fizzbuzz(6)).toBe("fizz");
         });
+
+        it('should return fizz when number contains 7', function () {
+            expect(bonitasoft.fizzbuzz(370)).toBe("buzz");
+        });
     });
 })();
