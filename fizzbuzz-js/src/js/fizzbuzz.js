@@ -1,29 +1,6 @@
-var bonitasoft = (function(module) {
-
-    function contains(number, marker) {
-        return ("" + number).indexOf(marker) > 0;
-    }
-
-    var isFizz = function(number) {
-        return contains(number, 3) || number % 3 === 0;
+var fizzbuzz = function(number) {
+    var test = function(text, marker, number) {
+        return ("" + number).indexOf(marker) > 0 || number % marker === 0 ? text : "";
     };
-
-    var isBuzz = function(number) {
-        return contains(number, 7) || number % 7 === 0;
-    };
-
-
-    module.fizzbuzz = function(number) {
-        if(isFizz(number)) {
-            return "fizz";
-        }
-        if(isBuzz(number)) {
-            return "buzz";
-        }
-
-        return "" + number;
-    };
-
-    return module;
-
-})(bonitasoft || {});
+    return test("fizz", 3, number) + test("buzz", 7, number) || "" + number;
+};
