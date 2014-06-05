@@ -6,5 +6,8 @@ bonitasoft.fizzbuzz = function(number) {
     if(result.indexOf("3") > 0) {
         result = "fizz";
     }
+    if (number % 3 === 0) {
+        result = "fizz";
+    }
     return result;
 };
