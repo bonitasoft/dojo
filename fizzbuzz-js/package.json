@@ -1,0 +1,22 @@
+{
+  "name": "FizzBuzz",
+  "version": "0.0.0",
+  "description": "FizzBuzz coding dojo",
+  "main": "karma.conf.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-jasmine": "^0.1.5",
+    "karma": "^0.12.16"
+  },
+  "devDependencies": {
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
+  "author": "",
+  "license": "ISC"
+}
