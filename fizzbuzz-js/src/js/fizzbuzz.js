@@ -1,5 +1,14 @@
-
-# function(int number) => "fizz / buzz / fizzbuzz / number
+// function(int number) => "fizz / buzz / fizzbuzz / number
 function fizzbuzz(number) {
-	return number + "1"
+	
+	var FIZZ = 'fizz'
+	var BUZZ = 'buzz'
+	
+	if (number % 3 == 0) {
+		return FIZZ;
+	}
+	if (number % 7 == 0) {
+		return BUZZ;
+	}
+	return "" + number;
 }
