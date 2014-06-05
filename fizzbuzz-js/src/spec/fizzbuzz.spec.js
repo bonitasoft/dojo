@@ -16,8 +16,12 @@
             expect(bonitasoft.fizzbuzz(6)).toBe("fizz");
         });
 
-        it('should return fizz when number contains 7', function () {
+        it('should return buzz when number contains 7', function () {
             expect(bonitasoft.fizzbuzz(370)).toBe("buzz");
+        });
+
+        it('should return buzz when number is multiple of 7', function () {
+            expect(bonitasoft.fizzbuzz(14)).toBe("buzz");
         });
     });
 })();
