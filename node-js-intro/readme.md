@@ -7,7 +7,12 @@ What do you need.
  - chai
  - cowsay
 
+> npm init
+
 # First things first. Test!
+
+## Install karma
+> npm install karma
 
 ## Setup karma
 > node_modules/karma/bin/karma init
