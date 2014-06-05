@@ -2,36 +2,41 @@
 'use strict';
 
 (function () {
-    describe('Fizzbuzzer', function () {
+    describe('Give it some context', function () {
 
-        it('should return the given number in string', function () {
-            var number = fizzbuzzer.fizzbuzz(4);
+        describe('maybe a bit more context here', function () {
 
-            expect(number).toBe('4');
+            var foo;
+
+            beforeEach(function() {
+                foo = 1;
+            });
+
+            it('should run here few assertions', function () {
+                expect(foo).toEqual(1);
+            });
+
+            it('should fail', function () {
+                expect(4).toBeGreaterThan(5);
+            });
+
+            it('should pass', function () {
+                expect(true).toBe(true);
+            });
+
+            it('should pass', function () {
+                expect(true).toBe(true);
+            });
+
+            xit('should be ignored', function () {
+                expect(true).toBe(false);
+            });
         });
 
-       it('should return Fizz when the given number contains a 3', function () {
-            var number = fizzbuzzer.fizzbuzz(123);
-
-            expect(number).toBe('Fizz');
-        });
-
-        it('should return Fizz when the given number is a multiple of 3', function () {
-            var number = fizzbuzzer.fizzbuzz(12);
-
-            expect(number).toBe('Fizz');
-        });
-
-        it('should return Buzz when the given number contains a 7', function () {
-            var number = fizzbuzzer.fizzbuzz(778);
-
-            expect(number).toBe('Buzz');
-        });
-
-        it('should return FizzBuzz when the given number is Fizz and Buzz', function () {
-            var number = fizzbuzzer.fizzbuzz(37);
-
-            expect(number).toBe('FizzBuzz');
+        xdescribe('again some other context but ignored', function () {
+            it('should be ignored', function () {
+                expect(true).not.toBe(true);
+            });
         });
     });
 })();
