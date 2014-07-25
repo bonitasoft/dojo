@@ -16,12 +16,14 @@ What do you need.
 
 ## Setup karma
 > node_modules/karma/bin/karma init
+
 Files patterns:
  - src/js/**/*.js
  - src/test/**/*.js
 
 ## Install chai.js
-> npm install karma-chai --save-dev
+> npm install karma-chai karma-jasmine --save-dev
+
 Have a look at node_modules & check out devDependencies in package.json
 
 Update karma.conf.js to make chai avalaible for our tests.
@@ -30,7 +32,13 @@ frameworks: ['jasmine', 'chai'],
 ## Start karma
 > node_modules/karma/bin/karma start karma.conf.js
 
-Everything seems to look good!
+Ouch, Missing Chrome stuff??
+
+> npm search karma chrome
+
+ok, let's add it
+
+> npm install karma-chrome-launcher --save-dev
 
 # Let's play with the script.
 
