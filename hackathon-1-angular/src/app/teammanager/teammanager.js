@@ -24,7 +24,6 @@ angular.module('teammanager', ['directives.gravatar', 'ui.router', 'processes'])
                     templateUrl: "app/bpm/task/tasks.tpl.html",
                     controller: 'TaskCtrl'
                 }
-
             }
         });
         $stateProvider.state('showDetails', {

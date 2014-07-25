@@ -1,3 +1,5 @@
+'use strict';
+
 describe('teammanager-users-list', function() {
 
     beforeEach(module('teammanager', 'resources.users'));
