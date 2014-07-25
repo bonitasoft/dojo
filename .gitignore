@@ -1,2 +1,6 @@
 hackathon-1-angular/.idea
+**/.classpath
+**/.project
+**/.settings
+**/target/
 .idea/**
