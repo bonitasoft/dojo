@@ -20,3 +20,5 @@ Inspired by [The pragmatic programmer](http://www.amazon.fr/The-Pragmatic-Progra
 * A message end with a ```E``` tag
 * A message should have zero or more line of comment before it start. Comment is represented by a ```#``` tag
 * A message should have one or more fields represented by the ```F``` tag. Fields have a name and a type. Supported types are ```integer``` and ```text```
+
+# some comment by Manu
