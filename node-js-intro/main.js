@@ -3,6 +3,6 @@ var cowsay = require('cowsay'),
 
 console.log(cowsay.say({
     text : greet("to Node!"),
-    e : "oO",
-    T : "U "
+    e : "T T",
+    T : ""
 }));
