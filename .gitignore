@@ -4,3 +4,4 @@ hackathon-1-angular/.idea
 **/.settings
 **/target/
 .idea/**
+**/node_modules/

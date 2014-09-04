@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Where to begin</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="assets/normalize-css/normalize.css"/>
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="assets/highlightjs/styles/tomorrow.css"/>
+    <link rel="stylesheet" href="assets/ruban/css/ruban.min.css"/>
+    <link rel="stylesheet" href="assets/ruban/css/ruban-print.min.css" media="print"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<section>
+    <h1>Javascript - Where to begin...</h1>
+</section>
+
+<section>
+    <h1>Literals</h1>
+    <ul>
+        <li><strong>Number</strong> 3.14 10001 123e5</li>
+        <li><strong>String</strong> "bonita" 'bonita'</li>
+        <li><strong>Array</strong> [1,2,3]</li>
+        <li><strong>Object</strong> { name: "bonita" }</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Variables</h1>
+    <pre>
+        <code class="javascript">
+            var x, length;
+            x = 5;
+            length = “test”;
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Operators</h1>
+    <ul>
+        <li><strong>arithmetic</strong> + - * / % ++ --</li>
+        <li><strong>boolean</strong> == === != !== < > >= <=</li>
+        <li><strong>assignment</strong> = += -= *= /= %=</li>
+        <li><strong>bitwise</strong> - & | ~ ^ << >></li>
+        <li><strong>unary</strong> +</li>
+        <li><strong>other</strong> delete typeof</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Functions</h1>
+    <pre>
+        <code>
+        function myFunction(a, b) {
+            return a * b; // returns the product of a and b
+        }
+        </code>
+    </pre>
+</section>
+
+<script src="assets/jquery/jquery.min.js"></script>
+<script src="assets/keymaster/keymaster.js"></script>
+<script src="assets/hammerjs/hammer.min.js"></script>
+<script src="assets/highlightjs/highlight.pack.js"></script>
+<script src="assets/ruban/js/ruban.min.js"></script>
+<script>
+    new Ruban();
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
