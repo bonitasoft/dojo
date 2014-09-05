@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
+  <!DOCTYPE html>
+  <html>
+  <head>
     <title>Where to begin</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="assets/normalize-css/normalize.css"/>
@@ -9,65 +9,169 @@
     <link rel="stylesheet" href="assets/ruban/css/ruban.min.css"/>
     <link rel="stylesheet" href="assets/ruban/css/ruban-print.min.css" media="print"/>
     <link rel="stylesheet" href="style.css"/>
-</head>
+  </head>
 
-<body>
-<section>
+  <body>
+  <script charset="utf-8">
+  var demo = { };
+  </script>
+
+  <section>
     <h1>Javascript - Where to begin...</h1>
-</section>
+  </section>
 
-<section>
+  <section>
     <h1>Literals</h1>
     <ul>
-        <li><strong>Number</strong> 3.14 10001 123e5</li>
-        <li><strong>String</strong> "bonita" 'bonita'</li>
-        <li><strong>Array</strong> [1,2,3]</li>
-        <li><strong>Object</strong> { name: "bonita" }</li>
+      <li><strong>Number</strong> 3.14 10001 123e5</li>
+      <li><strong>String</strong> "bonita" 'bonita'</li>
+      <li><strong>Array</strong> [1,2,3]</li>
+      <li><strong>Object</strong> { name: "bonita" }</li>
     </ul>
-</section>
+  </section>
 
-<section>
+  <section>
+    <h1>All is object</h1>
+    <ul>
+      <li>/.*/.match("foobar")</li>
+      <li>"foobar".toUpperCase() === "FOOBAR"</li>
+    </ul>
+  </section>
+
+  <section>
     <h1>Variables</h1>
     <pre>
-        <code class="javascript">
-            var x, length;
-            x = 5;
-            length = “test”;
-        </code>
+      <code class="javascript">
+        var x, length;
+        x = 5;
+        length = “test”;
+      </code>
     </pre>
-</section>
+  </section>
 
-<section>
+  <section>
     <h1>Operators</h1>
     <ul>
-        <li><strong>arithmetic</strong> + - * / % ++ --</li>
-        <li><strong>boolean</strong> == === != !== < > >= <=</li>
-        <li><strong>assignment</strong> = += -= *= /= %=</li>
-        <li><strong>bitwise</strong> - & | ~ ^ << >></li>
-        <li><strong>unary</strong> +</li>
-        <li><strong>other</strong> delete typeof</li>
+      <li><strong>arithmetic</strong> + - * / % ++ --</li>
+      <li><strong>boolean</strong> == === != !== < > >= <=</li>
+      <li><strong>assignment</strong> = += -= *= /= %=</li>
+      <li><strong>bitwise</strong> - & | ~ ^ << >></li>
+      <li><strong>unary</strong> +</li>
+      <li><strong>other</strong> delete typeof</li>
     </ul>
-</section>
+  </section>
 
-<section>
+  <section>
+    <h1>Arithmetic</h1>
+    <ul>
+      <li>+</li>
+      <li>-</li>
+      <li>*</li>
+      <li>/</li>
+      <li>%</li>
+      <li>++</li>
+      <li>--</li>
+    </ul>
+  </section>
+
+  <section>
+    <h1>falsy</h1>
+    <ul>
+      <li>false</li>
+      <li>null</li>
+      <li>undefined</li>
+      <li>''</li>
+      <li>0</li>
+      <li>NaN</li>
+    </ul>
+  </section>
+
+  <section>
+    <h1>Statements</h1>
+    <ul>
+      <li>var foo = "bar";</li>
+      <li>if() {} else {}</li>
+      <li>switch("foo") { case "foo": return "bar"; default: return "qux"; };</li>
+      <li>while() {};</li>
+      <li>do {} while();</li>
+    </ul>
+  </section>
+
+  <section>
+    <h1>Tricks</h1>
+    <ul>
+      <li>undefined || "bar" === "bar"</li>
+      <li>var length = book && book.title && book.tittle.length</li>
+      <li>+"123" === 123</li>
+      <li>!!"true" === true</li>
+      <li>"" + 123 === "123"</li>
+      <li>{"foo": "bar", "baz": "qux"}["baz"] === "baz"</li>
+    </ul>
+  </section>
+
+  <section>
+    <h1>What about?</h1>
+    <ul>
+      <li><li>{"1": "bar", "2": "qux"}[+!!2] || "D la reponse D"</li></li>
+    </ul>
+  </section>
+
+  <section>
+    <h1>== vs ===</h1>
+  </section>
+
+  <section>
+    <h1>Conversion</h1>
+    <p>
+      !![] === true
+      ([] == false) === true
+    </p>
+    <form id="conversion-form" onsubmit="demo.conversion.evaluate();">
+      <input type="text" id="conversion-exp" value="'1' == true">
+      <span> => </span>
+      <span id="conversion-result"></span>
+    </form>
+    <script charset="utf-8">
+    demo.conversion = {
+      evaluate: function() {
+        $("#conversion-result").text(eval($("#conversion-exp").val()));
+        return false;
+      }
+    };
+    </script>
+  </section>
+
+  <section>
+    <h1>Don't use == but use ===</h1>
+  </section>
+
+  <section>
+    <h1>typeof vs instance</h1>
+  </section>
+
+  <section>
+    <h1>ducktyping</h1>
+  </section>
+
+  <section>
     <h1>Functions</h1>
     <pre>
-        <code>
+      <code>
         function myFunction(a, b) {
-            return a * b; // returns the product of a and b
+          return a * b; // returns the product of a and b
         }
-        </code>
+      </code>
     </pre>
-</section>
+  </section>
 
-<script src="assets/jquery/jquery.min.js"></script>
-<script src="assets/keymaster/keymaster.js"></script>
-<script src="assets/hammerjs/hammer.min.js"></script>
-<script src="assets/highlightjs/highlight.pack.js"></script>
-<script src="assets/ruban/js/ruban.min.js"></script>
-<script>
-    new Ruban();
-    hljs.initHighlightingOnLoad();
-</script>
+  <script src="assets/jquery/jquery.min.js"></script>
+  <script src="assets/keymaster/keymaster.js"></script>
+  <script src="assets/hammerjs/hammer.min.js"></script>
+  <script src="assets/highlightjs/highlight.pack.js"></script>
+  <script src="assets/ruban/js/ruban.min.js"></script>
+  <script>
+  new Ruban();
+  hljs.initHighlightingOnLoad();
+  </script>
 </body>
 </html>
