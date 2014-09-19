@@ -21,10 +21,11 @@
 </section>
 
 <section>
-    <h1>All is object</h1>
+    <h1>Primitive &amp; object</h1>
     <ul>
         <li>/.*/.match("foobar")</li>
         <li>"foobar".toUpperCase() === "FOOBAR"</li>
+        <li>var square = function(x) { return x*x ;}</li>
     </ul>
 </section>
 
@@ -36,6 +37,7 @@
         <li><strong>Array</strong> [1,2,3]</li>
         <li><strong>Object</strong> { name: "bonita" }</li>
         <li><strong>Regexp</strong> /.*/</li>
+        <li><strong>Global Objects</strong> undefined, Infinity, NaN, this</li>
     </ul>
 </section>
 
@@ -43,9 +45,9 @@
     <h1>Operators</h1>
     <ul>
         <li><strong>arithmetic</strong> + - * / % ++ --</li>
-        <li><strong>boolean</strong> == === != !== < > >= <=</li>
+        <li><strong>boolean</strong> == === != !== &lt; &gt; &gt;= &lt;=</li>
         <li><strong>assignment</strong> = += -= *= /= %=</li>
-        <li><strong>bitwise</strong> - & | ~ ^ << >></li>
+        <li><strong>bitwise</strong> - &amp; | ~ ^ &lt;&lt; &gt;&gt;</li>
         <li><strong>unary</strong> +</li>
         <li><strong>other</strong> delete typeof</li>
     </ul>
@@ -67,7 +69,7 @@
     <h1>truthy</h1>
     <ul>
         <li>all the rest</li>
-        <li>including true, 'false' & all objects</li>
+        <li>including true, 'false' &amp; all objects</li>
     </ul>
 </section>
 
@@ -142,15 +144,6 @@
 </section>
 
 <section>
-    <h1>Variables</h1>
-    <ul>
-        <li>Global object</li>
-        <li>Variable scope</li>
-        <li>Hoisting</li>
-    </ul>
-</section>
-
-<section>
     <h1>Functions</h1>
     <pre class="javascript">
       <code>
@@ -160,6 +153,158 @@
           var foo = myFunction(2, 3); // 6
       </code>
     </pre>
+</section>
+
+<section>
+    <h1>Global Object</h1>
+    <ul>
+        <li>given by Interpreter</li>
+        <li>Context (?)</li>
+        <li>holds global properties, functions &amp; objects
+            <ul>
+                <li>undefined, Nan, isNan(), parseInt(), eval()</li>
+                <li>Object(), Array(), Date(), RegExp(), String(), Number(), Boolean()...</li>
+                <li>Math, JSON</li>
+            </ul>
+        </li>
+        <li><i>this</i> at top level (aliased as <i>window</i> in browser)</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Variables - Variable scope</h1>
+    <ul>
+        <li>no block scope but function scope!</li>
+        <li>with <i>var</i> => limited to its function block</li>
+        <li>without => define in the global object...</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Variable scope 1/3 </h1>
+     <pre class='javascript'>
+        <code>
+            var scope = 'global';
+            function checkScope(){
+                var scope = 'local';
+                return scope;
+            }
+            checkScope();
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Variable scope 2/3</h1>
+     <pre class='javascript'>
+        <code>
+            scope = 'global';
+            function checkScope(){
+                scope = 'local';
+                myScope = 'local';
+                return [scope, myScope];
+            }
+            checkScope();
+            scope;
+            myScope;
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Variable scope 3/3</h1>
+     <pre class='javascript'>
+        <code>
+            var scope = 'global scope';
+            function checkScope(){
+                var scope = 'local scope';
+                function nested(){
+                    var scope = 'nested scope';
+                    return scope;
+                }
+                return nested();
+            }
+            checkScope();
+            scope;
+        </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Variables - Hoisting 1/4</h1>
+
+    <p>variables are define at their function block top</p>
+    <pre class='javascript'>
+    <code>
+        function example() {
+          console.log(notDefined);
+        }
+        example();
+
+    </code>
+    </pre>
+    
+</section>
+
+<section>
+    <h1>Variables - Hoisting 2/4</h1>
+    <ul>
+        <pre class='javascript'>
+        <code>
+            function example() {
+              console.log(declaredButNotAssigned);
+              var declaredButNotAssigned = true;
+              console.log(declaredButNotAssigned);
+            }
+            example();
+
+            function example() {
+              var declaredButNotAssigned;
+              console.log(declaredButNotAssigned);
+              declaredButNotAssigned = true;
+              console.log(declaredButNotAssigned);
+            }
+            example();
+
+            </code>
+        </pre>
+    </ul>
+</section>
+
+<section>
+    <h1>Variables - Hoisting 3/4</h1>
+    <ul>
+        <pre class='javascript'>
+        <code>
+            function example() {
+              console.log(declaredButNotAssigned);
+              declaredButNotAssigned = true;
+              var declaredButNotAssigned;
+              console.log(declaredButNotAssigned);
+            }
+            example();
+            this.declaredButNotAssigned;
+            </code>
+        </pre>
+    </ul>
+</section>
+            
+<section>
+    <h1>Variables - Hoisting 4/4</h1>
+    <ul>
+        <pre class='javascript'>
+        <code>
+            function example() {
+              console.log(declaredButNotAssigned);
+              declaredButNotAssigned = true;
+              console.log(declaredButNotAssigned);
+            }
+            example();
+            this.declaredButNotAssigned;
+
+            </code>
+        </pre>
+    </ul>
 </section>
 
 <section>
@@ -177,7 +322,7 @@
 </section>
 
 <section>
-    <h1>typeof vs instance</h1>
+    <h1>typeof vs instanceof</h1>
 </section>
 
 <section>
