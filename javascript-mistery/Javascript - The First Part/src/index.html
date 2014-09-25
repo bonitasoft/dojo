@@ -184,12 +184,12 @@
     <h1>Variable scope 1/3 </h1>
      <pre class='javascript'>
         <code>
-            var scope = 'global';
-            function checkScope(){
-                var scope = 'local';
-                return scope;
-            }
-            checkScope();
+var scope = 'global';
+function checkScope(){
+    var scope = 'local';
+    return scope;
+}
+checkScope();
         </code>
     </pre>
 </section>
@@ -198,15 +198,15 @@
     <h1>Variable scope 2/3</h1>
      <pre class='javascript'>
         <code>
-            scope = 'global';
-            function checkScope(){
-                scope = 'local';
-                myScope = 'local';
-                return [scope, myScope];
-            }
-            checkScope();
-            scope;
-            myScope;
+scope = 'global';
+function checkScope(){
+    scope = 'local';
+    myScope = 'local';
+    return [scope, myScope];
+}
+checkScope();
+scope;
+myScope;
         </code>
     </pre>
 </section>
@@ -215,17 +215,17 @@
     <h1>Variable scope 3/3</h1>
      <pre class='javascript'>
         <code>
-            var scope = 'global scope';
-            function checkScope(){
-                var scope = 'local scope';
-                function nested(){
-                    var scope = 'nested scope';
-                    return scope;
-                }
-                return nested();
-            }
-            checkScope();
-            scope;
+var scope = 'global scope';
+function checkScope(){
+    var scope = 'local scope';
+    function nested(){
+        var scope = 'nested scope';
+        return scope;
+    }
+    return nested();
+}
+checkScope();
+scope;
         </code>
     </pre>
 </section>
@@ -236,10 +236,10 @@
     <p>variables are define at their function block top</p>
     <pre class='javascript'>
     <code>
-        function example() {
-          console.log(notDefined);
-        }
-        example();
+function example() {
+  console.log(notDefined);
+}
+example();
 
     </code>
     </pre>
@@ -247,24 +247,23 @@
 </section>
 
 <section>
-    <h1>Variables - Hoisting 2/4</h1>
-    <ul>
+    <h1 style='margin-bottom : 0;'>Variables - Hoisting 2/4</h1>
+    <ul style="margin-top: -50px;">
         <pre class='javascript'>
         <code>
-            function example() {
-              console.log(declaredButNotAssigned);
-              var declaredButNotAssigned = true;
-              console.log(declaredButNotAssigned);
-            }
-            example();
-
-            function example() {
-              var declaredButNotAssigned;
-              console.log(declaredButNotAssigned);
-              declaredButNotAssigned = true;
-              console.log(declaredButNotAssigned);
-            }
-            example();
+function example() {
+  console.log(declaredButNotAssigned);
+  var declaredButNotAssigned = true;
+  console.log(declaredButNotAssigned);
+}
+example();
+function example() {
+  var declaredButNotAssigned;
+  console.log(declaredButNotAssigned);
+  declaredButNotAssigned = true;
+  console.log(declaredButNotAssigned);
+}
+example();
 
             </code>
         </pre>
@@ -276,14 +275,14 @@
     <ul>
         <pre class='javascript'>
         <code>
-            function example() {
-              console.log(declaredButNotAssigned);
-              declaredButNotAssigned = true;
-              var declaredButNotAssigned;
-              console.log(declaredButNotAssigned);
-            }
-            example();
-            this.declaredButNotAssigned;
+function example() {
+  console.log(declaredButNotAssigned);
+  declaredButNotAssigned = true;
+  var declaredButNotAssigned;
+  console.log(declaredButNotAssigned);
+}
+example();
+this.declaredButNotAssigned;
             </code>
         </pre>
     </ul>
@@ -294,13 +293,13 @@
     <ul>
         <pre class='javascript'>
         <code>
-            function example() {
-              console.log(declaredButNotAssigned);
-              declaredButNotAssigned = true;
-              console.log(declaredButNotAssigned);
-            }
-            example();
-            this.declaredButNotAssigned;
+function example() {
+  console.log(declaredButNotAssigned);
+  declaredButNotAssigned = true;
+  console.log(declaredButNotAssigned);
+}
+example();
+this.declaredButNotAssigned;
 
             </code>
         </pre>
@@ -308,15 +307,32 @@
 </section>
 
 <section>
-    <h1>Objects</h1>
+    <h1>Objects 1/2</h1>
     <pre class="javascript">
       <code>
-          var bonita = {
-              foo: 'bar',
-              baz: function() {},
-              qux: true
-          };
-          bonita.version = '7.0';
+var o1 = new Object();
+var o2 = Object.create(Object.prototype);
+var o3 = {};
+var a = new Array(); 
+// Create an empty array : same as []
+var d = new Date(); 
+// Create a Date object representing the current time
+var r = new RegExp('js') ;
+// Create a RegExp object for pattern matching : same as /js/
+      </code>
+    </pre>
+</section>
+
+<section>
+    <h1>Objects 2/2</h1>
+    <pre class="javascript">
+      <code>
+var bonita = {
+  foo: 'bar',
+  baz: function() {},
+  qux: true
+};
+bonita.version = '7.0';
       </code>
     </pre>
 </section>
@@ -340,3 +356,4 @@
 </script>
 </body>
 </html>
+
