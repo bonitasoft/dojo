@@ -21,12 +21,31 @@
 </section>
 
 <section>
-    <h1>Primitive &amp; object</h1>
+    <h1>Javascript is not Java</h1>
+    <ul>
+        <li>Prototype based scripting language</li>
+        <li>Originally for the web</li>
+        <li>Single thread, asynchronous, First-class functions, closure, ducktyping, ...</li>
+        <li>ECMAScript Standard</li>
+    </ul>
+</section>
+
+<section>
+    <h1>It is all object</h1>
     <ul>
         <li>/.*/.match("foobar")</li>
         <li>"foobar".toUpperCase() === "FOOBAR"</li>
-        <li>var square = function(x) { return x*x ;}</li>
+        <li>var square = function(x) { return x*x ; }</li>
     </ul>
+</section>
+
+<section>
+    <h1>Global Object</h1>
+    <pre>
+{}
+ => bonita: {}
+    => doSomething: function() {}
+    </pre>
 </section>
 
 <section>
@@ -37,7 +56,7 @@
         <li><strong>Array</strong> [1,2,3]</li>
         <li><strong>Object</strong> { name: "bonita" }</li>
         <li><strong>Regexp</strong> /.*/</li>
-        <li><strong>Global Objects</strong> undefined, Infinity, NaN, this</li>
+        <li><strong>But also</strong> undefined, Infinity, NaN</li>
     </ul>
 </section>
 
@@ -49,7 +68,7 @@
         <li><strong>assignment</strong> = += -= *= /= %=</li>
         <li><strong>bitwise</strong> - &amp; | ~ ^ &lt;&lt; &gt;&gt;</li>
         <li><strong>unary</strong> +</li>
-        <li><strong>other</strong> delete typeof</li>
+        <li><strong>other</strong> delete typeof instanceof</li>
     </ul>
 </section>
 
@@ -77,14 +96,15 @@
     <h1>Statements</h1>
     <pre class="javascript">
       <code>
-          var foo = "bar";
-          if() {} else {}
-          switch("foo") {
-            case "foo": return "bar";
-            default: return "qux";
-          };
-          while() {}
-          do {} while();
+var foo = "bar";
+if() {} else {}
+switch("foo") {
+    case "foo": return "bar";
+    default: return "qux";
+};
+while() {}
+do {} while();
+for(prop in props) {}
       </code>
     </pre>
 </section>
@@ -98,30 +118,54 @@
 </section>
 
 <section>
-    <h1>Tricks</h1>
-    <ul>
-        <li>undefined || "bar" === "bar"</li>
-        <li>var length = book && book.title && book.tittle.length</li>
-        <li>+"123" === 123</li>
-        <li>!!"true" === true</li>
-        <li>"" + 123 === "123"</li>
-        <li>{"foo": "bar", "baz": "qux"}["baz"] === "baz"</li>
-    </ul>
+    <h1>Exceptions</h1>
+    <pre>
+        <code class="javascript">
+try {
+    throw new TypeError();
+} catch (e if e instanceof TypeError) {
+    // ...
+} finally {
+    // ...
+}
+        </code>
+    </pre>
 </section>
+
+<section>
+    <h1>Tricks</h1>
+    <pre>
+        <code class="javascript" style="font-size: 50%">
+undefined || "bar" === "bar"
+var length = book && book.title && book.title.length
++"123" === 123
+!!"true" === true
+"" + 123 === "123"
+{"foo": "bar", "baz": "qux"}["baz"] === "qux"
+        </code>
+    </pre>
+ </section>
 
 <section>
     <h1>What about?</h1>
-    <ul>
-        <li>{"1": "bar", "2": "qux"}[+!!2] || "D la reponse D"</li>
-    </ul>
+    <pre>
+        <code class="javascript">
+{"1": "bar", "2": "qux"}[+!!2] || "D la reponse D"
+        </code>
+    </pre>
 </section>
 
 <section>
-    <h1>== vs ===</h1>
+<h1>Conversion &amp Coercion</h1>
+    <pre><code class="javascript">
+parseInt("2", 10)
+Number("2")
++"2"
+    </code></pre>
 </section>
 
 <section>
-    <h1>Conversion</h1>
+    <h1>Conversion &amp Coercion</h1>
 
     <p>
         !![] === true
@@ -147,10 +191,10 @@
     <h1>Functions</h1>
     <pre class="javascript">
       <code>
-          function myFunction(a, b) {
-            return a * b;
-          }
-          var foo = myFunction(2, 3); // 6
+function myFunction(a, b) {
+    return a * b;
+}
+var foo = myFunction(2, 3); // 6
       </code>
     </pre>
 </section>
@@ -338,11 +382,16 @@ bonita.version = '7.0';
 </section>
 
 <section>
-    <h1>typeof vs instanceof</h1>
+    <h1>typeof &amp instanceof</h1>
 </section>
 
 <section>
-    <h1>Present node (javascript engine v8, webkit), npm (node package manager, dependencies & shit), karma (test runner)</h1>
+    <h1>Let's do it</h1>
+    <ul>
+        <li>node.js - Chrome's Javascript Engine</li>
+        <li>npm - Node Package Manager</li>
+        <li>karma - Test runner</li>
+    </ul>
 </section>
 
 <script src="assets/jquery/jquery.min.js"></script>
