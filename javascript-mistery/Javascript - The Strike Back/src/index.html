@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The first part</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="assets/normalize-css/normalize.css"/>
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="assets/highlightjs/styles/tomorrow.css"/>
+    <link rel="stylesheet" href="assets/ruban/css/ruban.min.css"/>
+    <link rel="stylesheet" href="assets/ruban/css/ruban-print.min.css" media="print"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+<script charset="utf-8">
+    var demo = { };
+</script>
+
+<section>
+    <h1>Javascript - The Strike Back</h1>
+</section>
+
+<section>
+    <h1>Functions</h1>
+    <ul>
+        <li>Declaration</li>
+        <li>Arguments - variable, arguments{caller, callee, ...}, callback pattern not declared (vargs), pass object through more extensible</li>
+        <li>return - default is undefined</li>
+        <li>this scope - literal, call(), apply(), new</li>
+        <li>Closure (lambda), variables scope, anonymous function, self executed</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>Prototype</li>
+        <li>Read & write - walk though prototype chain specificity</li>
+        <li>Inheritance
+            http://krasimirtsonev.com/blog/article/object-oriented-programming-oop-in-javascript-extending-Inheritance-classes
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain</li>
+        <li>Expand prototype</li>
+        <pre><code class="javascript">
+var Car = function() {
+    // constructor
+}
+Car.prototype.stuff = '';
+        </code></pre>
+    </ul>
+</section>
+
+<script src="assets/jquery/jquery.min.js"></script>
+<script src="assets/keymaster/keymaster.js"></script>
+<script src="assets/hammerjs/hammer.min.js"></script>
+<script src="assets/highlightjs/highlight.pack.js"></script>
+<script src="assets/ruban/js/ruban.min.js"></script>
+<script>
+    new Ruban();
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
+
