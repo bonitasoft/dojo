@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>The first part</title>
+    <title>The second part</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="assets/normalize-css/normalize.css"/>
     <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css"/>
@@ -21,17 +21,34 @@
 </section>
 
 <section>
-    <h1>Functions - Declaration</h1>
+    <h1>Functions</h1>
     <ul>
-        <li></li>
-        <li>return - default is undefined</li>
+        <li>Declaration : <pre><code class='javascript'>function name(parameters){/*function content*/}</code></pre></li>
+        <li>Expression : <pre><code class='javascript'>var name = function(parameters){/*function content*/}</code></pre></li>
+        <li>return is optional but always exists ! - defaults to undefined</li>
     </ul>
+</section>
+<section>
+    <h1>Function Hoisting</h1>
+    <pre><code class='javascript'>
+function car() {
+    pouet(); 
+    function pouet(){console.log('poueeet');}
+}
+function car() {
+    pouet(); //ERROR !!
+    var klaxon = 
+        function pouet(){console.log('poueeet');}
+}
+    </code></pre>
 </section>
 <section>
         <h1>Functions - Arguments</h1> 
         <ul>
             <li>variable</li>
-            <li>arguments{caller, callee, ...}</li>
+            <li>caller &amp; arguments{caller, callee, length}</li>
+            <li>/!\ strict mode &amp; <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee'>deprecated</a></li>
+            <li></li>
             <li>callback pattern not declared (vargs)</li>
             <li>pass object through more extensible</li>
         </ul>
