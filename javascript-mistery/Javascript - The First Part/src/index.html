@@ -338,16 +338,38 @@ this.declaredButNotAssigned;
         <pre class='javascript'>
         <code>
 function example() {
-  console.log(declaredButNotAssigned);
   declaredButNotAssigned = true;
   console.log(declaredButNotAssigned);
 }
 example();
 this.declaredButNotAssigned;
-
             </code>
         </pre>
     </ul>
+</section>
+
+<section>
+    <h1>Function Expression</h1>
+    <pre><code class='javascript'>
+(function farm() {
+    console.log(donkey());
+    var donkey = function(){
+        return 'eeeehhaaaaaaaaaa';
+    }
+})();
+    </code></pre>
+</section>
+
+<section>
+    <h1>Function Definition</h1>
+    <pre><code class='javascript'>
+(function farm() {
+    console.log(cow());
+    function cow(){
+        return 'mowwwwwwwwwwwww';
+    }
+})()
+</code></pre>
 </section>
 
 <section>
@@ -382,7 +404,7 @@ bonita.version = '7.0';
 </section>
 
 <section>
-    <h1>typeof &amp instanceof</h1>
+    <h1>typeof &amp; instanceof</h1>
 </section>
 
 <section>
