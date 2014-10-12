@@ -23,9 +23,10 @@
 <section>
     <h1>Functions</h1>
     <ul>
-        <li>Declaration : <pre><code class='javascript'>function name(parameters){/*function content*/}</code></pre></li>
-        <li>Expression : <pre><code class='javascript'>var name = function(parameters){/*function content*/}</code></pre></li>
+        <li>Declaration : <pre><code class='javascript'>function name (parameters){/*function content*/}</code></pre></li>
+        <li>Expression : <pre><code class='javascript'>var name = function optionalName (parameters){/*function content*/}</code></pre></li>
         <li>return is optional but always exists ! - defaults to undefined</li>
+        <li>Every function is actually a Function object</li>
     </ul>
 </section>
 <section>
@@ -43,20 +44,107 @@ function car() {
     </code></pre>
 </section>
 <section>
-        <h1>Functions - Arguments</h1> 
+        <h1 style="
+    margin-bottom: -10px;
+">Functions - Arguments</h1>
+        <b>optionals...</b>
+<pre style="
+    margin-top: -20px;
+"><code class='javascript'>
+function pouet(){
+    console.log('pouet!');
+}
+pouet();
+pouet('beeeeeeeeeeeep!');
+</code></pre>
+</section>
+<section>
+      <h1 style="
+    margin-bottom: -10px;
+">Functions - Arguments</h1> 
+<b>Functions are defined only by their name => Override</b>
+<pre style="
+    margin-top: -20px;
+"><code class='javascript'>
+(function example(){
+    function klaxon(){
+        console.log('beeeeeeeeeeeeeeep');
+    }
+    function klaxon(sound){
+        console.log(sound);
+    }
+    klaxon('poueeeeeeeeeeeeet');
+    klaxon();
+})();
+</code></pre>
+</section>
+<section>
+        <h1>Functions - Attribute</h1> 
         <ul>
-            <li>variable</li>
-            <li>caller &amp; arguments{caller, callee, length}</li>
-            <li>/!\ strict mode &amp; <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee'>deprecated</a></li>
-            <li></li>
+            <li>length</li>
+            <li>caller</li>
+            <li>arguments{ callee (/!\ strict mode ES5, length}</li> 
+            <li>name (ES6) &amp; displayName</li>
+            <li><a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee</a></li>
+        </ul>
+
+</section>
+<section>
+      <h1 style="
+    margin-bottom: -10px;
+">Functions - Attribute</h1> 
+<pre style="
+    margin-top: -20px;
+"><code class='javascript'>
+function jukebox(){
+    var feature = function play(sound){
+        console.log(play.length);
+        console.log(play.caller);
+        console.log(play.arguments);
+        console.log(play.arguments.callee);
+        console.log(play.arguments.length);
+        console.log(play.name);
+        console.log(feature.name);
+    }
+    feature('test');
+}
+jukebox();
+</code></pre>
+</section>
+<section>
+      <h1 style="
+    margin-bottom: -10px;
+">Functions - Attribute</h1> 
+<pre style="
+    margin-top: -20px;
+"><code class='javascript'>
+function jukebox(){
+    var play = function (sound){
+        console.log(play.length);
+        console.log(play.caller);
+        console.log(play.arguments);
+        console.log(play.arguments.callee);
+        console.log(play.arguments.length);
+        console.log(play.name);
+    }
+    play('test');
+}
+jukebox();
+</code></pre>
+</section>
+<section>
+        <h1>Functions - Attribute</h1>
+        <ul>
             <li>callback pattern not declared (vargs)</li>
             <li>pass object through more extensible</li>
+            signature souple mais beaucoup de vérif nécessaire si on veut surcharger...
         </ul>
 </section>
 <section>
         <h1>Functions - this</h1> 
         <ul>
         <li>scope - literal</li>
+        portée du this appelant
         <li>call()</li>
         <li>apply()</li>
         <li>new</li>
@@ -67,6 +155,7 @@ function car() {
         <li>Closure (lambda)</li>
         <li>variables scope</li>
         <li>anonymous function</li>
+        always put a name to your function (debugging purpose)...
     </ul>
 </section>
 <section>
