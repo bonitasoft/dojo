@@ -44,6 +44,19 @@ function car() {
     </code></pre>
 </section>
 <section>
+        <h1  style="margin-bottom: -10px;">Functions - self executing</h1>
+        <p>content inside () is evaluated as an expression</p>
+<pre style="margin-top: -20px;"><code class='javascript' style='font-size: 50%;'>
+function test(){return 'Bonita!';}; 
+    //function definition, returns undefined
+(2 + 2) // returns 4
+(function test(){return 'Bonita!';}); 
+                // returns [object Function]
+(function test(){return 'Bonita!';})(); 
+                // returns 'Bonita !'
+</code></pre>
+</section>
+<section>
         <h1 style="
     margin-bottom: -10px;
 ">Functions - Arguments</h1>
@@ -56,6 +69,8 @@ function pouet(){
 }
 pouet();
 pouet('beeeeeeeeeeeep!');
+ // /!\ pitfall !!
+['10', '10', '10', '10', '10'].map(parseInt);
 </code></pre>
 </section>
 <section>
@@ -112,12 +127,8 @@ jukebox();
 </code></pre>
 </section>
 <section>
-      <h1 style="
-    margin-bottom: -10px;
-">Functions - Attribute</h1> 
-<pre style="
-    margin-top: -20px;
-"><code class='javascript'>
+      <h1 style="margin-bottom: -10px;">Functions - Attribute</h1> 
+<pre style="margin-top: -20px;"><code class='javascript'>
 function jukebox(){
     var play = function (sound){
         console.log(play.length);
@@ -133,23 +144,166 @@ jukebox();
 </code></pre>
 </section>
 <section>
-        <h1>Functions - Attribute</h1>
+        <h1  style="margin-bottom: -10px;">Functions - <i>this</i></h1>
+        <ul> 
+        <li>represents the context object associated to the function</li>
+        <li> /!\ different from Function.caller</li>
+        <li>similar to <i>this</i> in Java but be careful...</li>
+        </ul>
+<pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+function Car(name){
+    this.name = name;
+    this.showYourself = function showYourself(){
+        console.log(this);
+        console.log(showYourself.caller);
+    };
+    this.showYourself()
+};
+(function policeCheckPoint(){console.log(this);new Car('toyota').showYourself()})();
+</code></pre>
+        
+</section>
+<section>
+        <h1  style="margin-bottom: -10px;">Functions - <i>this</i></h1>
+<pre style="margin-top: -20px;"><code class='javascript'>
+this.x = 9; 
+var module = {
+  x: 81,
+  getX: function() { return this.x; }
+}; // same as new Object()
+
+module.getX(); // 81
+
+var getX = module.getX;
+getX(); // 9, because in this case, "this" refers to the global object
+
+</code></pre>
+        
+</section>
+<section>
+        <h2>Functions - <i>this</i> - change it !</h2> 
         <ul>
-            <li>callback pattern not declared (vargs)</li>
-            <li>pass object through more extensible</li>
-            signature souple mais beaucoup de vérif nécessaire si on veut surcharger...
+        <li>call()</li><li>apply()</li><li> bind()</li><li> new</li>
+        </ul>
+</section>
+
+<section>
+        <h2>Functions - <i>this</i> - apply &amp; call</h2> 
+        <ul>
+        <li>fun.call(thisArg[, arg1[, arg2[, ...]]])</li>
+        <li>fun.apply(thisArg, [argsArray])</li>
         </ul>
 </section>
 <section>
-        <h1>Functions - this</h1> 
-        <ul>
-        <li>scope - literal</li>
-        portée du this appelant
-        <li>call()</li>
-        <li>apply()</li>
-        <li>bind()</li>
-        <li>new</li>
-        </ul>
+        <h1 style="margin-bottom: -10px;">Functions - Attribute</h1>
+        <b>optional parameters : optional callback pattern</b>
+<pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+function getData (id/*, parameters, callback*/) {
+  var id = arguments[0], parameters, callback;
+
+  if (arguments.length === 2) { // only two arguments supplied
+    if (Object.prototype.toString.call(arguments[1]) === "[object Function]") {
+      callback = arguments[1]; // if is a function, set as 'callback'
+    } else {
+      parameters = arguments[1]; // if not a function, set as 'parameters'
+    }
+  } else if (arguments.length >= 3) { // three arguments supplied
+      parameters = arguments[1];
+      if(typeof arguments[arguments.length-1] === 'function'){
+        callback = arguments[arguments.length-1];
+      } else {
+        var parameters = Array.prototype.slice.call(arguments,1,arguments.length-1);
+        //var parameters = Array.prototype.slice.apply(arguments,[1,arguments.length-1]);
+      }
+  }
+}         
+</code></pre>
+</section>
+<section>
+        <h1  style="margin-bottom: -10px;">Functions - <i>this</i> - bind</h1>
+<p>creates new function on the specified object<br/>
+<pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+this.x = 9; 
+var module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
+
+module.getX(); // 81
+
+var getX = module.getX;
+getX(); // 9, because in this case, "this" refers to the global object
+
+// create a new function with 'this' bound to module
+var boundGetX = getX.bind(module);
+boundGetX(); // 81
+</code></pre>
+        
+</section>
+
+<section>
+        <h1  style="margin-bottom: -10px;">Functions - <i>this</i> - bind</h1>
+        <b>Partial function</b>
+
+<pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+function list() {
+  return Array.prototype.slice.call(arguments);
+}
+
+var list1 = list(1, 2, 3); // [1, 2, 3]
+
+//  Create a function with a preset leading argument
+var leadingBonitaList = list.bind(undefined, 'Bonita!');
+
+var list2 = leadingBonitaList(); // ['Bonita!']
+var list3 = leadingBonitaList(1, 2, 3); // ['Bonita!', 1, 2, 3]
+        
+</section>
+
+<section>
+        <h1  style="margin-bottom: -10px;">Functions - <i>this</i> - pitfall</h1>
+<pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+function Car(color){
+    this.partsToColor = [{name : 'seats', color : color}, {name : 'stirringWheel', color : color}, {name : 'outside', color : color}]
+    this.mainColor = color;
+    this.changeMainColor = function(color){ this.mainColor = color;}
+    this.applyColorChange = function(){
+        this.partsToColor = this.partsToColor.map(function(partToColor){ partToColor.color = this.mainColor; return partToColor;});
+    };
+    this.showParts = function(){
+        console.log(this.partsToColor);
+    }
+}
+var myCar = new Car('blue');
+myCar.showParts();
+myCar.changeMainColor('black');
+myCar.applyColorChange();
+myCar.showParts();
+</code></pre>
+        
+</section>
+<section>
+        <h1  style="margin-bottom: -10px;">Functions - <i>this</i> - pitfall</h1>
+<pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+function Car(color){
+    this.partsToColor = [{name : 'seats', color : color}, {name : 'stirringWheel', color : color}, {name : 'outside', color : color}]
+    this.mainColor = color;
+    this.changeMainColor = function(color){ this.mainColor = color;}
+    this.applyColorChange = function(){
+        var self = this;
+        this.partsToColor = this.partsToColor.map(function(partToColor){ partToColor.color = self.mainColor; return partToColor;});
+    };
+    this.showParts = function(){
+        console.log(this.partsToColor);
+    }
+}
+var myCar = new Car('blue');
+myCar.showParts();
+myCar.changeMainColor('black');
+myCar.applyColorChange();
+myCar.showParts();
+</code></pre>
+        
 </section>
 <section>
         <h1>Functions - Closure</h1> 
@@ -157,6 +311,21 @@ jukebox();
         <li>variables scope</li>
         <li>anonymous function</li>
         always put a name to your function (debugging purpose)...
+        <li>strict overriding</li>
+<pre style="margin-top: -20px;"><code class='javascript'>
+function addMethod(object, name, fn){
+    var old = object[ name ];
+    if ( old )
+        object[ name ] = function(){
+            if ( fn.length == arguments.length )
+                return fn.apply( this, arguments );
+            else if ( typeof old == 'function' )
+                return old.apply( this, arguments );
+        };
+    else
+        object[ name ] = fn;
+}
+</code></pre>
     </ul>
 </section>
 <section>

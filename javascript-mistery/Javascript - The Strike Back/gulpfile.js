@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
-  connect = require('gulp-connect');
+  	connect = require('gulp-connect'),
+	open = require("gulp-open");
 
 gulp.task('connect', function () {
   connect.server({
@@ -18,4 +19,13 @@ gulp.task('watch', function () {
   gulp.watch(['./src/*.html'], ['html']);
 });
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('launch', function(){
+	var options = {
+    	url: 'http://localhost:3000',
+    	app: 'google-chrome-stable'
+  	};
+  gulp.src('./src/index.html')
+  .pipe(open('',options));
+});
+
+gulp.task('default', ['connect', 'watch', 'launch']);
