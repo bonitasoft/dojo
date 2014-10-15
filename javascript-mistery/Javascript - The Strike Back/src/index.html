@@ -412,19 +412,19 @@ console.log(qux.baz && qux.baz.foo); // undefined
         <li>Update & augmentation done via assignation</li>
     </ul>
     <pre><code class="javascript" style="font-size: 50%">
-        var foo = {};
-        console.log(foo); // {}
-        foo.bar = 'baz';
-        console.log(foo); // {"foo": "baz"}
-        foo.bar = 'qux';
-        console.log(foo); // {"foo": "qux"}
+var foo = {};
+console.log(foo); // {}
+foo.bar = 'baz';
+console.log(foo); // {"foo": "baz"}
+foo.bar = 'qux';
+console.log(foo); // {"foo": "qux"}
     </code></pre>
 </section>
 
 <section>
     <h1>Object</h1>
     <ul>
-        <li>delete key work to destroy!</li>
+        <li>delete key word to destroy!</li>
     </ul>
     <pre><code class="javascript" style="font-size: 50%">
         var foo = {};
@@ -494,7 +494,7 @@ console.log(foo.bar); // undefined
 </section>
 
 <section>
-    <h1>Inheritance <em>(faster)</em></h1>
+    <h1>Inheritance</h1>
     <ul>
         <li>Pseudo-classical Pattern</li>
     </ul>
@@ -528,11 +528,19 @@ console.log(qux().bar);
 </section>
 
 <section>
+    <h1>Yeah but which one?!</h1>
+    <ul>
+        <li>Prototypes are faster</li>
+        <li>Some fear the new keyword</li>
+    </ul>
+</section>
+
+<section>
     <h1>Encapsulation</h1>
     <ul>
         <li>Pseudo-classical Pattern</li>
     </ul>
-    <pre><code class="javascript" style="font-size: 50%">
+    <pre><code class="javascript" style="font-size: 30%">
 var Foo = function constructor() {
     // private variable
     var bar;
