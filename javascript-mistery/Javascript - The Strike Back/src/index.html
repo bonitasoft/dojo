@@ -337,6 +337,227 @@ function addMethod(object, name, fn){
 </section>
 
 <section>
+    <h1>Simple types</h1>
+    <ul>
+        <li>strings, integers, booleans, null, undefined</li>
+        <li>immutable</li>
+    </ul>
+    <pre><code class="javascript">
+var foo = Number(5);
+foo.bar = 'baz';
+console.log(foo.bar); // undefined
+    </code></pre>
+</section>
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>functions, arrays, regexps, objects</li>
+        <li>Mutable keyed collection</li>
+    </ul>
+    <pre><code class="javascript">
+var foo = function() { return 'qux'; };
+foo.bar = 'baz';
+console.log(foo.bar); // 'baz'
+console.log(foo()); // 'qux'
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>Literal notation - { 'foo': 'bar' }</li>
+        <li>new Object()</li>
+        <li>Object.create()</li>
+    </ul>
+    <pre><code class="javascript">
+        var foo = Object.create();
+        foo.bar = 'baz';
+        console.log(foo.bar); // 'baz'
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>class-free</li>
+        <li>property name - <em>string with no constraint</em></li>
+        <li>property value - <em>any Javascript value</em></li>
+        <li>collecting & organising - <em>tree, graph, namespace</em></li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+var qux = { 'foo bar': 'baz', foo_bar: 'baz' };
+var org = { 'foo': { 'bar': { 'baz': { 'Date': Date } } } };
+var foobar = new org.foo.bar.baz.Date();
+console.log(foobar); // Wed Oct 16 2014 XX:XX:XX GMT+0200 (CEST)
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object - Retrieval</h1>
+    <pre><code class="javascript" style="font-size: 50%">
+var qux = { 'foo bar': 'baz', foo_bar: 'baz' };
+
+console.log(qux['foo bar']); // baz
+console.log(qux.foo_bar); // baz
+console.log(qux.baz); // undefined
+console.log(qux.baz || 'foo'); // foo
+console.log(qux.baz.foo); // throw ReferenceError
+console.log(qux.baz && qux.baz.foo); // undefined
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>Update & augmentation done via assignation</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+        var foo = {};
+        console.log(foo); // {}
+        foo.bar = 'baz';
+        console.log(foo); // {"foo": "baz"}
+        foo.bar = 'qux';
+        console.log(foo); // {"foo": "qux"}
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>delete key work to destroy!</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+        var foo = {};
+        console.log(foo.bar); // undefined
+        foo.bar = 'baz';
+        console.log(foo.bar); // "baz"
+        delete foo.bar;
+        console.log(foo.bar); // undefined
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>Object move around via reference</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+        var foo = {}, bar = {}, baz = {};
+        foo.qux = 'foobar';
+        console.log(foo, bar, baz); // { qux: 'foobar' } {} {}
+        foo = bar = baz; // {} {} {}
+        bar.qux = 'foobar';
+        console.log(foo, bar, baz); // { qux: 'foobar' } { qux: 'foobar' } { qux: 'foobar' };
+    </code></pre>
+</section>
+
+<section>
+    <h1>Prototype</h1>
+    <pre><code class="javascript" style="font-size: 50%">
+var Foo = function() {};
+Foo.prototype.bar = 'baz';
+
+var foo = new Foo();
+foo.bar = 'qux';
+console.log(foo.bar); // ...
+
+delete foo.bar;
+console.log(foo.bar); // ...
+
+delete foo.bar;
+console.log(foo.bar); // ...
+
+delete Foo.prototype.bar;
+console.log(foo.bar); // ...
+    </code></pre>
+</section>
+
+<section>
+    <h1>Prototype</h1>
+    <pre><code class="javascript" style="font-size: 50%">
+var Foo = function() {};
+Foo.prototype.bar = 'baz';
+
+var foo = new Foo();
+foo.bar = 'qux';
+console.log(foo.bar); // "qux"
+
+delete foo.bar;
+console.log(foo.bar); // "baz"
+
+delete foo.bar;
+console.log(foo.bar); // "baz"
+
+delete Foo.prototype.bar;
+console.log(foo.bar); // undefined
+    </code></pre>
+</section>
+
+<section>
+    <h1>Inheritance <em>(faster)</em></h1>
+    <ul>
+        <li>Pseudo-classical Pattern</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+var Foo = function constructor() {
+    this.bar = 'baz';
+};
+var Qux = function constructor() {};
+Qux.prototype = new Foo();
+    </code></pre>
+</section>
+
+<section>
+    <h1>Inheritance</h1>
+    <ul>
+        <li>Functional Pattern</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+var foo = function constructor() {
+    return {
+        bar: 'baz'
+    };
+};
+var qux = function constructor() {
+    var qux = Object.create(foo);
+    qux.bar = 'foo';
+    return qux;
+};
+console.log(qux().bar);
+    </code></pre>
+</section>
+
+<section>
+    <h1>Encapsulation</h1>
+    <ul>
+        <li>Pseudo-classical Pattern</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+var Foo = function constructor() {
+    // private variable
+    var bar;
+
+    // private method
+    function init() {
+        bar = bar || 'baz';
+    }
+
+    // public method
+    this.logBar = function() {
+        init();
+        console.log(bar);
+    }
+};
+Foo.prototype.qux = function() {
+    console.log(this.bar);
+    this.logBar();
+};
+var foo = new Foo();
+foo.qux(); // undefined 'baz'
+    </code></pre>
+</section>
+
+<section>
     <h1>Object</h1>
     <ul>
         <li>Prototype</li>
