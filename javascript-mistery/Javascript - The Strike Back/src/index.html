@@ -55,6 +55,7 @@ function test(){return 'Bonita!';};
 (function test(){return 'Bonita!';})(); 
                 // returns 'Bonita !'
 </code></pre>
+<p>always put a name to your function (debugging purpose)...</p>
 </section>
 <section>
         <h1 style="
@@ -144,6 +145,14 @@ jukebox();
 </code></pre>
 </section>
 <section>
+    <h1>Lexical Scoping</h1>
+    <ul>
+        <li>functions use the scope where function defined</li>
+        <li>/!\ not the scope where function is executed</li>
+        <li>exception : <i>this</i></li>
+    </ul>
+</section>
+<section>
         <h1  style="margin-bottom: -10px;">Functions - <i>this</i></h1>
         <ul> 
         <li>represents the context object associated to the function</li>
@@ -159,7 +168,7 @@ function Car(name){
     };
     this.showYourself()
 };
-(function policeCheckPoint(){console.log(this);new Car('toyota').showYourself()})();
+(function policeCheckPoint(){console.log(this);new Car('toyota').showYourself()};)();
 </code></pre>
         
 </section>
@@ -306,12 +315,52 @@ myCar.showParts();
         
 </section>
 <section>
-        <h1>Functions - Closure</h1> 
-        <li>Closure (lambda)</li>
-        <li>variables scope</li>
-        <li>anonymous function</li>
-        always put a name to your function (debugging purpose)...
-        <li>strict overriding</li>
+    <h1 style="margin-bottom: -10px;">Functions - Closure</h1> 
+    <ul>
+        <li>Every Function is a Closure</li>
+        <li>Closure are not Lambda</li>
+        <li>Functions are 'closed over' their variables</li>
+        <li>Closure with Function Expression : </li>
+    </ul>
+    <pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+var getNewUniqueInteger = (function(){ //Define and Invoke
+    var counter = 0; // Private state of function below
+    return function(){ return counter++;};
+})();
+    </code></pre>
+</section>
+<section>
+    <h1 style="margin-bottom: -10px;">Functions - Closure</h1> 
+    <pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+// This function returns a function that always returns v;
+function constfunc(v){ return function() { return v;};}
+
+//Create an array of constant functions:
+var funcs = [];
+for(var i = 0 ; i&lt; 10; i++) {funcs[i] = constfunc(i)}
+ 
+funcs[5]();
+</code></pre>
+</section>
+
+<section>
+    <h1 style="margin-bottom: -10px;">Functions - Closure</h1> 
+    <pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+// Return an array of functions that return the values 0-9
+funtion constfuncs(){
+    car funcs = [];
+    for(var i = 0; i&lt; 10; i++){
+        funcs[i] = function(){ return i;};
+    }
+    return funcs;
+}
+
+var = constfuncs();
+funcs[5](); //?
+</code></pre>
+</section>
+<section>
+        <h1>Overriding with Arguments</h1>
 <pre style="margin-top: -20px;"><code class='javascript'>
 function addMethod(object, name, fn){
     var old = object[ name ];
@@ -326,13 +375,6 @@ function addMethod(object, name, fn){
         object[ name ] = fn;
 }
 </code></pre>
-    </ul>
-</section>
-<section>
-        <h1>Functions - self execution</h1> 
-        <li>private data</li>
-        <li>module pattern</li>
-        <li>revealing module pattern</li>
     </ul>
 </section>
 
