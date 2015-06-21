@@ -264,21 +264,24 @@ var list3 = leadingBonitaList(1, 2, 3); // ['Bonita!', 1, 2, 3]
         <h1  style="margin-bottom: -10px;">Functions - <i>this</i> - pitfall</h1>
 <pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
 function Car(color){
-    this.partsToColor = [{name : 'seats', color : color}, {name : 'stirringWheel', color : color}, {name : 'outside', color : color}]
+    this.partsToColor = 
+            [{name : 'seats', color : color},
+             {name : 'stirringWheel', color : color}, 
+             {name : 'outside', color : color}]
     this.mainColor = color;
     this.changeMainColor = function(color){ this.mainColor = color;}
     this.applyColorChange = function(){
         this.partsToColor = this.partsToColor.map(function(partToColor){ partToColor.color = this.mainColor; return partToColor;});
     };
-    this.showParts = function(){
+    this.showDaCar = function(){
         console.log(this.partsToColor);
     }
 }
 var myCar = new Car('blue');
-myCar.showParts();
+myCar.showDaCar();
 myCar.changeMainColor('black');
 myCar.applyColorChange();
-myCar.showParts();
+myCar.showDaCar();
 </code></pre>
         
 </section>
@@ -286,22 +289,25 @@ myCar.showParts();
         <h1  style="margin-bottom: -10px;">Functions - <i>this</i> - pitfall</h1>
 <pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
 function Car(color){
-    this.partsToColor = [{name : 'seats', color : color}, {name : 'stirringWheel', color : color}, {name : 'outside', color : color}]
+    this.partsToColor = 
+            [{name : 'seats', color : color}, 
+             {name : 'stirringWheel', color : color}, 
+             {name : 'outside', color : color}]
     this.mainColor = color;
     this.changeMainColor = function(color){ this.mainColor = color;}
     this.applyColorChange = function(){
         var self = this;
         this.partsToColor = this.partsToColor.map(function(partToColor){ partToColor.color = self.mainColor; return partToColor;});
     };
-    this.showParts = function(){
+    this.showDaCar = function(){
         console.log(this.partsToColor);
     }
 }
 var myCar = new Car('blue');
-myCar.showParts();
+myCar.showDaCar();
 myCar.changeMainColor('black');
 myCar.applyColorChange();
-myCar.showParts();
+myCar.showDaCar();
 </code></pre>
         
 </section>
