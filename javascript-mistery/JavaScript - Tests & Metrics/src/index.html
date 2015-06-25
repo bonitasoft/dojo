@@ -22,6 +22,21 @@
 
 <section>
     <ul>
+        <li>
+            Jasmine
+            <ul>
+                <li>chassis de l'œuvre
+                    <ul>
+                        <li>describe, beforeEach, it, afterEach</li>
+                        <li>substitut</li>
+                        <li>expect() &amp; sa famille</li>
+                        <li>it, xit, iit, fit</li>
+                        <li>automnes de Brad</li>
+                    </ul>
+                </li>
+               
+            </ul>
+        </li>
         <li>Karma
         <ul>
             <li>butineurs</li>
@@ -30,26 +45,176 @@
             <li>rapporteurs</li>
         </ul>
         </li>
-        <li>
-            Jasmine
-            <ul>
-                <li>chassis de l'oeuvre
-                    <ul>
-                        <li>describe, beforeEach, it, afterEach</li>
-                        <li>expect() &amp; family</li>
-                        <li>it, xit, iit, fit</li>
-                    </ul>
-                </li>
-                <li>les automnes de brad
-                    <ul>
-                        <li>$scope.$apply</li>
-                        <li>spyOn vs createSpy</li>
-                        <li>multiple desc</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
 
+    </ul>
+</section>
+
+<section>
+    <h2>Jasmine</h2>
+    <ul>
+        <li>Behaviour Driven Development</li>
+        <li>simple page html pour lancer les tests</li>
+        <li>http://jasmine.github.io/2.1/introduction.html pour plus d'info</li>
+        <li>installée en 2.1 dans nos projets (last release : 2.3)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Jasmine - chassis de l'œuvre</h2>
+    <ul style="font-size: 50px;">
+        <li>describe the process visualisation service
+            <ul> <li>
+            describe the process design retrieval
+                <ul>
+                    <li>it should call the file parsing once the resource promise is resolved</li>
+                    <li>it should not call the file parsing if the resource promise is rejected and the alert service should be called</li>
+                </ul>
+            </li></ul>
+            <ul><li>
+                describe the bpmn file parsing
+                <ul>
+                    <li>it should return a diagram object if the file is valid</li>
+                    <li>it should call alert service with an error message if parsing fails</li>
+                </ul>
+            </li></ul>
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2 style="margin-bottom: 0px;">Jasmine - chassis de l'œuvre</h2>
+<pre style="margin-left: -300px; margin-right: -300px; font-size:35px;"><code>describe('the process visualisation service', function() {
+    describe('the process design retrieval', function(){
+        it('should call the file parsing once the resource promise is resolved', function() {
+            //some code
+        });
+        it('it should not call the file parsing if the resource promise is rejected and the alert service should be called', function() {
+            //some code
+        })
+    });
+    describe('the bpmn file parsing', function() {
+        it('should return a diagram object if the file is valid', function() {
+            //some code
+        });
+        it('should call alert service with an error message if parsing fails', function(){
+            //some code
+        });
+    };
+)};</code></pre>
+</section>
+
+<section>
+    <h2 style="margin-bottom: 0px;margin-top: 10px;">Jasmine - chassis de l'œuvre</h2>
+    <em>beforeEach, afterEach, beforeAll, and afterAll</em>
+<pre style="margin-left: -300px; margin-right: -300px; font-size:35px;"><code>describe('the process visualisation service', function() {
+    var scope;
+    beforeAll(function() {
+        console.log('***************** début de la suite process Visu ***************'); // /!\ IE
+    });
+    beforeEach(module('com.bonitasoft.features.admin.processVisu')); //not in a beforeAll
+    beforeEach(inject(function($rootScope) {
+        scope = $rootScope.$new();
+    }));
+    describe('the process design retrieval', function(){
+        it('should call the file parsing once the resource promise is resolved', function() {
+            //some code
+        });
+        it('it should not call the file parsing if the resource promise is rejected and the alert service should be called', function() {
+            //some code
+        })
+    });
+    // ....
+    afterAll(function() {
+       console.log(################# fin de la suite process Visu ####################""); 
+    });
+)};</code></pre>
+</section>
+
+<section>
+    <h2 style="margin-bottom: 0px;margin-top: 10px;">Jasmine - chassis de l'œuvre</h2>
+    <em>spyOn &amp; jasmine.createSpy</em>
+<pre style="margin-left: -300px; margin-right: -300px; font-size:35px;"><code>describe('the process visualisation service', function() {
+    var scope, processDesignAPI, q, processVisuSrv;
+    beforeEach(module('com.bonitasoft.features.admin.processVisu')); //not in a beforeAll
+    beforeEach(inject(function($rootScope, $q, ProcessDesignAPI, ProcessDesignService) {
+        scope = $rootScope.$new();
+        processDesignAPI = ProcessDesignAPI;
+        processVisuSrv = ProcessDesignService;
+        q = $q;
+        spyOn(processDesignAPI, 'load');
+        spyOn(processVisuSrv, 'parseFile');
+        spyOn(processVisuSrv, 'sendError');
+    }));
+    describe('the process design retrieval', function(){
+        it('should call the file parsing once the resource promise is resolved', function() {
+            var deferred = q.defer();
+            processDesignAPI.load.and.returnValue(deferred.promise); //returnValues non documenté mais existe !!!
+            processVisuSrv.retrieveProcessDesign(123);
+        });
+        it('it should not call the file parsing if the resource promise is rejected and the alert service should be called', function() {
+            //some code
+        })
+    });
+)};</code></pre>
+</section>
+
+<section>
+    <h2 style="margin-bottom: 0px;margin-top: 10px;">Jasmine - chassis de l'œuvre</h2>
+    <em>expect family</em>
+<pre style="margin-left: -280px; margin-right: -300px; font-size:30px;"><code>describe('the process visualisation service', function() {
+    var scope, processDesignAPI, q, processVisuSrv;
+    // ...
+    describe('the process design retrieval', function(){
+        it('should call the file parsing once the resource promise is resolved', function() {
+            var deferred = q.defer(),
+                xml = '&lt;process-design&gt;Yes!&lt;/process-design&gt;';
+            processDesignAPI.load.and.returnValue(deferred.promise); //returnValues non documenté mais existe !!!
+            deferred.resolve(xml);
+            processVisuSrv.retrieveProcessDesign(123);
+            expect(processDesignSrv.diagramCount).toEqual(0); // différence avec toBe
+            scope.$apply();
+            expect(processDesignAPI.load).toHaveBeenCalledWith(123); // le débat est ouvert sur l'utilité de cette ligne
+            expect(processDesignSrv.parseFile).toHaveBeenCalledWith(xml);
+            expect(processDesignSrv.sendError).not.toHaveBeenCalled();
+            expect(processDesignSrv.promises[123]).toBeTruthy();
+            expect(processDesignSrv.diagramCount).toEqual(1);
+        });
+        it('it should not call the file parsing if the resource promise is rejected and the alert service should be called', function() {
+            var deferred = q.defer(), 
+                error = 'Error 500, Internal Server Error';
+            processDesignAPI.load.and.returnValue(deferred.promise); //returnValues non documenté mais existe !!!
+            deferred.reject(error);
+            processVisuSrv.retrieveProcessDesign(123);
+            scope.$apply();
+            expect(processDesignAPI.load).toHaveBeenCalledWith(123); // le débat est ouvert sur l'utilité de cette ligne
+            expect(processDesignSrv.parseFile).not.toHaveBeenCalled();
+            expect(processDesignSrv.sendError).toHaveBeenCalledWith(error);
+        })
+    });
+    // ....
+)};</code></pre>
+</section>
+
+<section>
+    <h2>Demo Standalone</h2>
+</section>
+
+<section>
+    <h2>Jasmine - Undocumented</h2>
+    <ul>
+        <li>ddescribe, fdescribe, xdescribe</li>
+        <li>iit, fit, xit</li>
+        <li>fail</li>
+        <li>returnValues</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Jasmine - Automnes de Brad</h2>
+    <ul>
+        <li>$scope.$apply</li>
+        <li>spyOn vs jasmine.createSpy</li>
+        <li>multiple desc</li>
     </ul>
 </section>
 
@@ -73,7 +238,34 @@
         <li>Chrome</li>
         <li>les autres (safari, canary, opera...)</li>
     </ul>
-    <p><small>ne pas oublier de les installer...</small></p>
+    <p><small>ne pas oublier d'installer les launchers...</small></p>
+</section>
+
+<section>
+    <h2>Karma - Démoustiquage</h2>
+    <ul>
+        <li>pas documenté sur le site...</li>
+        <li>intégré à IntelliJ/WebStorm</li>
+        <li>Out of the Box - Chrome</li>
+        <li>Démo</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Karma - Preprocesseurs</h2>
+    <ul>
+        <li>coverage</li>
+        <li>ng-html2js</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Karma - Rapporteurs</h2>
+    <ul>
+        <li>dots</li>
+        <li>junit</li>
+        <li>coverage (slows debug)</li>
+    </ul>
 </section>
 
 <script src="assets/jquery/jquery.min.js"></script>
