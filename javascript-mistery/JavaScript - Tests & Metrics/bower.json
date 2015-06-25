@@ -1,0 +1,18 @@
+{
+  "name": "javascript-where-to-begin",
+  "version": "0.0.0",
+  "authors": [
+    "Vincent Elcrin <vincent.elcrin@bonitasoft.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ruban": "~0.3.1"
+  }
+}

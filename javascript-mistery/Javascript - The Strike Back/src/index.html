@@ -55,6 +55,7 @@ function test(){return 'Bonita!';};
 (function test(){return 'Bonita!';})(); 
                 // returns 'Bonita !'
 </code></pre>
+<p>always put a name to your function (debugging purpose)...</p>
 </section>
 <section>
         <h1 style="
@@ -144,6 +145,14 @@ jukebox();
 </code></pre>
 </section>
 <section>
+    <h1>Lexical Scoping</h1>
+    <ul>
+        <li>functions use the scope where function defined</li>
+        <li>/!\ not the scope where function is executed</li>
+        <li>exception : <i>this</i></li>
+    </ul>
+</section>
+<section>
         <h1  style="margin-bottom: -10px;">Functions - <i>this</i></h1>
         <ul> 
         <li>represents the context object associated to the function</li>
@@ -159,7 +168,7 @@ function Car(name){
     };
     this.showYourself()
 };
-(function policeCheckPoint(){console.log(this);new Car('toyota').showYourself()})();
+(function policeCheckPoint(){console.log(this);new Car('toyota').showYourself()};)();
 </code></pre>
         
 </section>
@@ -312,12 +321,52 @@ myCar.showDaCar();
         
 </section>
 <section>
-        <h1>Functions - Closure</h1> 
-        <li>Closure (lambda)</li>
-        <li>variables scope</li>
-        <li>anonymous function</li>
-        always put a name to your function (debugging purpose)...
-        <li>strict overriding</li>
+    <h1 style="margin-bottom: -10px;">Functions - Closure</h1> 
+    <ul>
+        <li>Every Function is a Closure</li>
+        <li>Closure are not Lambda</li>
+        <li>Functions are 'closed over' their variables</li>
+        <li>Closure with Function Expression : </li>
+    </ul>
+    <pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+var getNewUniqueInteger = (function(){ //Define and Invoke
+    var counter = 0; // Private state of function below
+    return function(){ return counter++;};
+})();
+    </code></pre>
+</section>
+<section>
+    <h1 style="margin-bottom: -10px;">Functions - Closure</h1> 
+    <pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+// This function returns a function that always returns v;
+function constfunc(v){ return function() { return v;};}
+
+//Create an array of constant functions:
+var funcs = [];
+for(var i = 0 ; i&lt; 10; i++) {funcs[i] = constfunc(i)}
+ 
+funcs[5]();
+</code></pre>
+</section>
+
+<section>
+    <h1 style="margin-bottom: -10px;">Functions - Closure</h1> 
+    <pre style="margin-top: -20px;"><code class='javascript' style='font-size: 40%;'>
+// Return an array of functions that return the values 0-9
+funtion constfuncs(){
+    car funcs = [];
+    for(var i = 0; i&lt; 10; i++){
+        funcs[i] = function(){ return i;};
+    }
+    return funcs;
+}
+
+var = constfuncs();
+funcs[5](); //?
+</code></pre>
+</section>
+<section>
+        <h1>Overriding with Arguments</h1>
 <pre style="margin-top: -20px;"><code class='javascript'>
 function addMethod(object, name, fn){
     var old = object[ name ];
@@ -334,12 +383,234 @@ function addMethod(object, name, fn){
 </code></pre>
     </ul>
 </section>
+
 <section>
-        <h1>Functions - self execution</h1> 
-        <li>private data</li>
-        <li>module pattern</li>
-        <li>revealing module pattern</li>
+    <h1>Simple types</h1>
+    <ul>
+        <li>strings, integers, booleans, null, undefined</li>
+        <li>immutable</li>
     </ul>
+    <pre><code class="javascript">
+var foo = Number(5);
+foo.bar = 'baz';
+console.log(foo.bar); // undefined
+    </code></pre>
+</section>
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>functions, arrays, regexps, objects</li>
+        <li>Mutable keyed collection</li>
+    </ul>
+    <pre><code class="javascript">
+var foo = function() { return 'qux'; };
+foo.bar = 'baz';
+console.log(foo.bar); // 'baz'
+console.log(foo()); // 'qux'
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>Literal notation - { 'foo': 'bar' }</li>
+        <li>new Object()</li>
+        <li>Object.create()</li>
+    </ul>
+    <pre><code class="javascript">
+        var foo = Object.create();
+        foo.bar = 'baz';
+        console.log(foo.bar); // 'baz'
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>class-free</li>
+        <li>property name - <em>string with no constraint</em></li>
+        <li>property value - <em>any Javascript value</em></li>
+        <li>collecting & organising - <em>tree, graph, namespace</em></li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+var qux = { 'foo bar': 'baz', foo_bar: 'baz' };
+var org = { 'foo': { 'bar': { 'baz': { 'Date': Date } } } };
+var foobar = new org.foo.bar.baz.Date();
+console.log(foobar); // Wed Oct 16 2014 XX:XX:XX GMT+0200 (CEST)
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object - Retrieval</h1>
+    <pre><code class="javascript" style="font-size: 50%">
+var qux = { 'foo bar': 'baz', foo_bar: 'baz' };
+
+console.log(qux['foo bar']); // baz
+console.log(qux.foo_bar); // baz
+console.log(qux.baz); // undefined
+console.log(qux.baz || 'foo'); // foo
+console.log(qux.baz.foo); // throw ReferenceError
+console.log(qux.baz && qux.baz.foo); // undefined
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>Update & augmentation done via assignation</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+var foo = {};
+console.log(foo); // {}
+foo.bar = 'baz';
+console.log(foo); // {"foo": "baz"}
+foo.bar = 'qux';
+console.log(foo); // {"foo": "qux"}
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>delete key word to destroy!</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+        var foo = {};
+        console.log(foo.bar); // undefined
+        foo.bar = 'baz';
+        console.log(foo.bar); // "baz"
+        delete foo.bar;
+        console.log(foo.bar); // undefined
+    </code></pre>
+</section>
+
+<section>
+    <h1>Object</h1>
+    <ul>
+        <li>Object move around via reference</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+        var foo = {}, bar = {}, baz = {};
+        foo.qux = 'foobar';
+        console.log(foo, bar, baz); // { qux: 'foobar' } {} {}
+        foo = bar = baz; // {} {} {}
+        bar.qux = 'foobar';
+        console.log(foo, bar, baz); // { qux: 'foobar' } { qux: 'foobar' } { qux: 'foobar' };
+    </code></pre>
+</section>
+
+<section>
+    <h1>Prototype</h1>
+    <pre><code class="javascript" style="font-size: 50%">
+var Foo = function() {};
+Foo.prototype.bar = 'baz';
+
+var foo = new Foo();
+foo.bar = 'qux';
+console.log(foo.bar); // ...
+
+delete foo.bar;
+console.log(foo.bar); // ...
+
+delete foo.bar;
+console.log(foo.bar); // ...
+
+delete Foo.prototype.bar;
+console.log(foo.bar); // ...
+    </code></pre>
+</section>
+
+<section>
+    <h1>Prototype</h1>
+    <pre><code class="javascript" style="font-size: 50%">
+var Foo = function() {};
+Foo.prototype.bar = 'baz';
+
+var foo = new Foo();
+foo.bar = 'qux';
+console.log(foo.bar); // "qux"
+
+delete foo.bar;
+console.log(foo.bar); // "baz"
+
+delete foo.bar;
+console.log(foo.bar); // "baz"
+
+delete Foo.prototype.bar;
+console.log(foo.bar); // undefined
+    </code></pre>
+</section>
+
+<section>
+    <h1>Inheritance</h1>
+    <ul>
+        <li>Pseudo-classical Pattern</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+var Foo = function constructor() {
+    this.bar = 'baz';
+};
+var Qux = function constructor() {};
+Qux.prototype = new Foo();
+    </code></pre>
+</section>
+
+<section>
+    <h1>Inheritance</h1>
+    <ul>
+        <li>Functional Pattern</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 50%">
+var foo = function constructor() {
+    return {
+        bar: 'baz'
+    };
+};
+var qux = function constructor() {
+    var qux = Object.create(foo);
+    qux.bar = 'foo';
+    return qux;
+};
+console.log(qux().bar);
+    </code></pre>
+</section>
+
+<section>
+    <h1>Yeah but which one?!</h1>
+    <ul>
+        <li>Prototypes are faster</li>
+        <li>Some fear the new keyword</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Encapsulation</h1>
+    <ul>
+        <li>Pseudo-classical Pattern</li>
+    </ul>
+    <pre><code class="javascript" style="font-size: 30%">
+var Foo = function constructor() {
+    // private variable
+    var bar;
+
+    // private method
+    function init() {
+        bar = bar || 'baz';
+    }
+
+    // public method
+    this.logBar = function() {
+        init();
+        console.log(bar);
+    }
+};
+Foo.prototype.qux = function() {
+    console.log(this.bar);
+    this.logBar();
+};
+var foo = new Foo();
+foo.qux(); // undefined 'baz'
+    </code></pre>
 </section>
 
 <section>
