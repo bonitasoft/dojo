@@ -17,7 +17,7 @@
 </script>
 
 <section>
-    <h1>Javascript - Tests &amp; Metrics</h1>
+    <h1>Javascript - Tests</h1>
 </section>
 
 <section>
@@ -60,8 +60,8 @@
 </section>
 
 <section>
-    <h2>Jasmine - chassis de l'œuvre</h2>
-    <ul style="font-size: 50px;">
+    <h2 style="margin-bottom: 0px;margin-top: 10px;">Jasmine - chassis de l'œuvre</h2>
+    <ul style="font-size: 40px;">
         <li>describe the process visualisation service
             <ul> <li>
             describe the process design retrieval
@@ -83,7 +83,7 @@
 
 <section>
     <h2 style="margin-bottom: 0px;">Jasmine - chassis de l'œuvre</h2>
-<pre style="margin-left: -300px; margin-right: -300px; font-size:35px;"><code>describe('the process visualisation service', function() {
+<pre><code>describe('the process visualisation service', function() {
     describe('the process design retrieval', function(){
         it('should call the file parsing once the resource promise is resolved', function() {
             //some code
@@ -106,7 +106,7 @@
 <section>
     <h2 style="margin-bottom: 0px;margin-top: 10px;">Jasmine - chassis de l'œuvre</h2>
     <em>beforeEach, afterEach, beforeAll, and afterAll</em>
-<pre style="margin-left: -300px; margin-right: -300px; font-size:35px;"><code>describe('the process visualisation service', function() {
+<pre><code>describe('the process visualisation service', function() {
     var scope;
     beforeAll(function() {
         console.log('***************** début de la suite process Visu ***************'); // /!\ IE
@@ -133,7 +133,7 @@
 <section>
     <h2 style="margin-bottom: 0px;margin-top: 10px;">Jasmine - chassis de l'œuvre</h2>
     <em>spyOn &amp; jasmine.createSpy</em>
-<pre style="margin-left: -300px; margin-right: -300px; font-size:35px;"><code>describe('the process visualisation service', function() {
+<pre><code>describe('the process visualisation service', function() {
     var scope, processDesignAPI, q, processVisuSrv;
     beforeEach(module('com.bonitasoft.features.admin.processVisu')); //not in a beforeAll
     beforeEach(inject(function($rootScope, $q, ProcessDesignAPI, ProcessDesignService) {
@@ -161,7 +161,7 @@
 <section>
     <h2 style="margin-bottom: 0px;margin-top: 10px;">Jasmine - chassis de l'œuvre</h2>
     <em>expect family</em>
-<pre style="margin-left: -280px; margin-right: -300px; font-size:30px;"><code>describe('the process visualisation service', function() {
+<pre><code>describe('the process visualisation service', function() {
     var scope, processDesignAPI, q, processVisuSrv;
     // ...
     describe('the process design retrieval', function(){
