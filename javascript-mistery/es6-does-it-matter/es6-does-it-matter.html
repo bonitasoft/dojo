@@ -1,0 +1,387 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>ES6 - Does it matter ?</title>
+    
+    <meta name="author" content="Julien Reboul" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/impress-es6-does-it-matter.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<!--
+    
+    Now that's the core element used by impress.js.
+    
+    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
+    
+    You probably won't need it now, but there are some configuration options that can be set on this element.
+    
+    To change the duration of the transition between slides use `data-transition-duration="2000"` giving it
+    a number of ms. It defaults to 1000 (1s).
+    
+    You can also control the perspective with `data-perspective="500"` giving it a number of pixels.
+    It defaults to 1000. You can set it to 0 if you don't want any 3D effects.
+    If you are willing to change this value make sure you understand how CSS perspective works:
+    https://developer.mozilla.org/en/CSS/perspective
+    
+    But as I said, you won't need it for now, so don't worry - there are some simple but interesting things
+    right around the corner of this tag ;)
+    
+-->
+<div id="impress">
+
+    <!--
+        
+        Here is where interesting thing start to happen.
+        
+        Each step of the presentation should be an element inside the `#impress` with a class name
+        of `step`. These step elements are positioned, rotated and scaled by impress.js, and
+        the 'camera' shows them on each step of the presentation.
+        
+        Positioning information is passed through data attributes.
+        
+        In the example below we only specify x and y position of the step element with `data-x="-1000"`
+        and `data-y="-1500"` attributes. This means that **the center** of the element (yes, the center)
+        will be positioned in point x = -1000px and y = -1500px of the presentation 'canvas'.
+        
+        It will not be rotated or scaled.
+        
+    -->
+    <div id="intro" class="step" data-x="-250" data-y="-2000">
+        <em>ES6</em> - <em>ES2015</em><br/>
+        <em>Harmony</em> - <em>es-next</em>
+    </div>
+    <div id="intro-2" class="step" data-x="500" data-y="-2000" data-rotate="90">
+        <div>Managed by the European Computer Manufacturers Association</div>
+        <div>ECMAScript® 2015 Language Specification</div>
+        <div>Improve ES5 (published in 2009)</div>
+        <div>So expected...</div>
+        <span>Plastic bags are available under your seats</span>
+    </div>
+    <div id="intro-3" class="step" data-x="-750" data-y="-1200" data-z="-3000" data-rotate="280" data-scale="1">
+        <h2>Et pourtant, rien de nouveau...</h2>
+    </div>
+    <div id="intro-4" class="step" data-x="750" data-y="-1200">
+        <div>Tout les concepts ES2015 sont implémentables en ES5</div>
+        <div>Finalement, on a seulement du <br> "Sucre Syntaxique" à l'ES5</div>
+        <div>Alors...</div>
+    </div>
+    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
+        <h1>Ouate de Phoque !?</h1>
+        <h5>Should I give a damn?</h5>
+    </div>
+    
+    <div class="step yes" data-x="-1000" data-y="-500" data-rotate="-180" data-z="-2500">
+        <h3>ES6 not even available in most browser yet...</h3>
+    </div>
+
+<div class="step yes" data-x="-1000" data-y="-500" data-rotate="-180" data-z="-2500" data-rotate-x="90">
+    <h3>So we must call the A Team to have it work...</h3>
+    <ul>
+        <li>Babel <img src="https://media.giphy.com/media/JbzlnJr0NedJ6/giphy.gif" height="120" alt="mister T"></li>
+        <li>Typescript <img src="https://media.giphy.com/media/8dx7Q9AXiMM24/giphy.gif" height="120" alt="baracuda"></li>
+        <li>Traceur <img src="https://media.giphy.com/media/8UvC6xfiBEpiM/giphy.gif" alt="looping" height="120"></li>
+    </ul>
+</div>
+    
+    <div class="step yes" data-x="-600" data-y="500" data-z="-3333" data-rotate="-90" >
+        <h1>But trust me :</h1>
+    </div>
+    
+    <div class="step yes" data-x="-200" data-y="500" data-z="-2666" data-rotate="-90" >
+        <h1>Yes,</h1>
+    </div>
+    
+    <div class="step yes" data-x="250" data-y="500" data-z="-2000" data-rotate="-90" >
+        <h1>you</h1>
+    </div>
+    
+    <div class="step yes" data-x="750" data-y="500" data-z="-1333" data-rotate="-90" >
+        <h1>should</h1>
+    </div>
+    
+    <div class="step yes" data-x="1250" data-y="500" data-z="-666" data-rotate="-90" >
+        <h1>care!</h1>
+    </div>
+
+    <div class="step yes" data-x="-2000" data-y="1000" data-rotate-x="-90" data-rotate-y="90">
+        <h4>Question : Who finds average JavaScript code clean ?</h4>
+    </div>
+
+    <div class="step yes" data-x="0" data-y="1000" data-rotate-x="-90" data-rotate-y="90">
+        <h4>Who have not read some crappy and messy JavaScript ?</h4>
+    </div>
+
+    <div class="step yes" data-x="2000" data-y="1000" data-rotate-x="-90" data-rotate-y="90">
+        <img height="300" src="http://s-www.ledauphine.com/images/2E2A1B77-21CF-48EA-8104-A3923562897B/LDL_V0_12/severin-moussel-gere-un-compte-qui-a-plus-de-58-000-abonnes-1394017958.jpg" alt="cacamou">
+        <h2>I never did !</h2>
+    </div>
+    <div class="step yes" data-x="0" data-y="1000" data-rotate-x="-90">
+        <h2>ES6 makes JavaScript code <b>clean</b>, <b>neat</b> and <b>simpler</b> !</h2>
+        <span>(don't forget to format...)</span>
+    </div>
+
+
+    <div class="step yes" data-x="-2000" data-y="1000" data-rotate-x="-90">
+        <span>Here come's the features.</span>
+        <h3>It's <b>business</b>, <br>it's <b>business</b> time !</h3>
+    </div>
+
+<div class="step features" data-x="-10000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Assignment Destructuring</h3>
+</div>
+<div class="step features" data-x="-10000" data-y="1000" data-z="-1600"data-rotate-x="-90">
+    <ul>
+        <li>var {foo} = pony is equivalent to var foo = pony.foo</li>
+        <li>var {foo: baz} = pony is equivalent to var baz = pony.foo</li>
+        <li>var {foo: {bar}} = { foo: { bar: 'baz' } } gets you bar: 'baz'</li>
+        <li>It also works for arrays, [a, b] = [0, 1] yields a: 0 and b: 1</li>
+        <li>You can skip items in an array, [a, , b] = [0, 1, 2], getting a: 0 and b: 2</li>
+        <li>default values, var {foo='bar'} = baz yields foo: 'bar' if baz.foo is undefined</li>
+        <li>Also work in function definition :function foo ({ a=1, b=2 }) {}</li>
+    </ul>
+</div>
+<div class="step features" data-x="-9000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Spread Operator and Rest Parameters</h3>
+    <span class="footnote"><sub>*</sub> double face ... operator</span>
+</div>
+<div class="step features" data-x="-9000" data-y="1000" data-z="-1700" data-rotate-x="-90">
+    <div>
+      <h4>Rest parameters is a better <em>arguments</em> for function</h4> 
+       <ul>
+            <li>function foo (...everything) {}</li>
+            <li>function foo (bar, ...rest) {}</li>
+        </ul>
+    </div>
+    <div>
+       <h4>Spread operator is also denoted with ... syntax, but </h4>
+        <ul>
+            <li>Avoids .apply when calling methods: [].push.apply(myArray, [1, 2, 3, 4]) become myArray.push(...[1, 2, 3, 4])</li>
+            <li>Easier concatenation [1, 2, ...[3, 4, 5], 6, 7]</li>
+            <li>Casts array-likes or iterables into an array, e.g [...document.querySelectorAll('img')]</li>
+            <li>combines with destructuring; [a, , ...rest] = [1, 2, 3, 4, 5] yields a: 1 and rest: [3, 4, 5]</li>
+        </ul>
+    </div>
+</div>
+<!--
+<div>
+<h3>Arrow Functions</h3>
+</div>
+<ul>
+    <li>Implicit return for single statement</li>
+    <li>No parenthesis for single parameter</li>
+    <li>Ease function inlining for functional programming :
+    [1,2,3,4,5,6].filter(element => x  % 2).reduce((acc, element) => acc + element, 0)</li>
+    <li>use brackets for multiple statement () => {} </li>
+    <li>
+        Warning : Bound to lexical scope !
+        this correspond au this de l'appelant.
+        Pratique mais dangereux dans certains cas (cf class & methods)
+    </li>
+</ul>
+
+<div>
+    <h3>Template Literals</h3>
+</div>
+<div>
+    <ul>
+        <li>Finally !!</li>
+        <li>
+<pre><code>var import = `/rest/${this.type}/${this.id}`
+var text = `Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. 
+Morbi vitae est eu eros consequat volutpat.`</code></pre></li>
+    <li> JavaScript expressions in the interpolation, such as `${2 * 3}` or `${foo()}`</li>
+    <li>Si vous avez faim: You can use tagged templates to change how expressions are interpolated fn`foo, ${bar} and ${baz}`</li>
+    </ul>
+</div>
+<div>
+    <h3>Object Literals</h3>
+</div>
+<div>
+    <ul>
+        <li>Instead of { foo: foo, bar: function(){} }, you can just do { foo, bar() {} }</li>
+        <li>Computed property names, { [prefix + 'Foo']: 'bar' }</li>
+    </ul>
+</div>
+<div>
+    <h3>Classes</h3>
+</div>
+<div>
+    <ul>
+        <li>Not “traditional” classes, syntax sugar on top of prototypal inheritance</li>
+        <li>Instance method: use Object literals to declare methods</li>
+        <li>Static methods with static keyword</li>
+        <li>Constructor method constructor()</li>
+        <li>Prototypal inheritance with a simple syntax class PonyFoo extends Foo {}</li>
+        <li>class Foo { bar(){}, static baz(){}}</li>
+        <li>No attributes definition (only for Typescript)</li>
+    </ul>
+</div>
+<div>
+    <h3>Let and Const</h3>
+</div>
+<div>
+    <ul>
+        <li>alternatives to var</li>
+        <li>defines block-scoped variables: hoist to block</li>
+        <li>Temporal Dead Zone : even with hoisting, use of variable before definition within block raise an error</li>
+        <li>const is equivalent to define a variable final in Java</li>
+        <li>applied on function also applies block scoping</li>
+    </ul>
+</div>
+
+<div>
+Fin de l'apéro, distribution de doliprane
+</div>
+
+<div>
+    <h3>Symbols</h3>
+</div>
+<div>
+    <ul>
+        <li>A new primitive type in ES6</li>
+        <li>Symbols are immutable and unique. Symbol(), Symbol(), Symbol('foo') and Symbol('foo') are all different (the name is only for debugging purpose)</li>
+        <li>Symbols are of type symbol, thus: typeof Symbol() === 'symbol'</li>
+        <li>You can also create global symbols with Symbol.for(key)</li>
+        <li>reverse function with Symbol.keyFor(symbol)</li>
+        <li>Global means global across context (window, eval, iframe)</li>
+        <li>Symbol are hidden to ES5 functions and are accessible through Object.getOwnPropertySymbols</li>
+    </ul>
+</div>
+
+<div>
+    <h2>So what?</h2>
+</div>
+
+<div>
+    <h3>Iterators</h3>
+</div>
+<div>
+    <ul>
+        <li>Iterator and iterable protocol define how to iterate over any object, not just arrays and array-likes</li>
+        <li>Symbol allow to implement the iterable protocol: for an object to be iterable, it has to provide an iterable function to the Symbole.iterator attribute : var foo = { [Symbol.iterator]: iterable}</li>
+        <li>The iterable is a method that returns an iterator object that has a next method</li>
+        <li>The next method returns objects with two properties, value and done</li>
+        <li></li>
+        <li></li>
+    </ul>    
+</div>
+
+Generators
+
+Promises
+
+Maps
+WeakMaps
+Sets
+WeakSets
+
+Proxies
+
+Reflection
+
+Number
+Math
+
+Array
+Object
+Strings and Unicode
+
+Modules : Tooling AMD (requireJS)/CommonJS (Browserify/WebPack)/SystemJS (JSPM)
+    </div-->
+
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+    </div>
+
+</div>
+
+<!--
+    
+    Hint is not related to impress.js in any way.
+    
+    But it can show you how to use impress.js features in creative way.
+    
+    When the presentation step is shown (selected) its element gets the class of "active" and the body element
+    gets the class based on active step id `impress-on-ID` (where ID is the step's id)... It may not be
+    so clear because of all these "ids" in previous sentence, so for example when the first step (the one with
+    the id of `bored`) is active, body element gets a class of `impress-on-bored`.
+    
+    This class is used by this hint below. Check CSS file to see how it's shown with delayed CSS animation when
+    the first step of presentation is visible for a couple of seconds.
+    
+    ...
+    
+    And when it comes to this piece of JavaScript below ... kids, don't do this at home ;)
+    It's just a quick and dirty workaround to get different hint text for touch devices.
+    In a real world it should be at least placed in separate JS file ... and the touch content should be
+    probably just hidden somewhere in HTML - not hard-coded in the script.
+    
+    Just sayin' ;)
+    
+-->
+<!--
+    
+    Last, but not least.
+    
+    To make all described above really work, you need to include impress.js in the page.
+    I strongly encourage to minify it first.
+    
+    In here I just include full source of the script to make it more readable.
+    
+    You also need to call a `impress().init()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. Not only because it's a good practice, but also
+    because it should be done when the whole document is ready.
+    Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
+    
+-->
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+<!--
+    
+    The `impress()` function also gives you access to the API that controls the presentation.
+    
+    Just store the result of the call:
+    
+        var api = impress();
+    
+    and you will get three functions you can call:
+    
+        `api.init()` - initializes the presentation,
+        `api.next()` - moves to next step of the presentation,
+        `api.prev()` - moves to previous step of the presentation,
+        `api.goto( idx | id | element, [duration] )` - moves the presentation to the step given by its index number
+                id or the DOM element; second parameter can be used to define duration of the transition in ms,
+                but it's optional - if not provided default transition duration for the presentation will be used.
+    
+    You can also simply call `impress()` again to get the API, so `impress().next()` is also allowed.
+    Don't worry, it wont initialize the presentation again.
+    
+    For some example uses of this API check the last part of the source of impress.js where the API
+    is used in event handlers.
+    
+-->
+
+</body>
+</html>
