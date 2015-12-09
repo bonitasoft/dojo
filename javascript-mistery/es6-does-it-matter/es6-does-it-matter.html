@@ -9,8 +9,7 @@
     
     <meta name="author" content="Julien Reboul" />
 
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
-
+    <link href="css/tomorrow.css" rel="stylesheet" />
     <link href="css/impress-es6-does-it-matter.css" rel="stylesheet" />
     
     <link rel="shortcut icon" href="favicon.png" />
@@ -67,7 +66,7 @@
         It will not be rotated or scaled.
         
     -->
-    <div id="intro" class="step" data-x="-250" data-y="-2000">
+    <div id="intro" class="step" data-x="-750" data-y="-2000">
         <em>ES6</em> - <em>ES2015</em><br/>
         <em>Harmony</em> - <em>es-next</em>
     </div>
@@ -79,12 +78,12 @@
         <span>Plastic bags are available under your seats</span>
     </div>
     <div id="intro-3" class="step" data-x="-750" data-y="-1200" data-z="-3000" data-rotate="280" data-scale="1">
-        <h2>Et pourtant, rien de nouveau...</h2>
+        <h2>And yet, nothing's new...</h2>
     </div>
     <div id="intro-4" class="step" data-x="750" data-y="-1200">
-        <div>Tout les concepts ES2015 sont implémentables en ES5</div>
-        <div>Finalement, on a seulement du <br> "Sucre Syntaxique" à l'ES5</div>
-        <div>Alors...</div>
+        <div>All concepts are implemented in ES5</div>
+        <div>It's just Syntaxic sugar to ES5</div>
+        <div>So...</div>
     </div>
     <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
         <h1>Ouate de Phoque !?</h1>
@@ -278,7 +277,7 @@ Fin de l'apéro, distribution de doliprane
 <div class="step features" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Iterators</h3>
 </div>
-<div class="step features" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="-90">
+<div class="step features" data-x="0" data-y="1000" data-z="-1600" data-rotate-x="-90">
     <ul>
         <li>Iterator and iterable protocol define how to iterate over any object, not just arrays and array-likes</li>
         <li>Symbol allow to implement the iterable protocol: for an object to be iterable, it has to provide an iterable function to the Symbole.iterator attribute : var foo = { [Symbol.iterator]: iterable}</li>
@@ -289,12 +288,56 @@ Fin de l'apéro, distribution de doliprane
         <li>Iterators are lazy, and those that produce an infinite sequence still can lead to valid programs</li>
     </ul>    
 </div>
-<!--
 
-Generators
+<div class="step features" data-x="1000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>
+        Generators
+    </h3>
+</div>
+<div class="step features" data-x="1000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Works as a factory for iterators.</li>
+        <li>A function becomes a generator if it contains one or more yield expressions and if it uses the function* syntax.</li>
+        <li>Compute their yielded values on demand</li>
+        <li>Generator functions return a generator object that’s adheres to both the iterable and iterator protocols</li>
+        <li>Generator function execution is suspended on yield, return,  throw and returning {done : true}</li>
+    </ul>
+</div>
+<div class="step features" data-x="1000" data-y="1000" data-z="-2500" data-rotate-x="-90">
+    <ul>
+        <li>
+        <pre class="javascript"><code>function* fibonacci(){
+  var fn1 = 1;
+  var fn2 = 1;
+  while (true){  
+    var current = fn2;
+    fn2 = fn1;
+    fn1 = fn1 + current;
+    var reset = yield current;
+    if (reset){
+        fn1 = 1;
+        fn2 = 1;
+    }
+  }
+}</code></pre></li>
+        <li>Pull values using Array.from(g), [...g], for (let item of g), or just calling g.next()</li>
+        <li>Asynchronous flows feel synchronous</li>
+    </ul>
+</div>
 
-Promises
+<div class="step features" data-x="2000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Promises</h3>
+</div>
 
+<div  class="step features" data-x="2000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Manage the "pyramid of doom issue"</li>
+        <li>Behave like a tree : Add branches with p.then(handler) and p.catch(handler)</li>
+        <li><pre class="javascript"><code>new Promise((resolve, reject) => { /* resolver */ })</code></pre></li>
+        <li>Each call to p.then and p.catch creates another promise that’s blocked on p being settled</li>
+        <li>Promises can only be settled once, and then they’re settled. </li>
+    </ul>
+</div>
 Maps
 WeakMaps
 Sets
