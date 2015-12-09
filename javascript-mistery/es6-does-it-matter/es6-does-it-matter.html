@@ -183,27 +183,28 @@
         </ul>
     </div>
 </div>
-<!--
-<div>
-<h3>Arrow Functions</h3>
+<div class="step features" data-x="-8000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Arrow Functions</h3>
 </div>
-<ul>
-    <li>Implicit return for single statement</li>
-    <li>No parenthesis for single parameter</li>
-    <li>Ease function inlining for functional programming :
-    [1,2,3,4,5,6].filter(element => x  % 2).reduce((acc, element) => acc + element, 0)</li>
-    <li>use brackets for multiple statement () => {} </li>
-    <li>
-        Warning : Bound to lexical scope !
-        this correspond au this de l'appelant.
-        Pratique mais dangereux dans certains cas (cf class & methods)
-    </li>
-</ul>
+<div class="step features" data-x="-8000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Implicit return for single statement</li>
+        <li>No parenthesis for single parameter</li>
+        <li>Ease function inlining for functional programming :
+        [1,2,3,4,5,6].filter(element => x  % 2).reduce((acc, element) => acc + element, 0)</li>
+        <li>use brackets for multiple statement () => {} </li>
+        <li>
+            Warning : Bound to lexical scope !
+            this correspond au this de l'appelant.
+            Pratique mais dangereux dans certains cas (cf class & methods)
+        </li>
+    </ul>
+</div>
 
-<div>
+<div class="step features" data-x="-7000" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Template Literals</h3>
 </div>
-<div>
+<div class="step features" data-x="-7000" data-y="1000" data-z="-1600" data-rotate-x="-90">
     <ul>
         <li>Finally !!</li>
         <li>
@@ -215,19 +216,19 @@ Morbi vitae est eu eros consequat volutpat.`</code></pre></li>
     <li>Si vous avez faim: You can use tagged templates to change how expressions are interpolated fn`foo, ${bar} and ${baz}`</li>
     </ul>
 </div>
-<div>
+<div class="step features" data-x="-6000" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Object Literals</h3>
 </div>
-<div>
+<div class="step features" data-x="-6000" data-y="1000" data-z="-1600" data-rotate-x="-90">
     <ul>
         <li>Instead of { foo: foo, bar: function(){} }, you can just do { foo, bar() {} }</li>
         <li>Computed property names, { [prefix + 'Foo']: 'bar' }</li>
     </ul>
 </div>
-<div>
+<div class="step features" data-x="-5000" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Classes</h3>
 </div>
-<div>
+<div class="step features" data-x="-5000" data-y="1000" data-z="-1600" data-rotate-x="-90">
     <ul>
         <li>Not “traditional” classes, syntax sugar on top of prototypal inheritance</li>
         <li>Instance method: use Object literals to declare methods</li>
@@ -238,10 +239,10 @@ Morbi vitae est eu eros consequat volutpat.`</code></pre></li>
         <li>No attributes definition (only for Typescript)</li>
     </ul>
 </div>
-<div>
+<div class="step features" data-x="-4000" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Let and Const</h3>
 </div>
-<div>
+<div class="step features" data-x="-4000" data-y="1000" data-z="-1600" data-rotate-x="-90">
     <ul>
         <li>alternatives to var</li>
         <li>defines block-scoped variables: hoist to block</li>
@@ -251,14 +252,14 @@ Morbi vitae est eu eros consequat volutpat.`</code></pre></li>
     </ul>
 </div>
 
-<div>
+<div class="step features" data-x="-3000" data-y="1000" data-z="-1000" data-rotate-x="-90">
 Fin de l'apéro, distribution de doliprane
 </div>
 
-<div>
+<div class="step features" data-x="-2000" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Symbols</h3>
 </div>
-<div>
+<div class="step features" data-x="-2000" data-y="1000" data-z="-1600" data-rotate-x="-90">
     <ul>
         <li>A new primitive type in ES6</li>
         <li>Symbols are immutable and unique. Symbol(), Symbol(), Symbol('foo') and Symbol('foo') are all different (the name is only for debugging purpose)</li>
@@ -270,23 +271,25 @@ Fin de l'apéro, distribution de doliprane
     </ul>
 </div>
 
-<div>
-    <h2>So what?</h2>
+<div class="step features" data-x="-1000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>So what?</h3>
 </div>
 
-<div>
+<div class="step features" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Iterators</h3>
 </div>
-<div>
+<div class="step features" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <ul>
         <li>Iterator and iterable protocol define how to iterate over any object, not just arrays and array-likes</li>
         <li>Symbol allow to implement the iterable protocol: for an object to be iterable, it has to provide an iterable function to the Symbole.iterator attribute : var foo = { [Symbol.iterator]: iterable}</li>
         <li>The iterable is a method that returns an iterator object that has a next method</li>
         <li>The next method returns objects with two properties, value and done</li>
-        <li></li>
-        <li></li>
+        <li>Some built-ins like Array, String, or arguments – and NodeList in browsers – are iterable by default in ES6</li>
+        <li>Iterable objects can be looped over with for..of, such as for (let el of document.querySelectorAll('a'))</li>
+        <li>Iterators are lazy, and those that produce an infinite sequence still can lead to valid programs</li>
     </ul>    
 </div>
+<!--
 
 Generators
 
