@@ -1,0 +1,25 @@
+{
+  "name": "es6-does-it-matter",
+  "version": "1.0.0",
+  "description": "es6 slides using impress.js",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bonitasoft/dojo/tree/javascript-the-mistery-mastered/javascript-mistery/es6-does-it-matter"
+  },
+  "keywords": [
+    "es6",
+    "impress.js"
+  ],
+  "author": "Julien Reboul <julien.reboul@bonitasoft.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "0.8.5"
+  },
+  "scripts": {
+    "serve": "node_modules/.bin/http-server"
+  }
+}
