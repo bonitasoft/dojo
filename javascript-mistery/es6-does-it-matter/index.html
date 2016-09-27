@@ -287,27 +287,60 @@ Fin de l'apéro, distribution de doliprane
 <div class="step features" data-x="2000" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Promises</h3>
 </div>
-
 <div  class="step features" data-x="2000" data-y="1000" data-z="-1600" data-rotate-x="-90">
     <ul>
-        <li>Manage the "pyramid of doom issue"<br>
-        <img src="http://maangalabs.com/images/posts/8/pyr-1.png" alt="pyramid of doom"></li>
+        <li>A promise represents the eventual result of an asynchronous operation. 
+        <ul>
+            <li>then method, which registers callbacks to receive a promise’s eventual value</li>
+            <li>catch method, which receives the reason why the promise cannot be fulfilled</li>
+        </ul></li>
+        
     </ul>
 </div>
-<div class="step features" data-x="2000" data-y="1000" data-z="-2300" data-rotate-x="-90">
+
+<div  class="step features" data-x="2000" data-y="1000" data-z="-2200" data-rotate-x="-90">
+    <ul>
+        <li>Manage the "pyramid of doom issue"<pre class="javascript"><code>fs.readdir(source, function (err, files) {
+  if (err) {
+    console.log('Error finding files: ' + err)
+  } else {
+    files.forEach(function (filename, fileIndex) {
+      console.log(filename)
+      gm(source + filename).size(function (err, values) {
+        if (err) {
+          console.log('Error identifying file size: ' + err)
+        } else {
+          console.log(filename + ' : ' + values)
+          aspect = (values.width / values.height)
+          widths.forEach(function (width, widthIndex) {
+            height = Math.round(width / aspect)
+            console.log('resizing ' + filename + 'to ' + height + 'x' + height)
+            this.resize(width, height).write(dest + 'w' + width + '_' + filename, function(err) {
+              if (err) console.log('Error writing file: ' + err)
+            })
+          }.bind(this))
+        }
+      })
+    })
+  }
+})</code></pre></li>
+    </ul>
+</div>
+
+<div  class="step features" data-x="2000" data-y="1000" data-z="-2900" data-rotate-x="-90">
     <ul>
         <li>Behave like a tree : Add branches with p.then(handler) and p.catch(handler)</li>
         <li>Each call to p.then and p.catch creates another promise that’s blocked on p being settled</li>
         <li>Promises can only be settled once, and then they’re settled. </li>
-        <li><pre class="javascript"><code>new Promise((resolve, reject) => { /* resolver */ })</code></pre></li>
-        <li>Each node will execute either .then handlers or .catch handlers, never both</li>
-        <li>A .then callback can block on another promise by returning it</li>
-        <li>See <a href="http://bevacqua.github.io/promisees/?utm_content=buffer61cc7&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer">Promisees</a> </li>
     </ul>
 </div>
-<div class="step features" data-x="2000" data-y="1000" data-z="-3300" data-rotate-x="-90">
+<div  class="step features" data-x="2000" data-y="1000" data-z="-3300" data-rotate-x="-90">
     <ul>
-        <li>Promise.resolve(value) creates a promise that's fulfilled with the provided value</li>
+        <li>Promise.resolve(value) creates a promise that’s fulfilled with the provided value</li>
+        <li>Promise.reject(reason) creates a promise that’s rejected with the provided reason</li>
+        <li>Promise.all(...promises) creates a promise that settles when all ...promises are fulfilled or 1 of them is rejected</li>
+        <li>Promise.race(...promises) creates a promise that settles as soon as 1 of ...promises is settled</li>
+        <li>Checkout <a href="http://bevacqua.github.io/promisees/">Promisees</a></li>
         <li>Promise.reject(reason) creates a promise that's rejected with the provided reason</li>
         <li>Promise.all(...promises) creates a promise that settles when all ...promises are fulfilled or 1 of them is rejected</li>
         <li>Promise.race(...promises) creates a promise that settles as soon as 1 of ...promises is settled</li>
