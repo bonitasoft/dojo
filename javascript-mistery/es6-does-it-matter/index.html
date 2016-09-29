@@ -284,7 +284,7 @@ Fin de l'apéro, distribution de doliprane
     </ul>
 </div>
 
-<div class="step features" data-x="2000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+<div id="part2" class="step features" data-x="2000" data-y="1000" data-z="-1000" data-rotate-x="-90">
     <h3>Promises</h3>
 </div>
 <div  class="step features" data-x="2000" data-y="1000" data-z="-1600" data-rotate-x="-90">
@@ -341,33 +341,217 @@ Fin de l'apéro, distribution de doliprane
         <li>Promise.all(...promises) creates a promise that settles when all ...promises are fulfilled or 1 of them is rejected</li>
         <li>Promise.race(...promises) creates a promise that settles as soon as 1 of ...promises is settled</li>
         <li>Checkout <a href="http://bevacqua.github.io/promisees/">Promisees</a></li>
-        <li>Promise.reject(reason) creates a promise that's rejected with the provided reason</li>
-        <li>Promise.all(...promises) creates a promise that settles when all ...promises are fulfilled or 1 of them is rejected</li>
-        <li>Promise.race(...promises) creates a promise that settles as soon as 1 of ...promises is settled</li>
     </ul>
 </div>
-Maps
-WeakMaps
-Sets
-WeakSets
 
-Proxies
+<div  class="step features" data-x="3000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Map, WeakMap, Set, WeakSet</h3>
+</div>
+<div  class="step features" data-x="3000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <h4>Map</h4>
+    <ul>
+        <li>A replacement to the common pattern of creating a hash-map using plain JavaScript objects<br>
+        JavaScript Object &lt;=&gt; Java Map&lt;String, Object&gt;
+        JavaScript Map &lt;=&gt; Java Map&lt;Object, Object&gt;
+        </li>
+        <li>Map adheres to iterable protocol : <b>for (let [key, value] of map)</b>, the spread operator, Array.from</li>
+        <li>Initialize a map with an iterable like [[key1, value1], [key2, value2]] in new Map(iterable)</li>
+        <li>get, set, has, delete</li>
+        <li>You can even use DOM elements as keys...</li>
+    </ul>
+</div>
 
-Reflection
+<div  class="step features" data-x="3000" data-y="1000" data-z="-2200" data-rotate-x="-90">
+    <h4>Set</h4>
+    <ul>
+        <li>Similar to Java Set : only values and no duplicates</li>
+        <li>Set adheres to iterable protocol</li>
+        <li>Initialize a set with an iterable like [value1, value2] in new Set(iterable)</li>
+    </ul>
+</div>
 
-Number
-Math
+<div  class="step features" data-x="3000" data-y="1000" data-z="-2800" data-rotate-x="-90">
+    <h4>WeakMap, WeakSet</h4>
+    <ul>
+        <li>Similar to there none weak equivalent but if nothing else is referencing a value found in a WeakXXX, it’ll be subject to garbage collection.</li>
+        <li>They are not iterable...</li>
+    </ul>
+</div>
 
-Array
-Object
-Strings and Unicode
+<div  class="step features" data-x="4000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Proxies</h3>
+</div>
 
-Modules : Tooling AMD (requireJS)/CommonJS (Browserify/WebPack)/SystemJS (JSPM)
-    </div-->
+<div  class="step features" data-x="4000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>created with new Proxy(target, handler), where target is any object and handler is configuration</li>
+        <li>by default, proxy acts as a passthrough to the underlying target object</li>
+        <li>Handlers determine how the underlying target object is accessed on top of regular object property access semantics</li>
+        <li>You pass off references to proxy and retain strict control over how target can be interacted with</li>
+        <li>You can create revocable proxies with Proxy.revocable(target, handler)</li>
+        <li>After revoke() is called, the proxy will throw on any operation, making it convenient when you can’t trust consumers</li>
+    </ul>
+</div>
+<div  class="step features" data-x="4000" data-y="1000" data-z="-2200" data-rotate-x="-90">
+    <h4>Traps</h4>
+    <ul>
+        <li>get, set, has (traps <i>in</i> operator)</li>
+        <li>deleteProperty (traps delete operator), defineProperty</li>
+        <li>enumerate – traps for..in loops
+        <li>ownKeys – traps Object.keys and related methods</li>
+        <li>apply – traps function calls</li>
+        <li>construct – traps usage of the new operator</li>
+    </ul>
+</div>
+<div  class="step features" data-x="4000" data-y="1000" data-z="-2600" data-rotate-x="-90">
+    <p>Use case : Resolving access to context references for arrays....</p>
+</div>
+<div  class="step features" data-x="5000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Reflection</h3>
+</div>
 
-    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
-    </div>
+<div  class="step features" data-x="5000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Just a class that gather common reflection operation already accessible</li>
+        <li>Reflect.defineProperty like Object.defineProperty</li>
+        <li>Reflect.deleteProperty like <i>delete</i> keyword</li>
+        <li>Reflect.construct(Dominus, args) like <i>new</i></li>
+        <li>Reflect.apply(fn, ctx, args) like fn.apply(ctx, [1, 2, 3])</li>
+    </ul>
+</div>
+<div  class="step features" data-x="6000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>New common methods</h3>
+</div>
+<div  class="step features" data-x="6000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <h4>Number &amp; Math</h4>
+    <ul>
+        <li>Number.isNaN and Number.isFinite are like their global namesakes, except that they don’t coerce input to Number</li>
+        <li>Number.parseInt and Number.parseFloat are exactly the same as their global namesakes</li>
+        <li>Number.isInteger checks if input is a Number value that doesn’t have a decimal part</li>
+        <li>Math has a lot of new things too, but who wants to calculate hyperbolic arc-sine of a number...</li>
+    </ul>
+</div>
+<div  class="step features" data-x="6000" data-y="1000" data-z="-2200" data-rotate-x="-90">
+    <h4>Array (1/2)</h4>
+    <ul>
+        <li>inspired from community like underscore or lodash</li>
+        <li>Array.from – create Array instances from arraylike objects like arguments or iterables</li>
+        <li>Array.of – similar to new Array(...items), but without special cases</li>
+        <li>Array.prototype.copyWithin – copies a sequence of array elements into somewhere else in the array</li>
+        <li>Array.prototype.fill – fills all elements of an existing array with the provided value</li>
+    </ul>
+</div>
+<div  class="step features" data-x="6000" data-y="1000" data-z="-2800" data-rotate-x="-90">
+    <h4>Array (2/2)</h4>
+    <ul>
+        <li>Array.prototype.find – returns the first item to satisfy a callback</li>
+        <li>Array.prototype.findIndex – returns the index of the first item to satisfy a callback</li>
+        <li>Array.prototype.keys – returns an iterator that yields a sequence holding the keys for the array</li>
+        <li>Array.prototype.values – returns an iterator that yields a sequence holding the values for the array</li>
+        <li>Array.prototype.entries – returns an iterator that yields a sequence holding key value pairs for the array</li>
+    </ul>
+</div>
+<div  class="step features" data-x="6000" data-y="1000" data-z="-3400" data-rotate-x="-90">
+    <h4>Object</h4>
+    <ul>
+        <li>Object.assign – recursive shallow overwrite for properties from target, ...objects</li>
+        <li>Object.is – like using the === operator programmatically, except it’s true for NaN vs NaN and false for +0 vs -0</li>
+        <li>Spread operator works too</li>
+    </ul>
+</div>
+<div  class="step features" data-x="6000" data-y="1000" data-z="-3400" data-rotate-x="-90">
+    <h4>String</h4>
+    <ul>
+        <li>String.prototype.startsWith – whether the string starts with value</li>
+        <li>String.prototype.endsWith – whether the string ends in value</li>
+        <li>String.prototype.includes – whether the string contains value anywhere</li>
+        <li>String.prototype.repeat – returns the string repeated amount times</li>
+    </ul>
+</div>
+<div  class="step features" data-x="7000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>Modules</h3>
+</div>
+<div  class="step features" data-x="7000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <h4><b>The</b> feature of ES2015</h4>
+    <ul>
+        <li>creates a clean dependency tree</li>
+        <li>Strict Mode is turned on by default</li>
+        <li>Modules are files that export an API</li>
+        <li>Module loading is implementation-specific, allows interoperation with CommonJS</li>
+        <li>designed to have a single entry point in the JavaScript application</li>
+    </ul>
+</div>
+<div  class="step features" data-x="7000" data-y="1000" data-z="-2200" data-rotate-x="-90">
+    <ul>
+        <li><b><i>export default</i></b> value exports a default binding</li>
+        <li><b><i>export var foo = 'bar'</i></b> exports a named binding</li>
+        <li>Named exports are bindings that can be changed at any time from the module that’s exporting them</li>
+        <li><b><i>export { foo, bar }</i></b> exports a list of named exports</li>
+        <li><b><i>export { foo as ponyfoo }</i></b> aliases the export to be referenced as ponyfoo instead</li>
+        <li><b><i>export { foo as default }</i></b> marks the named export as the default export</li>
+        <li>As a best practice, export default api at the end of all your modules, where api is an object, avoids confusion</li>
+    </ul>
+</div>
+<div  class="step features" data-x="7000" data-y="1000" data-z="-2800" data-rotate-x="-90">
+    <ul>
+        <li><b><i>import 'foo'</i></b> loads the foo module into the current module</li>
+        <li><b><i>import foo from 'ponyfoo' </i></b>assigns the default export of ponyfoo to a local foo variable</li>
+        <li><b><i>import {foo, bar} from 'baz' </i></b>imports named exports foo and bar from the baz module</li>
+        <li><b><i>import {foo as bar} from 'baz' </i></b>imports named export foo but aliased as a bar variable</li>
+        <li><b><i>import {default} from 'foo' </i></b>also imports the default export</li>
+        <li><b><i>import {default as bar} from 'foo' </i></b>imports the default export aliased as bar</li>
+        <li><b><i>import foo, {bar, baz} from 'foo' </i></b>mixes default foo with named exports bar and baz in one declaration</li>
+        <li><b><i>import * as foo from 'foo' </i></b>imports the namespace object
+        <ul>
+            <li>Contains all named exports in foo[name]</li>
+            <li>Contains the default export in foo.default, if a default export was declared in the module</li>
+        </ul>
+        </li>
+    </ul>
+</div>
+<div  class="step features" data-x="7000" data-y="1000" data-z="-3400" data-rotate-x="-90">
+    <h4>Tools</h4>
+    <ul>
+        <li>RequireJS - AMD</li>
+        <li>Browserify/Webpack - CommonJS</li>
+        <li>SystemJS (JSPM) which design to handle circular dependency correctly</li>
+        <li>No clear leader but webpack seems to be the most advanced...</li>
+    </ul>
+</div>
 
+<div  class="step features" data-x="7000" data-y="1000" data-z="-3400" data-rotate-x="-90">
+    <h4>Tools</h4>
+    <ul>
+        <li>RequireJS - AMD</li>
+        <li>Browserify/Webpack - CommonJS</li>
+        <li>SystemJS (JSPM) which design to handle circular dependency correctly</li>
+        <li>No clear leader but webpack seems to be the most advanced...</li>
+    </ul>
+</div>
+ 
+<div  class="step features" data-x="8000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>ES2016</h3>
+</div>
+<div  class="step features" data-x="8000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Slim spec</li>
+        <li>Array.prototype.includes</li>
+        <li>Exponentiation Operator</li>
+    </ul>
+</div>
+<div  class="step features" data-x="9000" data-y="1000" data-z="-1000" data-rotate-x="-90">
+    <h3>ES2017</h3>
+</div>
+<div  class="step features" data-x="9000" data-y="1000" data-z="-1600" data-rotate-x="-90">
+    <ul>
+        <li>Object.values/Object.entries</li>
+        <li>String padding</li>
+        <li>Object.getOwnPropertyDescriptors()</li>
+        <li>Trailing commas in function parameter lists and calls</li>
+        <li><b><i>Async Functions</i></b></li>
+    </ul>
+</div>
+    
 </div>
 
 <script src="js/impress.js"></script>
