@@ -14,7 +14,7 @@ Bonitasoft R&amp;D first Hackathon on AngularJS
 [Download Page](http://maven.apache.org/download.cgi)
 
 ## Bonita BPM REST API (tested with 6.3.0)
-[API Reference](http://documentation.bonitasoft.com/product-bos-sp/web-rest-api-1)
+[API Reference](http://documentation.ofelia.com/product-bos-sp/web-rest-api-1)
 
 ## Getting Started
 
